@@ -79,6 +79,14 @@
 - MVP COMPLETE.
 
 ## Тесты
-- Backend: `pytest -q` → `20 passed`.
+- Backend: `pytest -q` → `24 passed`.
 - Frontend: `npm run lint` → success.
 - Frontend: `npm run build` → success.
+
+## Аудит соответствия исходному ТЗ (Blitzy)
+- [x] Выполнена полная сверка с `docs/Blitzy Platform.html` и расширенным ТЗ.
+- [x] Результат зафиксирован в `docs/COMPLIANCE_AUDIT_BLITZY.md`.
+- [x] Добавлены `GET/POST /api/providers/stt`.
+- [x] Добавлен `meeting.state` snapshot/resync при WS connect.
+- [x] Добавлена поддержка `TELEGRAM_DEFAULT_CHAT_ID` в конфиге и stop-flow.
+- [ ] Полное 100% соответствие (выявлены приоритетные gaps для доработки).

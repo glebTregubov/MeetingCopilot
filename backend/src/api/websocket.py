@@ -8,6 +8,20 @@ from src.models.websocket_events import WebSocketEvent
 router = APIRouter(tags=["websocket"])
 
 
+def build_state_snapshot(state) -> dict:
+    return {
+        "transcript_lines": state.transcript_lines,
+        "summary": state.summary,
+        "insights": {
+            "decisions": [item.model_dump(mode="json") for item in state.decisions],
+            "actions": [item.model_dump(mode="json") for item in state.actions],
+            "risks": [item.model_dump(mode="json") for item in state.risks],
+            "open_questions": [item.model_dump(mode="json") for item in state.open_questions],
+        },
+        "updated_at": state.last_updated_at.isoformat() if state.last_updated_at else None,
+    }
+
+
 @router.websocket("/ws/meetings/{meeting_id}")
 async def meeting_ws(websocket: WebSocket, meeting_id: str) -> None:
     manager = websocket.app.state.websocket_manager
@@ -18,6 +32,14 @@ async def meeting_ws(websocket: WebSocket, meeting_id: str) -> None:
         {
             "type": "meeting.connected",
             "meeting_id": meeting_id,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        },
+    )
+    await websocket.send_json(
+        {
+            "type": "meeting.state",
+            "meeting_id": meeting_id,
+            "payload": build_state_snapshot(state_manager.get_state(meeting_id)),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         },
     )

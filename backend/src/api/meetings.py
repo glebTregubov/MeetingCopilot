@@ -54,7 +54,8 @@ async def stop_meeting(
     try:
         meeting = await service.stop(meeting_id)
 
-        telegram_chat_id = request.headers.get("x-telegram-chat-id", "").strip()
+        settings = request.app.state.settings
+        telegram_chat_id = request.headers.get("x-telegram-chat-id", "").strip() or settings.telegram_default_chat_id
         telegram_bot = request.app.state.telegram_bot
         state_manager = request.app.state.state_manager
         if telegram_chat_id:

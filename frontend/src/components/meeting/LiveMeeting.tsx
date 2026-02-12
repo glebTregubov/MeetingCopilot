@@ -49,6 +49,20 @@ export function LiveMeeting() {
     .map((event) => String(event.payload?.text ?? ''))
     .filter(Boolean)
 
+  const latestState = [...events].reverse().find((event) => event.type === 'meeting.state')
+  const statePayload = (latestState?.payload ?? {}) as {
+    transcript_lines?: string[]
+    summary?: string
+    insights?: {
+      decisions?: Decision[]
+      actions?: ActionItem[]
+      risks?: Risk[]
+      open_questions?: OpenQuestion[]
+    }
+  }
+
+  const transcriptFromState = statePayload.transcript_lines ?? []
+
   const latestDelta = [...events].reverse().find((event) => event.type === 'meeting.delta')
   const deltaPayload = (latestDelta?.payload ?? {}) as {
     summary?: string
@@ -60,11 +74,11 @@ export function LiveMeeting() {
     }
   }
 
-  const summary = deltaPayload.summary ?? ''
-  const decisions = deltaPayload.insights?.decisions ?? []
-  const actions = deltaPayload.insights?.actions ?? []
-  const risks = deltaPayload.insights?.risks ?? []
-  const questions = deltaPayload.insights?.open_questions ?? []
+  const summary = deltaPayload.summary ?? statePayload.summary ?? ''
+  const decisions = deltaPayload.insights?.decisions ?? statePayload.insights?.decisions ?? []
+  const actions = deltaPayload.insights?.actions ?? statePayload.insights?.actions ?? []
+  const risks = deltaPayload.insights?.risks ?? statePayload.insights?.risks ?? []
+  const questions = deltaPayload.insights?.open_questions ?? statePayload.insights?.open_questions ?? []
   const { messages, ask, quickQuestions } = useCopilot({
     meetingId: activeMeeting?.id ?? null,
     events,
@@ -83,7 +97,7 @@ export function LiveMeeting() {
 
       {audioError && <p className="mt-3 text-sm text-red-600">{audioError}</p>}
 
-      <TranscriptPanel lines={transcriptLines} />
+      <TranscriptPanel lines={transcriptLines.length ? transcriptLines : transcriptFromState} />
       <SummaryPanel summary={summary} />
       <InsightsPanel decisions={decisions} actions={actions} risks={risks} questions={questions} />
       <CopilotChat disabled={!activeMeeting} messages={messages} quickQuestions={quickQuestions} onAsk={ask} />

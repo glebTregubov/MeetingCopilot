@@ -37,6 +37,7 @@ async def lifespan(app: FastAPI):
         "openai": OpenAIRealtimeProvider(settings),
         "elevenlabs": ElevenLabsRealtimeProvider(settings),
     }
+    app.state.active_stt_provider = settings.stt_provider.lower()
 
     yield
 

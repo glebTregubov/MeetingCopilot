@@ -13,6 +13,8 @@ def test_e2e_smoke_meeting_flow() -> None:
         with client.websocket_connect(f'/ws/meetings/{meeting_id}') as ws:
             connected = ws.receive_json()
             assert connected['type'] == 'meeting.connected'
+            state = ws.receive_json()
+            assert state['type'] == 'meeting.state'
 
             ws.send_json(
                 {

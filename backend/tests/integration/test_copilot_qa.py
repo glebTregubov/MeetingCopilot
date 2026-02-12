@@ -10,6 +10,8 @@ def test_websocket_user_question_returns_bot_answer():
         with client.websocket_connect('/ws/meetings/m-qa') as websocket:
             connected = websocket.receive_json()
             assert connected['type'] == 'meeting.connected'
+            state = websocket.receive_json()
+            assert state['type'] == 'meeting.state'
 
             websocket.send_json(
                 {

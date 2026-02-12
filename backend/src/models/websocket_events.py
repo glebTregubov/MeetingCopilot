@@ -6,10 +6,15 @@ from pydantic import BaseModel
 EventType = Literal[
     "meeting.started",
     "meeting.stopped",
+    "meeting.state",
     "transcript.segment",
+    "transcript.segments",
     "meeting.delta",
+    "meeting.command",
     "user.question",
     "bot.answer",
+    "bot.flag",
+    "provider.status",
     "meeting.connected",
 ]
 

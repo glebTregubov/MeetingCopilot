@@ -93,3 +93,23 @@
 	- `cd frontend && npm run lint` → success
 	- `cd frontend && npm run build` → success
 - Итог: **MVP COMPLETE**.
+
+- Выполнен полный аудит соответствия исходному документу `docs/Blitzy Platform.html`.
+- Сформирован отчёт: `docs/COMPLIANCE_AUDIT_BLITZY.md`.
+- Повторная техническая верификация на момент аудита:
+	- `cd backend && source .venv/bin/activate && pytest -q` → `20 passed`
+	- `cd frontend && npm run lint && npm run build` → success
+- Вывод аудита: **Partial compliance** (базовый MVP готов, выявлены ключевые gaps: полноценный WebRTC/STT поток, Telegram long polling/команды, provider API, WS state-resync, persistence transcript/snapshots/insights).
+
+- Закрыты приоритетные gaps после аудита:
+	- Добавлен API управления STT-провайдером: `GET/POST /api/providers/stt` (`backend/src/api/providers.py`).
+	- Добавлен server-side WS snapshot `meeting.state` при подключении (`backend/src/api/websocket.py`) и потребление snapshot на frontend (`frontend/src/components/meeting/LiveMeeting.tsx`).
+	- Добавлена поддержка `TELEGRAM_DEFAULT_CHAT_ID` в `settings.py`, `.env.example` и fallback-логике `POST /api/meetings/{id}/stop`.
+	- Расширены WS event types на backend/frontend по спецификации.
+- Добавлены тесты:
+	- `backend/tests/integration/test_providers_api.py`
+	- `backend/tests/integration/test_websocket_state.py`
+	- Обновлены сценарии `test_copilot_qa.py` и `test_e2e_smoke.py` под `meeting.state`.
+- Верификация:
+	- `cd backend && source .venv/bin/activate && pytest -q` → `24 passed`
+	- `cd frontend && npm run lint && npm run build` → success

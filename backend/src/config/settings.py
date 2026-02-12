@@ -11,8 +11,12 @@ class Settings(BaseSettings):
 
     openai_api_key: str = ""
     elevenlabs_api_key: str = ""
+    stt_provider: str = "openai"
+    stt_fallback_provider: str = "none"
+    ai_provider: str = "openai"
     telegram_bot_token: str = ""
     telegram_whitelist: str = ""
+    telegram_default_chat_id: str = ""
 
     database_url: str = "sqlite+aiosqlite:///./meeting_copilot.db"
 

@@ -2,7 +2,7 @@
   "meta": {
     "project": "MeetingCopilot",
     "generated_on": "2026-02-12",
-    "last_updated_for_stage": "Этап 4 — Ask Copilot + Telegram",
+    "last_updated_for_stage": "Этап 5 — Экспорт, стабилизация, релиз",
     "purpose": "Единая карта проекта: структура, модули, взаимосвязи и точки входа",
     "maintenance_rule": "Обновлять при каждом изменении структуры/модулей и фиксировать это в STATUS.md + BUILD_LOG.md"
   },
@@ -137,6 +137,11 @@
                 "module": "integrations.telegram.security",
                 "file": "backend/src/integrations/telegram/security.py",
                 "responsibility": "Whitelist parsing and access checks"
+              },
+              {
+                "module": "services.export_service",
+                "file": "backend/src/services/export_service.py",
+                "responsibility": "Генерация post-meeting отчетов в Markdown/HTML"
               }
             ]
           },
@@ -153,7 +158,9 @@
               "backend/tests/unit/test_deduplication.py",
               "backend/tests/unit/test_state_manager.py",
               "backend/tests/integration/test_copilot_qa.py",
-              "backend/tests/unit/test_telegram_bot.py"
+              "backend/tests/unit/test_telegram_bot.py",
+              "backend/tests/unit/test_export_service.py",
+              "backend/tests/integration/test_e2e_smoke.py"
             ]
           },
           {
@@ -289,6 +296,11 @@
                 "module": "components.meeting.CopilotChat",
                 "file": "frontend/src/components/meeting/CopilotChat.tsx",
                 "responsibility": "Ask Copilot panel with quick buttons"
+              },
+              {
+                "module": "components.report.ExportButtons",
+                "file": "frontend/src/components/report/ExportButtons.tsx",
+                "responsibility": "Кнопки Export MD/HTML и Send to Telegram"
               }
             ]
           },
@@ -492,6 +504,18 @@
       "from": "frontend/src/components/meeting/LiveMeeting.tsx",
       "to": "frontend/src/components/meeting/CopilotChat.tsx",
       "type": "renders"
+    },
+    {
+      "from": "backend/src/api/meetings.py",
+      "to": "backend/src/services/export_service.py",
+      "type": "calls",
+      "details": "export endpoints"
+    },
+    {
+      "from": "frontend/src/components/report/ExportButtons.tsx",
+      "to": "backend/src/api/meetings.py",
+      "type": "http_contract",
+      "details": "GET export + POST export/telegram"
     }
   ],
   "runtime_flows": [
@@ -541,6 +565,16 @@
         "Backend WS: state_manager.answer_question",
         "Backend WS: broadcast bot.answer",
         "UI: LiveMeeting renders bot answer in chat"
+      ]
+    },
+    {
+      "name": "Post-meeting export",
+      "steps": [
+        "UI: PostMeetingReport -> ExportButtons",
+        "Frontend API: GET /api/meetings/{id}/export?format=md|html",
+        "Backend API: meetings.export_meeting",
+        "Service: ExportService.render_markdown/render_html",
+        "Optional: POST /api/meetings/{id}/export/telegram"
       ]
     }
   ],
@@ -641,6 +675,7 @@
       "./backend/src/services/__pycache__",
       "./backend/src/services/__pycache__/__init__.cpython-312.pyc",
       "./backend/src/services/__pycache__/deduplication.cpython-312.pyc",
+      "./backend/src/services/__pycache__/export_service.cpython-312.pyc",
       "./backend/src/services/__pycache__/meeting_service.cpython-312.pyc",
       "./backend/src/services/__pycache__/state_manager.cpython-312.pyc",
       "./backend/src/services/__pycache__/websocket_manager.cpython-312.pyc",
@@ -657,6 +692,7 @@
       "./backend/src/services/ai/prompts.py",
       "./backend/src/services/ai/provider_base.py",
       "./backend/src/services/deduplication.py",
+      "./backend/src/services/export_service.py",
       "./backend/src/services/meeting_service.py",
       "./backend/src/services/state_manager.py",
       "./backend/src/services/websocket_manager.py",
@@ -669,20 +705,24 @@
       "./backend/tests/integration/__pycache__",
       "./backend/tests/integration/__pycache__/test_api_meetings.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/integration/__pycache__/test_copilot_qa.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/integration/__pycache__/test_e2e_smoke.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/integration/__pycache__/test_token_endpoint.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/integration/test_api_meetings.py",
       "./backend/tests/integration/test_copilot_qa.py",
+      "./backend/tests/integration/test_e2e_smoke.py",
       "./backend/tests/integration/test_token_endpoint.py",
       "./backend/tests/unit",
       "./backend/tests/unit/__pycache__",
       "./backend/tests/unit/__pycache__/test_ai_providers.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/unit/__pycache__/test_deduplication.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/__pycache__/test_export_service.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/unit/__pycache__/test_meeting_service.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/unit/__pycache__/test_smoke.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/unit/__pycache__/test_state_manager.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/unit/__pycache__/test_telegram_bot.cpython-312-pytest-8.4.2.pyc",
       "./backend/tests/unit/test_ai_providers.py",
       "./backend/tests/unit/test_deduplication.py",
+      "./backend/tests/unit/test_export_service.py",
       "./backend/tests/unit/test_meeting_service.py",
       "./backend/tests/unit/test_smoke.py",
       "./backend/tests/unit/test_state_manager.py",
@@ -743,8 +783,8 @@
       "./frontend/README.md",
       "./frontend/dist",
       "./frontend/dist/assets",
-      "./frontend/dist/assets/index-BbyepQRY.js",
-      "./frontend/dist/assets/index-DKjn7gwi.css",
+      "./frontend/dist/assets/index-BhTJwGWF.css",
+      "./frontend/dist/assets/index-miDTcTp5.js",
       "./frontend/dist/index.html",
       "./frontend/dist/vite.svg",
       "./frontend/eslint.config.js",
@@ -773,6 +813,7 @@
       "./frontend/src/components/meeting/SummaryPanel.tsx",
       "./frontend/src/components/meeting/TranscriptPanel.tsx",
       "./frontend/src/components/report",
+      "./frontend/src/components/report/ExportButtons.tsx",
       "./frontend/src/components/report/PostMeetingReport.tsx",
       "./frontend/src/hooks",
       "./frontend/src/hooks/useAudioCapture.ts",

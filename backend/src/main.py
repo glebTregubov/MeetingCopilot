@@ -12,6 +12,7 @@ from src.integrations.telegram.commands import TelegramCommandHandler
 from src.services.ai.elevenlabs_provider import ElevenLabsRealtimeProvider
 from src.services.ai.openai_provider import OpenAIRealtimeProvider
 from src.services.ai.prompts import PromptLoader
+from src.services.export_service import ExportService
 from src.services.state_manager import StateManager
 from src.services.meeting_service import MeetingService
 from src.services.websocket_manager import WebSocketConnectionManager
@@ -30,6 +31,7 @@ async def lifespan(app: FastAPI):
     app.state.state_manager = StateManager(min_update_interval_seconds=30)
     app.state.websocket_manager = WebSocketConnectionManager()
     app.state.telegram_bot = TelegramBotIntegration(settings=settings, command_handler=TelegramCommandHandler())
+    app.state.export_service = ExportService()
     app.state.prompt_loader = PromptLoader()
     app.state.realtime_providers = {
         "openai": OpenAIRealtimeProvider(settings),

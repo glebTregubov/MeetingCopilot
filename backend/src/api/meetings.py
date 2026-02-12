@@ -1,6 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
+from pydantic import BaseModel
+from starlette.responses import HTMLResponse, PlainTextResponse
 
 from src.models.meeting import Meeting, MeetingCreate
+from src.services.export_service import ExportService
 from src.services.meeting_service import MeetingService
 
 router = APIRouter(prefix="/api/meetings", tags=["meetings"])
@@ -8,6 +11,14 @@ router = APIRouter(prefix="/api/meetings", tags=["meetings"])
 
 def get_meeting_service(request: Request) -> MeetingService:
     return request.app.state.meeting_service
+
+
+def get_export_service(request: Request) -> ExportService:
+    return request.app.state.export_service
+
+
+class SendTelegramExportRequest(BaseModel):
+    chat_id: str
 
 
 @router.get("", response_model=list[Meeting])
@@ -61,3 +72,49 @@ async def delete_meeting(
     service: MeetingService = Depends(get_meeting_service),
 ) -> None:
     await service.delete(meeting_id)
+
+
+@router.get("/{meeting_id}/export")
+async def export_meeting(
+    meeting_id: str,
+    request: Request,
+    format: str = Query(default="md", pattern="^(md|html)$"),
+    service: MeetingService = Depends(get_meeting_service),
+    export_service: ExportService = Depends(get_export_service),
+):
+    try:
+        meeting = await service.get(meeting_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+
+    state_manager = request.app.state.state_manager
+    state = state_manager.get_state(meeting_id)
+
+    if format == "html":
+        body = export_service.render_html(meeting, state)
+        return HTMLResponse(content=body)
+
+    body = export_service.render_markdown(meeting, state)
+    return PlainTextResponse(content=body)
+
+
+@router.post("/{meeting_id}/export/telegram", status_code=status.HTTP_202_ACCEPTED)
+async def send_export_to_telegram(
+    meeting_id: str,
+    payload: SendTelegramExportRequest,
+    request: Request,
+    service: MeetingService = Depends(get_meeting_service),
+    export_service: ExportService = Depends(get_export_service),
+) -> dict[str, str]:
+    try:
+        meeting = await service.get(meeting_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+
+    state_manager = request.app.state.state_manager
+    telegram_bot = request.app.state.telegram_bot
+    state = state_manager.get_state(meeting_id)
+
+    report = export_service.render_markdown(meeting, state)
+    await telegram_bot.send_message(payload.chat_id, report)
+    return {"status": "queued"}

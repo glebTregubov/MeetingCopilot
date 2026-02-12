@@ -9,7 +9,7 @@
 - [x] Завершить Этап 2 — Realtime аудио и транскрипция
 - [x] Завершить Этап 3 — Intelligence Layer
 - [x] Завершить Этап 4 — Ask Copilot + Telegram
-- [ ] Завершить Этап 5 — Экспорт, стабилизация, релиз
+- [x] Завершить Этап 5 — Экспорт, стабилизация, релиз
 
 ## Файлы трекинга прогресса
 - [x] `STATUS.md` — чеклист задач по этапам, текущий статус, тесты, точка остановки
@@ -96,20 +96,20 @@
 - [x] Запись в `STATUS.md` и `BUILD_LOG.md`
 
 ### Этап 5 — Экспорт, стабилизация, релиз
-- [ ] `backend/src/services/export_service.py` — Markdown/HTML генерация
-- [ ] Frontend: `frontend/src/components/report/PostMeetingReport.tsx`
-- [ ] Frontend: `frontend/src/components/report/ExportButtons.tsx` — Export MD, Send to Telegram
-- [ ] `GET /api/meetings/{id}/export?format=md` — endpoint
-- [ ] Тесты: `test_export_service.py`
-- [ ] E2E smoke: полный цикл start → transcript → insights → stop → report → telegram
-- [ ] Обновить `README.md` — quickstart для WSL и macOS
-- [ ] Финальная запись в `STATUS.md`: MVP COMPLETE
-- [ ] Запись в `BUILD_LOG.md`: итоговый отчёт
+- [x] `backend/src/services/export_service.py` — Markdown/HTML генерация
+- [x] Frontend: `frontend/src/components/report/PostMeetingReport.tsx`
+- [x] Frontend: `frontend/src/components/report/ExportButtons.tsx` — Export MD, Send to Telegram
+- [x] `GET /api/meetings/{id}/export?format=md` — endpoint
+- [x] Тесты: `test_export_service.py`
+- [x] E2E smoke: полный цикл start → transcript → insights → stop → report → telegram
+- [x] Обновить `README.md` — quickstart для WSL и macOS
+- [x] Финальная запись в `STATUS.md`: MVP COMPLETE
+- [x] Запись в `BUILD_LOG.md`: итоговый отчёт
 
 ## Verification
-- [ ] После каждого этапа: `make test` (pytest + vitest), результаты записываются в `BUILD_LOG.md`
-- [ ] `STATUS.md` обновляется с чеклистом: `[x]` выполнено, `[ ]` в работе, результаты тестов
-- [ ] Финальная проверка: полный E2E цикл на этапе 5
+- [x] После каждого этапа: `make test` (pytest + vitest), результаты записываются в `BUILD_LOG.md`
+- [x] `STATUS.md` обновляется с чеклистом: `[x]` выполнено, `[ ]` в работе, результаты тестов
+- [x] Финальная проверка: полный E2E цикл на этапе 5
 
 ## Decisions
 - [x] Начинаем с backend, затем frontend — так тесты можно гонять сразу

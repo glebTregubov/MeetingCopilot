@@ -79,3 +79,17 @@
 	- `cd frontend && npm run lint` → success
 	- `cd frontend && npm run build` → success
 - Добавлено рабочее правило: после каждого завершённого этапа делается отдельный git commit c обновлением `STATUS.md`, `BUILD_LOG.md`, `project_box_map.json`, `database_schema_map.json`.
+- Реализован Этап 5 (Export + release stabilization):
+	- Backend export service: `src/services/export_service.py`
+	- Export API: `GET /api/meetings/{id}/export?format=md|html`, `POST /api/meetings/{id}/export/telegram`
+	- Frontend report UI: `src/components/report/PostMeetingReport.tsx`, `ExportButtons.tsx`
+	- Frontend API updates: `src/services/api.ts` (exportReport, sendExportToTelegram)
+	- README quickstart обновлён для WSL/macOS
+- Добавлены тесты Этапа 5:
+	- `backend/tests/unit/test_export_service.py`
+	- `backend/tests/integration/test_e2e_smoke.py`
+- Финальная верификация:
+	- `cd backend && . .venv/bin/activate && pytest -q` → `20 passed`
+	- `cd frontend && npm run lint` → success
+	- `cd frontend && npm run build` → success
+- Итог: **MVP COMPLETE**.

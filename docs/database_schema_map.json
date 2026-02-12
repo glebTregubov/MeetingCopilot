@@ -3,7 +3,7 @@
     "database_engine": "SQLite (aiosqlite)",
     "source": "backend/src/db/migrations.py",
     "generated_on": "2026-02-12",
-    "last_updated_for_stage": "Этап 4 — Ask Copilot + Telegram",
+    "last_updated_for_stage": "Этап 5 — Экспорт, стабилизация, релиз",
     "maintenance_rule": "Обновлять при любых изменениях DDL/индексов/репозиториев и фиксировать в STATUS.md + BUILD_LOG.md"
   },
   "connection": {
@@ -135,6 +135,18 @@
       "tables_used": [],
       "operations": ["autopost summary on stop", "command formatting/security"],
       "notes": "Работает через Telegram HTTP API, без прямого доступа к БД"
+    },
+    {
+      "component": "backend/src/services/export_service.py",
+      "tables_used": [],
+      "operations": ["render_markdown", "render_html"],
+      "notes": "Генерирует отчет из in-memory state_manager state + Meeting DTO"
+    },
+    {
+      "component": "backend/src/api/meetings.py::export endpoints",
+      "tables_used": ["meetings"],
+      "operations": ["GET /api/meetings/{id}/export", "POST /api/meetings/{id}/export/telegram"],
+      "notes": "Читает meeting из repository и state из state_manager"
     }
   ],
   "integrity_and_constraints": {

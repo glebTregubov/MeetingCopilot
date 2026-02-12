@@ -30,4 +30,16 @@ export const meetingsApi = {
   get: (meetingId: string) => request<Meeting>(`/api/meetings/${meetingId}`),
   stop: (meetingId: string) => request<Meeting>(`/api/meetings/${meetingId}/stop`, { method: 'POST' }),
   delete: (meetingId: string) => request<void>(`/api/meetings/${meetingId}`, { method: 'DELETE' }),
+  exportReport: async (meetingId: string, format: 'md' | 'html'): Promise<string> => {
+    const response = await fetch(`${API_BASE_URL}/api/meetings/${meetingId}/export?format=${format}`)
+    if (!response.ok) {
+      throw new Error(await response.text())
+    }
+    return response.text()
+  },
+  sendExportToTelegram: (meetingId: string, chatId: string) =>
+    request<{ status: string }>(`/api/meetings/${meetingId}/export/telegram`, {
+      method: 'POST',
+      body: JSON.stringify({ chat_id: chatId }),
+    }),
 }

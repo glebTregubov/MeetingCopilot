@@ -6,7 +6,7 @@
 - [x] Этап 2 — Realtime аудио и транскрипция (completed)
 - [x] Этап 3 — Intelligence Layer (completed)
 - [x] Этап 4 — Ask Copilot + Telegram (completed)
-- [ ] Этап 5 — Экспорт, стабилизация, релиз
+- [x] Этап 5 — Экспорт, стабилизация, релиз (completed)
 
 ## Этап 0 — Каркас проекта
 - [x] Создать `STATUS.md` и `BUILD_LOG.md`
@@ -58,6 +58,14 @@
 - [x] Добавлены тесты: `test_telegram_bot.py`, `test_copilot_qa.py`
 - [x] Обновить `STATUS.md` и `BUILD_LOG.md`
 
+## Этап 5 — Экспорт, стабилизация, релиз
+- [x] Добавлен backend экспорт: `backend/src/services/export_service.py` (MD/HTML)
+- [x] Добавлены endpoint'ы экспорта и отправки в Telegram в `backend/src/api/meetings.py`
+- [x] Добавлены `PostMeetingReport.tsx` и `ExportButtons.tsx`
+- [x] Добавлены тесты: `test_export_service.py`, `test_e2e_smoke.py`
+- [x] Обновлён `README.md` (quickstart WSL/macOS)
+- [x] Финальная запись: MVP COMPLETE
+
 ## Навигационные JSON-реестры
 - [x] `docs/project_box_map.json` существует и содержит карту структуры/модулей/связей
 - [x] `docs/database_schema_map.json` существует и содержит схему БД/ключи/индексы/связи
@@ -68,9 +76,9 @@
 - [x] В commit включать код этапа + `STATUS.md` + `BUILD_LOG.md` + обновлённые JSON-реестры
 
 ## На чём остановились
-- Этап 4 завершён. Следующий шаг: старт Этапа 5 (экспорт, стабилизация, релиз).
+- MVP COMPLETE.
 
 ## Тесты
-- Backend: `pytest -q` → `17 passed`.
+- Backend: `pytest -q` → `20 passed`.
 - Frontend: `npm run lint` → success.
 - Frontend: `npm run build` → success.

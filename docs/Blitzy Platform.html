@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://platform.blitzy.com/workspace/project/4af897ab-86e5-491f-b270-fca292b322eb/tech-spec -->
+<html lang="en" style="--chat-panel-width: 0px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="connect-src &#39;self&#39;   
+            https://browser-intake-us5-datadoghq.com
+            https://browser-intake-datadoghq.com
+            https://*.liadm.com
+            https://sm.blitzy.com
+            https://a.usbrowserspeed.com
+            https://www.google-analytics.com
+            https://google.com
+            https://stats.g.doubleclick.net
+            https://cloudflareinsights.com
+            https://blitzy-os-mock-service-464705070478.us-central1.run.app
+            https://metrics.hotjar.io
+            https://pro.ip-api.com
+            https://api.vector.co
+            https://forms.hscollectedforms.net
+            https://static.hsappstatic.net
+            https://api.hubapi.com
+            https://identitytoolkit.googleapis.com
+            https://os.api.blitzy.dev
+            https://platform.api.blitzy.com
+            https://analytics.google.com
+            https://www.google.com
+            https://securetoken.googleapis.com
+            https://storage.googleapis.com
+            https://content.hotjar.io
+            wss://ws.hotjar.com
+            http://load.sm.blitzy.com
+            https://load.sm.blitzy.com
+            https://*.googleapis.com
+            https://firebase.googleapis.com
+            https://*.firebaseapp.com
+            https://firestore.googleapis.com
+            https://firebaseremoteconfig.googleapis.com
+            https://firebaseinstallations.googleapis.com
+            https://fcmregistrations.googleapis.com
+            https://firebase-settings.crashlytics.com
+            https://mobilecrashlytics.googleapis.com
+            https://app-measurement.com
+            https://region1.google-analytics.com
+            https://*.google-analytics.com
+            https://googleads.g.doubleclick.net
+            https://td.doubleclick.net
+            https://www.googletagmanager.com
+            https://os.api-k.blitzy.dev
+            https://platform.api.blitzystage.com
+            https://bltzy-firebase-public.s3.eu-north-1.amazonaws.com; worker-src blob:;">
+        <meta http-equiv="Content-Security-Policy" content="frame-src https://*.firebaseapp.com https://sm.blitzy.com https://meetings.hubspot.com https://www.googletagmanager.com https://td.doubleclick.net https://*.liadm.com">
+        <meta http-equiv="Content-Security-Policy" content="script-src &#39;self&#39; &#39;unsafe-inline&#39; blob: https://apis.google.com https://b-code.liadm.com https://load.sm.blitzy.com http://load.sm.blitzy.com https://d-code.liadm.com https://a.usbrowserspeed.com https://static.cloudflareinsights.com https://script.hotjar.com https://static.hsappstatic.net https://cdn.vector.co/pixel.js https://s3-us-west-2.amazonaws.com/b2bjsstore/b/M5NRP9HRW5O1/reb2b.js.gz https://js.hscollectedforms.net https://static.hotjar.com https://googleads.g.doubleclick.net https://js.hscollectedforms.ne https://js.hsadspixel.net https://js.hs-banner.com https://js.hs-analytics.net https://www.googletagmanager.com http://js.hs-scripts.com">
+        <meta http-equiv="Content-Security-Policy" content="worker-src &#39;self&#39; blob:;">
+        <meta http-equiv="Content-Security-Policy" content="worker-src blob:;">
+        <!-- Google Tag Manager -->
+        <script src="./Blitzy Platform_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Blitzy Platform_files/insight.min.js.Без названия"></script><script async="" src="./Blitzy Platform_files/fbevents.js.Без названия"></script><script src="./Blitzy Platform_files/fb.js.Без названия" type="text/javascript" id="hs-ads-pixel-44505231" data-ads-portal-id="44505231" data-ads-env="prod" data-loader="hs-scriptloader" data-hsjs-portal="44505231" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script src="./Blitzy Platform_files/banner.js.Без названия" type="text/javascript" id="cookieBanner-44505231" data-cookieconsent="ignore" data-hs-ignore="true" data-loader="hs-scriptloader" data-hsjs-portal="44505231" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script src="./Blitzy Platform_files/44505231.js.Без названия" type="text/javascript" id="hs-analytics"></script><script src="./Blitzy Platform_files/collectedforms.js.Без названия" type="text/javascript" id="CollectedForms-44505231" crossorigin="anonymous" data-leadin-portal-id="44505231" data-leadin-env="prod" data-loader="hs-scriptloader" data-hsjs-portal="44505231" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/pixel.js.Без названия"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/bu6"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/reb2b.js.gz"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/hotjar-5080302.js.Без названия"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/bu6(1)"></script><script async="" src="./Blitzy Platform_files/cdgpjtzcqdst.js.Без названия"></script><script type="text/javascript">
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s);
+                j.async = true;
+                j.src = 'https://load.sm.blitzy.com/cdgpjtzcqdst.js?' + i;
+                f.parentNode.insertBefore(j, f);
+            })(
+                window,
+                document,
+                'script',
+                'dataLayer',
+                '1k=aWQ9R1RNLU0yTEdGVEc4&page=3',
+            );
+        </script>
+        <!-- End Google Tag Manager -->
+        <link rel="icon" type="image/png" href="https://platform.blitzy.com/favicon.ico">
+        <title>Blitzy Platform</title>
+
+        <meta name="description" content="Build Enterprise Software in Days, not Months">
+
+        <!-- OpenGraph Meta Tags -->
+        <meta property="og:title" content="Blitzy Platform">
+        <meta property="og:description" content="Build Enterprise Software in Days, not Months">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://%VITE_PLATFORM_URL%">
+        <meta property="og:image" content="https://%VITE_PLATFORM_URL%/images/blitzy-platform.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:site_name" content="Blitzy Platform">
+        <meta name="referrer" content="no-referrer">
+      <script type="module" crossorigin="" src="./Blitzy Platform_files/index-DwCo6EUb.js.Без названия"></script>
+      <link rel="stylesheet" crossorigin="" href="./Blitzy Platform_files/index-BtZhFUZL.css">
+    <script async="" src="./Blitzy Platform_files/modules.ddd41caee2adfc4aedb8.js.Без названия" charset="utf-8"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f.txt"></script><script async="" src="./Blitzy Platform_files/js"></script><script src="./Blitzy Platform_files/api.js.Без названия" type="text/javascript" charset="UTF-8" gapi_processed="true"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f(1).txt"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f(2).txt"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f(3).txt"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f(4).txt"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f(5).txt"></script><script type="text/javascript" async="" src="./Blitzy Platform_files/f(6).txt"></script><style data-tiptap-style="">.ProseMirror {
+  position: relative;
+}
+
+.ProseMirror {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  white-space: break-spaces;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0; /* the above doesn't seem to work in Edge */
+}
+
+.ProseMirror [contenteditable="false"] {
+  white-space: normal;
+}
+
+.ProseMirror [contenteditable="false"] [contenteditable="true"] {
+  white-space: pre-wrap;
+}
+
+.ProseMirror pre {
+  white-space: pre-wrap;
+}
+
+img.ProseMirror-separator {
+  display: inline !important;
+  border: none !important;
+  margin: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.ProseMirror-gapcursor {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  margin: 0;
+}
+
+.ProseMirror-gapcursor:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid black;
+  animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes ProseMirror-cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.ProseMirror-hideselection *::selection {
+  background: transparent;
+}
+
+.ProseMirror-hideselection *::-moz-selection {
+  background: transparent;
+}
+
+.ProseMirror-hideselection * {
+  caret-color: transparent;
+}
+
+.ProseMirror-focused .ProseMirror-gapcursor {
+  display: block;
+}
+
+.tippy-box[data-animation=fade][data-state=hidden] {
+  opacity: 0
+}</style><script type="text/javascript" async="" src="./Blitzy Platform_files/f(7).txt"></script><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/flowDiagram-NV44I4VS-DAC1IXwv.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/chunk-FMBD7UC4-34moIdYj.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/chunk-55IACEB6-Dr6s-AGM.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/chunk-QN33PNHL-CZIfprVz.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/channel-BYqWdbtD.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/dagre-6UL2VRFP-EZWTvy4x.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/graph-C5_7NDgG.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/_baseUniq-dS7lHLBk.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/layout-Bk4BXmuz.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/min-Dv5EBagZ.js"><link rel="modulepreload" as="script" crossorigin="" href="https://platform.blitzy.com/assets/clone-DHN9TDfO.js"><script type="text/javascript" async="" src="./Blitzy Platform_files/f(8).txt"></script></head>
+    <body style="">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe
+                src="https://load.sm.blitzy.com/ns.html?id=%VITE_GTM_ID%"
+                height="0"
+                width="0"
+                style="display: none; visibility: hidden"></iframe
+        ></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <!-- Start of HubSpot Embed Code -->
+        <script async="" type="text/javascript" id="hs-script-loader" defer="" src="./Blitzy Platform_files/%VITE_HUBSPOT_ID%.js.Без названия"></script>
+        <!-- End of HubSpot Embed Code -->
+        <div id="root"><div class="w-screen h-dvh overflow-hidden flex flex-col p-[8px] gap-[8px] bg-[#F5F5F5]"><div class="hidden sm:block sticky top-0"><div class="h-[64px] px-[32px] py-[16px] flex justify-between items-center gap-[16px] rounded-lg border border-[#E9E9E9] bg-white"><div class="flex items-center gap-[24px]"><a href="https://platform.blitzy.com/workspace/projects"><img src="./Blitzy Platform_files/blitzy-icon-text.svg" alt="Blitzy" class="mx-auto h-[32px] sm:h-[32px] cursor-pointer"></a></div><div class="flex items-center gap-[8px]"><div type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rc:" data-state="closed"><div role="button" class="sm:px-[20px] flex items-center justify-center"><div class="bg-[#D9D9D9] text-[14px] leading-[22px] flex gap-[1px] border border-[#D9D9D9] rounded-full overflow-hidden select-none cursor-pointer"><div class="px-[12px] py-[4px] bg-white flex items-center gap-[4px]"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00033 1.3335C6.16233 1.3335 4.66699 2.82883 4.66699 4.66683V6.66683H4.00033C3.26499 6.66683 2.66699 7.26483 2.66699 8.00016V13.3335C2.66699 14.0688 3.26499 14.6668 4.00033 14.6668H12.0003C12.7357 14.6668 13.3337 14.0688 13.3337 13.3335V8.00016C13.3337 7.26483 12.7357 6.66683 12.0003 6.66683H11.3337V4.66683C11.3337 2.82883 9.83833 1.3335 8.00033 1.3335ZM12.0003 8.00016L12.0017 13.3335H4.00033V8.00016H12.0003ZM6.00033 6.66683V4.66683C6.00033 3.56416 6.89766 2.66683 8.00033 2.66683C9.10299 2.66683 10.0003 3.56416 10.0003 4.66683V6.66683H6.00033Z" fill="#999"></path></svg></div><div class="hidden px-[12px] py-[4px] bg-white lg:flex items-center gap-[4px]"><span class="text-[#000]">0</span><span class="text-[#999]">/ 0</span></div></div></div></div><div role="button" class="p-[4px] text-[#333] h-[64px] w-[64px] flex items-center justify-center cursor-pointer " data-state="closed" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rd:"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="group w-[24px] h-[24px]"><g id="Button/Icon/help-circle"><g id="icon"><path d="M12 6C10.957 6.00132 9.95716 6.41622 9.21968 7.1537C8.4822 7.89118 8.0673 8.89104 8.06598 9.934H10.066C10.066 8.867 10.934 8 12 8C13.066 8 13.934 8.867 13.934 9.934C13.934 10.532 13.453 10.966 12.718 11.56C12.4779 11.7481 12.2472 11.948 12.027 12.159C11.029 13.156 11 14.215 11 14.333V15H13L12.999 14.367C13 14.351 13.032 13.981 13.44 13.574C13.59 13.424 13.779 13.274 13.975 13.116C14.754 12.485 15.933 11.532 15.933 9.934C15.9322 8.89106 15.5176 7.89104 14.7802 7.15347C14.0428 6.4159 13.0429 6.00106 12 6ZM11 16H13V18H11V16Z" class="fill-[#666666] group-hover:fill-black transition-colors"></path><path d="M12 2C6.486 2 2 6.486 2 12C2 17.514 6.486 22 12 22C17.514 22 22 17.514 22 12C22 6.486 17.514 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" class="fill-[#666666] group-hover:fill-black transition-colors"></path></g></g></svg></div><div role="button" class="h-[64px] w-[64px] flex items-center justify-center" data-state="closed"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16C14.206 16 16 14.206 16 12C16 9.794 14.206 8 12 8C9.794 8 8 9.794 8 12C8 14.206 9.794 16 12 16ZM12 10C13.084 10 14 10.916 14 12C14 13.084 13.084 14 12 14C10.916 14 10 13.084 10 12C10 10.916 10.916 10 12 10Z" fill="#666666" class="transition-colors"></path><path d="M2.84498 16.136L3.84498 17.866C4.37598 18.783 5.65398 19.127 6.57498 18.596L7.10398 18.29C7.68252 18.7451 8.32039 19.1192 8.99998 19.402V20C8.99998 21.103 9.89698 22 11 22H13C14.103 22 15 21.103 15 20V19.402C15.6793 19.1192 16.3172 18.7454 16.896 18.291L17.425 18.597C18.348 19.127 19.623 18.785 20.156 17.866L21.155 16.137C21.42 15.6777 21.4919 15.132 21.3548 14.6197C21.2177 14.1075 20.8829 13.6706 20.424 13.405L19.919 13.113C20.0263 12.3756 20.0263 11.6264 19.919 10.889L20.424 10.597C20.8827 10.3312 21.2174 9.89433 21.3544 9.38216C21.4914 8.86998 21.4197 8.32436 21.155 7.865L20.156 6.136C19.625 5.216 18.348 4.871 17.425 5.404L16.896 5.71C16.3174 5.25491 15.6796 4.8808 15 4.598V4C15 2.897 14.103 2 13 2H11C9.89698 2 8.99998 2.897 8.99998 4V4.598C8.32062 4.88084 7.6828 5.25459 7.10398 5.709L6.57498 5.403C5.65098 4.872 4.37498 5.216 3.84398 6.135L2.84498 7.864C2.57996 8.3233 2.50809 8.86901 2.64515 9.38126C2.78222 9.89352 3.117 10.3304 3.57598 10.596L4.08098 10.888C3.97321 11.6251 3.97321 12.3739 4.08098 13.111L3.57598 13.403C3.11714 13.669 2.78251 14.106 2.64547 14.6184C2.50843 15.1307 2.58018 15.6765 2.84498 16.136ZM6.17098 13.378C6.05806 12.9273 6.00064 12.4646 5.99998 12C5.99998 11.538 6.05798 11.074 6.16998 10.622C6.22272 10.4113 6.20537 10.1892 6.12056 9.98928C6.03576 9.78935 5.88811 9.6225 5.69998 9.514L4.57698 8.864L5.57498 7.135L6.71998 7.797C6.9067 7.90505 7.12344 7.94962 7.33765 7.92401C7.55185 7.89841 7.75198 7.80401 7.90798 7.655C8.5845 7.01156 9.40031 6.53281 10.292 6.256C10.4968 6.19347 10.6761 6.06683 10.8036 5.89473C10.931 5.72263 10.9999 5.51416 11 5.3V4H13V5.3C13.0001 5.51416 13.0689 5.72263 13.1964 5.89473C13.3238 6.06683 13.5032 6.19347 13.708 6.256C14.5995 6.53321 15.4152 7.0119 16.092 7.655C16.2481 7.80372 16.4482 7.89792 16.6624 7.92352C16.8765 7.94911 17.0932 7.90473 17.28 7.797L18.424 7.136L19.424 8.865L18.3 9.514C18.112 9.62262 17.9644 9.78948 17.8796 9.98938C17.7948 10.1893 17.7774 10.4113 17.83 10.622C17.942 11.074 18 11.538 18 12C18 12.461 17.942 12.925 17.829 13.378C17.7765 13.5888 17.7941 13.8109 17.8791 14.0108C17.964 14.2107 18.1118 14.3775 18.3 14.486L19.423 15.135L18.425 16.864L17.28 16.203C17.0933 16.0948 16.8765 16.0501 16.6623 16.0757C16.448 16.1013 16.2479 16.1958 16.092 16.345C15.4155 16.9884 14.5996 17.4672 13.708 17.744C13.5032 17.8065 13.3238 17.9332 13.1964 18.1053C13.0689 18.2774 13.0001 18.4858 13 18.7L13.002 20H11V18.7C10.9999 18.4858 10.931 18.2774 10.8036 18.1053C10.6761 17.9332 10.4968 17.8065 10.292 17.744C9.40048 17.4668 8.58476 16.9881 7.90798 16.345C7.75228 16.1954 7.55203 16.1007 7.33763 16.0753C7.12322 16.0498 6.90636 16.095 6.71998 16.204L5.57598 16.866L4.57598 15.137L5.69998 14.486C5.88817 14.3775 6.03593 14.2107 6.12091 14.0108C6.20588 13.8109 6.22346 13.5888 6.17098 13.378Z" fill="#666666" class="transition-colors"></path></svg></div><div class="h-[64px] flex items-center px-[12px] gap-0 cursor-pointer" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rg:" data-state="closed"><div class="flex items-center justify-center rounded-full border border-white overflow-hidden w-[32px] h-[32px] bg-[var(--background-bg-brand,#5B39F3)]"><span class="text-white font-semibold text-[20px] leading-[48.1px] tracking-[-1.002px]">G</span></div><div class="ml-[8px] mr-[4px] flex flex-col"><span class="w-[80px] text-[16px] text-black hover:text-brand-purple font-semibold truncate">gleb</span><div class="text-[14px] text-[#999]"><span class="line-clamp-1">Free</span></div></div><span class="p-[4px] rotate-0"><svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.03244 0.815456L5.50447 4.28749L8.97651 0.815456C9.3255 0.466463 9.88926 0.466463 10.2383 0.815456C10.5872 1.16445 10.5872 1.72821 10.2383 2.0772L6.13087 6.18458C5.78188 6.53358 5.21812 6.53358 4.86913 6.18458L0.761745 2.0772C0.412752 1.72821 0.412752 1.16445 0.761745 0.815456C1.11074 0.475411 1.68345 0.466463 2.03244 0.815456Z" fill="#999999"></path></svg></span></div></div></div></div><div class="sticky top-0 sm:hidden"><header class="h-[64px] px-[24px] py-[16px] bg-white flex justify-between items-center gap-[12px] rounded-lg border border-[#E9E9E9]"><div class="flex items-center gap-6"><a class="h-[32px]" href="https://platform.blitzy.com/workspace/projects"><img class="h-full" src="./Blitzy Platform_files/logo-blitzy-purple.svg" alt="Blitzy"></a><a class="h-[32px] hidden sm:block" href="https://platform.blitzy.com/workspace/projects"><img class="h-full" src="./Blitzy Platform_files/logo-blitzy-purple.svg" alt="Blitzy"></a></div><div class="flex items-center gap-[24px]"><div class="flex items-center justify-center cursor-pointer"><div role="button" class="sm:px-[20px] flex items-center justify-center"><div class="bg-[#D9D9D9] text-[14px] leading-[22px] flex gap-[1px] border border-[#D9D9D9] rounded-full overflow-hidden select-none cursor-pointer"><div class="px-[12px] py-[4px] bg-white flex items-center gap-[4px]"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00033 1.3335C6.16233 1.3335 4.66699 2.82883 4.66699 4.66683V6.66683H4.00033C3.26499 6.66683 2.66699 7.26483 2.66699 8.00016V13.3335C2.66699 14.0688 3.26499 14.6668 4.00033 14.6668H12.0003C12.7357 14.6668 13.3337 14.0688 13.3337 13.3335V8.00016C13.3337 7.26483 12.7357 6.66683 12.0003 6.66683H11.3337V4.66683C11.3337 2.82883 9.83833 1.3335 8.00033 1.3335ZM12.0003 8.00016L12.0017 13.3335H4.00033V8.00016H12.0003ZM6.00033 6.66683V4.66683C6.00033 3.56416 6.89766 2.66683 8.00033 2.66683C9.10299 2.66683 10.0003 3.56416 10.0003 4.66683V6.66683H6.00033Z" fill="#999"></path></svg></div><div class="hidden px-[12px] py-[4px] bg-white lg:flex items-center gap-[4px]"><span class="text-[#000]">0</span><span class="text-[#999]">/ 0</span></div></div></div></div><span type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rh:" data-state="closed"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Icon / dots-horizontal-rounded"><path id="icon" d="M12.3999 10.0895C11.2999 10.0895 10.3999 10.9492 10.3999 12C10.3999 13.0508 11.2999 13.9105 12.3999 13.9105C13.4999 13.9105 14.3999 13.0508 14.3999 12C14.3999 10.9492 13.4999 10.0895 12.3999 10.0895ZM18.3999 10.0895C17.2999 10.0895 16.3999 10.9492 16.3999 12C16.3999 13.0508 17.2999 13.9105 18.3999 13.9105C19.4999 13.9105 20.3999 13.0508 20.3999 12C20.3999 10.9492 19.4999 10.0895 18.3999 10.0895ZM6.3999 10.0895C5.2999 10.0895 4.3999 10.9492 4.3999 12C4.3999 13.0508 5.2999 13.9105 6.3999 13.9105C7.4999 13.9105 8.3999 13.0508 8.3999 12C8.3999 10.9492 7.4999 10.0895 6.3999 10.0895Z" fill="#666666"></path></g></svg></span></div></header></div><div class="p-0  mx-auto w-full items-center justify-center h-full overflow-hidden sm:min-w-[600px]"><div class="outlet-wrapper h-full"><div class="w-full h-full flex gap-[8px]"><div class="min-w-0 flex-grow z-10"><div class="flex flex-col h-full gap-[8px] w-full bg-[#F5F5F5] overflow-y-auto sm:overflow-y-hidden rounded-[8px] hide-scrollbar"><div class="sticky sm:top-0"><div class="flex flex-col gap-[0px] w-full pt-[24px] sm:px-[32px] sm:pt-[32px] relative rounded-lg border border-[#E9E9E9] bg-white overflow-hidden"><div><div class="overflow-hidden transition-[height,opacity] duration-300" style="height: 98px; opacity: 1;"><div class="w-full pb-0 sm:pb-[48px] flex flex-col sm:flex-row gap-[12px] items-stretch sm:items-center sm:justify-between"><div class="min-w-full sm:min-w-0 flex flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-[12px] relative "><div class="w-full flex items-start sm:items-center flex-col sm:flex-row gap-0 sm:gap-[8px] justify-between"><div class="w-full flex flex-col sm:flex-row shrink-0 items-start sm:items-center gap-[8px] sm:gap-[12px] px-[24px] pt-[0px] sm:p-0 "><div class="inline-flex items-center px-2 py-1 rounded-[8px] hover:bg-[var(--color-neutral-50,#F5F5F5)] text-[24px] sm:text-[32px] font-semibold leading-[31.2px] sm:leading-[41.6px] tracking-[0.4px] text-left max-w-full truncate" title="Meeteng Copilot"><div class="w-full truncate">Meeteng Copilot</div></div><div class="min-w-max inline-flex text-[14px] px-[12px] py-[4px] items-center gap-[4px] rounded-full font-semibold h-fit bg-[#C9FCEA] text-[#005335]"><svg width="14" height="14" viewBox="0 0 25 24" fill="#005335" xmlns="http://www.w3.org/2000/svg"><g id="Icon / check-circle"><g id="icon"><path d="M12.25 2.44775C6.736 2.44775 2.25 6.73292 2.25 12.0001C2.25 17.2672 6.736 21.5524 12.25 21.5524C17.764 21.5524 22.25 17.2672 22.25 12.0001C22.25 6.73292 17.764 2.44775 12.25 2.44775ZM12.25 19.6419C7.839 19.6419 4.25 16.2136 4.25 12.0001C4.25 7.78654 7.839 4.35822 12.25 4.35822C16.661 4.35822 20.25 7.78654 20.25 12.0001C20.25 16.2136 16.661 19.6419 12.25 19.6419Z" fill="#005335"></path><path d="M10.249 13.516L7.95002 11.3238L6.53802 12.6764L10.251 16.2155L16.957 9.80975L15.543 8.45905L10.249 13.516Z" fill="#005335"></path></g></g></svg>New product • Tech spec ready</div></div><div class="w-full flex justify-between items-center"><div class=" flex flex-nowrap gap-[8px] px-[24px] py-[24px] pr-[24px] sm:hidden w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden"><div class="flex-none"><button type="submit" class="flex justify-center items-center gap-[8px] primary-button flex justify-center items-center gap-[8px] hover:bg-[#5B39F3]" role="button"><span><span class="flex justify-center items-center gap-[8px]"><div>Select destination</div></span></span></button></div><div class="flex-none false"><div role="button" class="flex items-center gap-2 transition-all secondary-button rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 24" fill="none"><path d="M20.0039 6.2639H19.0039V8.17436H20.0039V15.8162H19.0039V17.7267H20.0039C21.1069 17.7267 22.0039 16.8698 22.0039 15.8162V8.17436C22.0039 7.12169 21.1059 6.2639 20.0039 6.2639ZM6.00391 10.0848H14.9989V13.9057H6.00391V10.0848Z" fill="#5B39F3"></path><path d="M17.0039 4.35822H19.9989V2.44775H11.9989V4.35822H15.0039V6.2639H4.00391C2.90091 6.2639 2.00391 7.12074 2.00391 8.17436V15.8162C2.00391 16.8698 2.90091 17.7267 4.00391 17.7267H15.0039V19.6419H11.9989V21.5524H19.9989V19.6419H17.0039V4.35822ZM4.00391 15.8162V8.17436H15.0039V15.8162H4.00391Z" fill="#5B39F3"></path></svg>Rename project</div></div><div class="flex-none" data-state="closed"><button class="flex items-center justify-center gap-2 secondary-button "><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L16 11H13V4H11V11H8L12 16Z" fill="#5B39F3"></path><path d="M20 18H4V11H2V18C2 19.103 2.897 20 4 20H20C21.103 20 22 19.103 22 18V11H20V18Z" fill="#5B39F3"></path></svg>Download artifacts</button></div><div class="flex-none"><div class="min-w-max secondary-button flex items-center gap-[8px] border border-[#EC3636]"><div><svg width="22" height="22" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.125 6L6.125 18M6.125 6L18.125 18" stroke="#EC3636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><span class="text-[16px] text-[#EC3636] font-semibold">Discard tech spec</span></div></div><div class="flex-none false"><div role="button" class="flex items-center gap-2 transition-all secondary-button rounded-full"><svg width="24" height="24" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.706 5.05382L18.707 2.19004C18.6143 2.10116 18.5041 2.03068 18.3828 1.98264C18.2614 1.93461 18.1313 1.90998 18 1.91016H6C5.86866 1.90998 5.73857 1.93461 5.61724 1.98264C5.4959 2.03068 5.38571 2.10116 5.293 2.19004L2.294 5.05382C2.20057 5.14235 2.12647 5.24771 2.076 5.36381C2.02553 5.47991 1.9997 5.60442 2 5.73013V18.1491C2 19.2027 2.897 20.0595 4 20.0595H20C21.103 20.0595 22 19.2027 22 18.1491V5.73013C22.0003 5.60442 21.9745 5.47991 21.924 5.36381C21.8735 5.24771 21.7994 5.14235 21.706 5.05382ZM6.414 3.82062H17.586L18.585 4.77489H5.415L6.414 3.82062ZM4 18.1491V6.68536H20L20.002 18.1491H4Z" fill="#5B39F3"></path><path d="M15 11.4625H9V9.552H7V13.3729H17V9.552H15V11.4625Z" fill="#5B39F3"></path></svg>Archive project</div></div></div></div></div></div><div class="w-full sm:w-auto hidden sm:flex flex-col sm:flex-row items-center gap-[12px]"><div class="flex-none"><button type="submit" class="flex justify-center items-center gap-[8px] primary-button flex justify-center items-center gap-[8px] hover:bg-[#5B39F3]" role="button"><span><span class="flex justify-center items-center gap-[8px]"><div>Select destination</div></span></span></button></div><div class="flex-none" data-state="closed"><button class="flex items-center justify-center gap-2 tertiary-button w-min p-2 "><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L16 11H13V4H11V11H8L12 16Z" fill="#5B39F3"></path><path d="M20 18H4V11H2V18C2 19.103 2.897 20 4 20H20C21.103 20 22 19.103 22 18V11H20V18Z" fill="#5B39F3"></path></svg></button></div><div role="button" class="h-[40px] w-[40px] tertiary-button p-2 border border-transparent hover:border-[#5B39F3] rounded-full transition-all flex items-center justify-center cursor-pointer" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1u:" data-state="closed"><svg width="24" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="" data-state="closed"><g id="Icon / dots-horizontal-rounded"><path id="icon" d="M12.3999 10.0895C11.2999 10.0895 10.3999 10.9492 10.3999 12C10.3999 13.0508 11.2999 13.9105 12.3999 13.9105C13.4999 13.9105 14.3999 13.0508 14.3999 12C14.3999 10.9492 13.4999 10.0895 12.3999 10.0895ZM18.3999 10.0895C17.2999 10.0895 16.3999 10.9492 16.3999 12C16.3999 13.0508 17.2999 13.9105 18.3999 13.9105C19.4999 13.9105 20.3999 13.0508 20.3999 12C20.3999 10.9492 19.4999 10.0895 18.3999 10.0895ZM6.3999 10.0895C5.2999 10.0895 4.3999 10.9492 4.3999 12C4.3999 13.0508 5.2999 13.9105 6.3999 13.9105C7.4999 13.9105 8.3999 13.0508 8.3999 12C8.3999 10.9492 7.4999 10.0895 6.3999 10.0895Z" fill="#5B39F3"></path></g></svg></div></div></div></div><div class="overflow-hidden transition-[height,opacity] duration-300" style="height: 0px; opacity: 1;"><div class="px-[24px] pb-[24px] grid grid-cols-1 gap-[24px] sm:p-0 [&amp;:has(&gt;*:not(:empty))]:sm:pb-[48px] sm:grid-cols-2 lg:grid-cols-4 1.5xl:grid-cols-6 3xl:grid-cols-8 4xl:grid-cols-12 sm:gap-x-[16px] sm:gap-y-[32px] items-start"></div></div></div><div class="flex flex-col w-full"><div class="grid h-[60px] gap-[16px] self-stretch" style="grid-template-rows: repeat(1, minmax(0px, 1fr)); grid-template-columns: repeat(4, minmax(0px, 1fr));"><div class="flex flex-col items-start gap-[28px] flex-1 self-stretch" style="grid-area: 1 / 1 / span 1 / span 1;"><div class="flex items-center gap-[16px] self-stretch"><div class="flex items-center gap-2 cursor-pointer"><div class="flex w-[28px] h-[28px] flex-col justify-center items-center gap-[10px] aspect-square rounded-[24px] border relative" style="background-color: transparent; border-color: rgb(91, 57, 243); color: rgb(91, 57, 243);"><span class="text-[16px] font-medium">1</span></div><span class=" font-inter text-[16px] font-normal leading-[150%] tracking-[-0.3px]" style="color: rgb(0, 0, 0);">Build prompt</span></div><div class="h-[1px] flex-1" style="border-top: 1px solid rgb(91, 57, 243);"></div></div></div><div class="flex flex-col items-start gap-[28px] flex-1 self-stretch" style="grid-area: 1 / 2 / span 1 / span 1;"><div class="flex items-center gap-[16px] self-stretch"><div class="flex items-center gap-2 cursor-pointer"><div class="flex w-[28px] h-[28px] flex-col justify-center items-center gap-[10px] aspect-square rounded-[24px] border relative" style="background-color: rgb(91, 57, 243); border-color: rgb(91, 57, 243); color: white;"><span class="text-[16px] font-medium">2</span></div><span class=" font-inter text-[16px] font-normal leading-[150%] tracking-[-0.3px]" style="color: rgb(0, 0, 0);">Target tech spec</span></div><div class="h-[1px] flex-1" style="border-top: 1px solid rgb(217, 217, 217);"></div></div><div class="w-[28px] h-1 bg-[#5B39F3]" style="margin-top: auto;"></div></div><div class="flex flex-col items-start gap-[28px] flex-1 self-stretch" style="grid-area: 1 / 3 / span 1 / span 1;"><div class="flex items-center gap-[16px] self-stretch"><div class="flex items-center gap-2 "><div class="flex w-[28px] h-[28px] flex-col justify-center items-center gap-[10px] aspect-square rounded-[24px] border relative" style="background-color: transparent; border-color: rgb(217, 217, 217); color: rgb(153, 153, 153);"><span class="text-[16px] font-medium">3</span></div><span class=" font-inter text-[16px] font-normal leading-[150%] tracking-[-0.3px]" style="color: rgb(153, 153, 153);">Code</span></div><div class="h-[1px] flex-1" style="border-top: 1px solid rgb(217, 217, 217);"></div></div></div><div class="flex flex-col items-start gap-[28px] flex-1 self-stretch" style="grid-area: 1 / 4 / span 1 / span 1;"><div class="flex items-center gap-[16px] self-stretch"><div class="flex items-center gap-2 "><div class="flex w-[28px] h-[28px] flex-col justify-center items-center gap-[10px] aspect-square rounded-[24px] border relative" style="background-color: transparent; border-color: rgb(217, 217, 217); color: rgb(153, 153, 153);"><span class="text-[16px] font-medium">4</span></div><span class=" font-inter text-[16px] font-normal leading-[150%] tracking-[-0.3px]" style="color: rgb(153, 153, 153);">Project guide</span></div></div></div></div></div></div></div><div class="--min-h-[calc(100dvh-88px)] min-h-full sm:min-h-0 sm:h-full overflow-y-auto w-full flex flex-col rounded-lg border border-[#E9E9E9] bg-white hide-scrollbar"><div id="project-panel-content-container" class="max-w-[100%] --h-[calc(100dvh-88px)] h-full sm:h-full w-full "><div class="flex flex-col w-full h-full"><div class="w-full flex flex-col flex-grow sm:flex-row sm:gap-[24px] flex-1 sm:self-stretch h-[inherit] hide-scrollbar"><div class="w-full h-full flex flex-col"><div class="overflow-y-auto flex-grow px-[0px] "><div class="tech-spec-container"><div class="tech-spec-layout toc-expanded"><div class="tech-spec-toc expanded"><div class="sticky top-0 bg-white cursor-pointer"><div class="flex items-center justify-between gap-[8px] px-[24px] py-[16px] sm:hover:bg-[#F2F0FE]"><div class="font-normal text-[16px]">Contents</div><div class="cursor-pointer"><svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.80859 10L6 8.76117L2.38281 5L6 1.23883L4.8086 2.1019e-07L2.18557e-07 5L4.80859 10Z" fill="#333"></path></svg></div></div></div><div class="overflow-y-auto px-4"><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[12px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  text-[#5B39F3] font-medium"><div class=" capitalize"><div class="flex gap-x-2"><div>0.</div><div class="wrap-anywhere">agent action plan</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.1</div><div class="wrap-anywhere">product understanding</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.2</div><div class="wrap-anywhere">background research</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.3</div><div class="wrap-anywhere">technical architecture design</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.4</div><div class="wrap-anywhere">repository structure planning</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.5</div><div class="wrap-anywhere">implementation specifications</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.6</div><div class="wrap-anywhere">scope definition</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.7</div><div class="wrap-anywhere">deliverable mapping</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.8</div><div class="wrap-anywhere">references</div></div></div><div></div></div></div><div class=""><div class="py-[6px] font-light text-[16px] text-[#333] flex justify-between px-[24px] ml-[16px] hover:bg-[#F2F0FE] hover:cursor-pointer hover:rounded-[36px]  "><div class=" capitalize"><div class="flex gap-x-2"><div>0.9</div><div class="wrap-anywhere">execution patterns</div></div></div><div></div></div></div></div></div><div class="tech-spec-content markdown-viewer-container toc-expanded flex flex-col"><div class="flex-1"><div class="text-[32px] font-medium px-[32px] pt-[16px] text-[#000000]">Technical Specification</div><div class="section-loader-container h-full"><div class="transition-opacity duration-500 opacity-100"><div class="section-wrapper transition-all duration-300 opacity-100 translate-y-0"><div class="self-stretch overflow-visible relative px-8 py-4 hover:bg-[#FAFAFA] group" id="0. agent action plan"><div class="text-[24px] font-normal border-b-[1px] border-[#E0E0E0] mt-[16px] pb-[16px]"><div class="w-[90%] capitalize text-[#000000]">0. Agent Action Plan</div></div><div class="markdown-body bg-transparent section-content"><h2 id="0.1 product understanding">0.1 Product Understanding</h2>
+<h3 id="0.1.1 core product vision">0.1.1 Core Product Vision</h3>
+<p>Based on the prompt, the Blitzy platform understands that the new product is a <strong>Meeting Copilot</strong> — a locally-hosted, browser-first web application with Telegram integration designed specifically for marketing analytical meetings. The product captures live audio from a browser microphone, performs real-time speech-to-text transcription via an AI provider, generates incremental summaries, extracts structured insights (decisions, action items, risks, open questions), enables conversational Q&amp;A with the meeting context, and delivers post-meeting reports through both the browser UI and a Telegram bot.</p>
+<p><strong>Functional Requirements:</strong></p>
+<ul>
+<li><strong>Real-Time Transcription (Live Transcript):</strong> Capture microphone audio in the browser via <code>getUserMedia()</code> and stream it to an AI STT provider (OpenAI Realtime API via WebRTC as primary mode), displaying timestamped, speaker-attributed transcript segments in the UI with sub-5-second latency</li>
+<li><strong>Incremental Live Summary:</strong> Generate and update a Markdown summary snapshot every 30–60 seconds by sending transcript deltas to an LLM for structuring, displayed as a rolling live summary panel</li>
+<li><strong>Structured Insight Extraction:</strong> Continuously identify and deduplicate four categories — Decisions, Action Items (with optional owner and due date), Risks (with optional severity), and Open Questions — using LLM-based delta processing with hash-based deduplication and similarity matching</li>
+<li><strong>Conversational Copilot (Ask Agent):</strong> Accept free-text questions from the user during the meeting (e.g., "Суммируй последние 5 минут", "Какие KPI мы упомянули?") and return contextual answers by querying the current meeting state via the LLM</li>
+<li><strong>Post-Meeting Report Generation:</strong> Upon stopping the meeting, compile a final structured minutes document in Markdown/HTML containing all transcript, summary, decisions, actions, risks, and open questions</li>
+<li><strong>Telegram Bot Integration:</strong> Provide a Telegram bot operating in long-polling mode supporting commands (<code>/start_meeting</code>, <code>/stop_meeting</code>, <code>/summary</code>, <code>/actions</code>, <code>/decisions</code>, <code>/ask</code>) and auto-posting meeting results to a configured chat/channel</li>
+<li><strong>Meeting CRUD:</strong> Create, retrieve, stop, and export meetings via REST API endpoints</li>
+<li><strong>Export Capabilities:</strong> Download meeting reports in Markdown format; optionally HTML</li>
+</ul>
+<p><strong>Non-Functional Requirements:</strong></p>
+<ul>
+<li><strong>Latency:</strong> UI updates every 1–5 seconds; summary refresh every 30–60 seconds</li>
+<li><strong>Reliability:</strong> Auto-save meeting state every 10–30 seconds; graceful degradation if connection drops</li>
+<li><strong>Privacy &amp; Confidentiality:</strong> Do not persist raw audio by default; store only transcript and reports; provide "delete meeting" capability for local data removal</li>
+<li><strong>Cross-Platform:</strong> Must run on Windows (WSL2 + Ubuntu) and macOS natively</li>
+<li><strong>Minimal Installation:</strong> Single backend process (Python) + browser; no OS-level plugins required for MVP</li>
+<li><strong>Security:</strong> API keys stored server-side only; ephemeral tokens issued to the browser; Telegram bot restricted via user/chat whitelist</li>
+</ul>
+<p><strong>Implicit Requirements Surfaced:</strong></p>
+<ul>
+<li>WebSocket server for real-time bidirectional UI-backend communication</li>
+<li>Meeting state persistence layer (SQLite for local-first, upgrade path to PostgreSQL)</li>
+<li>AI provider abstraction layer to support switching between OpenAI and Anthropic Claude</li>
+<li>CORS configuration for localhost development</li>
+<li>Environment variable management for sensitive configuration (API keys, bot tokens)</li>
+<li>Structured logging for debugging real-time audio pipelines</li>
+<li>Graceful WebSocket reconnection handling in the frontend</li>
+</ul>
+<h3 id="0.1.2 user instructions interpretation">0.1.2 User Instructions Interpretation</h3>
+<p><strong>Technology Stack Directives:</strong></p>
+<ul>
+<li>Backend: Python (FastAPI) — explicitly offered as an option, selected for async WebSocket support and AI SDK compatibility</li>
+<li>Frontend: React (Vite) SPA — explicitly specified with WebRTC/AudioWorklet for audio capture</li>
+<li>Database: SQLite (local-first) — explicitly stated for MVP with PostgreSQL upgrade path</li>
+<li>AI Provider: OpenAI Realtime API via WebRTC (Mode A) — explicitly recommended for MVP</li>
+<li>Telegram: <code>python-telegram-bot</code> library with long-polling — no incoming ports required</li>
+<li>Communication: WebSocket between UI and backend for real-time state synchronization</li>
+</ul>
+<p><strong>Architecture Patterns Specified:</strong></p>
+<ul>
+<li>Browser-first localhost architecture: backend serves UI and handles orchestration</li>
+<li>Mode A (Browser → direct WebRTC to OpenAI Realtime API): browser establishes WebRTC peer connection; backend acts as controller issuing ephemeral tokens and managing integrations</li>
+<li>Incremental delta-update state machine: every N seconds, backend processes transcript deltas to update summary, actions, decisions, risks, and open questions</li>
+<li>Deduplication via normalized text hashing and similarity matching for actions/decisions</li>
+</ul>
+<p><strong>Integration Requirements:</strong></p>
+<ul>
+<li>OpenAI Realtime API (WebRTC for STT, REST/WebSocket for LLM structuring and Q&amp;A)</li>
+<li>Telegram Bot API (long-polling for commands, HTTP for sending messages)</li>
+<li>Future integrations flagged but out of MVP scope: Notion, Bitrix, Jira</li>
+</ul>
+<p><strong>Deployment Targets:</strong></p>
+<ul>
+<li>Primary: Windows WSL2 + Ubuntu with port forwarding to localhost</li>
+<li>Secondary: macOS native execution</li>
+<li>Optional: VPS deployment for stable webhooks and centralized storage</li>
+</ul>
+<p><strong>User Examples (Preserved Verbatim):</strong></p>
+<ul>
+<li>User Example: "«Суммируй последние 5 минут»"</li>
+<li>User Example: "«Что мы решили по каналу FB?»"</li>
+<li>User Example: "«Какие KPI мы упомянули?»"</li>
+<li>User Example: "«Сформируй список проверок данных»"</li>
+<li>User Example: "<code>/start_meeting Название</code> → создаёт meeting, возвращает ссылку на локальный UI"</li>
+<li>User Example: "<code>/summary</code> → текущий live summary"</li>
+<li>User Example: "<code>/ask &lt;вопрос&gt;</code> → ответ в чат"</li>
+</ul>
+<h3 id="0.1.3 product type classification">0.1.3 Product Type Classification</h3>
+<ul>
+<li><strong>Product Category:</strong> Full-Stack Web Application (Local-First SPA + Python Backend + Telegram Bot)</li>
+<li><strong>Target Users:</strong> Marketing analytics teams conducting regular meetings (Zoom/Meet/Teams/offline) who need automated note-taking, insight extraction, and task tracking</li>
+<li><strong>Primary Use Cases:</strong><ul>
+<li>Live meeting transcription and summarization for marketing strategy discussions</li>
+<li>Automated extraction of decisions, action items, and risks during collaborative sessions</li>
+<li>Post-meeting report distribution via Telegram to team channels</li>
+<li>On-demand Q&amp;A with meeting context during live discussions</li>
+</ul>
+</li>
+<li><strong>Scale Expectations:</strong> MVP / Single-user local deployment; designed for 1 concurrent meeting session with 1–10 team members accessing Telegram outputs; architecture supports future multi-meeting and multi-user evolution</li>
+<li><strong>Maintenance Considerations:</strong> AI provider abstraction enables seamless model upgrades; SQLite-to-PostgreSQL migration path for centralized deployment; modular component design supports incremental feature addition (system audio, third-party integrations)</li>
+</ul>
+<h2 id="0.2 background research">0.2 Background Research</h2>
+<h2 id="0.2 background research">0.2 Background Research</h2>
+<h3 id="0.2.1 technology research">0.2.1 Technology Research</h3>
+<p>Web search research conducted includes: OpenAI Realtime API WebRTC browser integration, FastAPI WebSocket real-time audio streaming patterns, React Vite real-time transcription app architecture, python-telegram-bot long-polling patterns, and current FastAPI version availability.</p>
+<p><strong>OpenAI Realtime API (WebRTC — Primary STT/LLM Provider):</strong></p>
+<p>&lt;cite index="2-8"&gt;The OpenAI Realtime API enables low-latency communication with models that natively support speech-to-speech interactions as well as multimodal inputs (audio, images, and text) and outputs (audio and text).&lt;/cite&gt; &lt;cite index="2-9"&gt;These APIs can also be used for realtime audio transcription.&lt;/cite&gt; The GA release introduces the <code>gpt-realtime</code> model with significant improvements. &lt;cite index="50-9,50-10"&gt;The new model shows improvements in following complex instructions, calling tools with precision, and producing speech that sounds more natural and expressive.&lt;/cite&gt;</p>
+<p>For browser-based integration, &lt;cite index="1-7"&gt;the browser uses the ephemeral key to authenticate a session directly with the OpenAI Realtime API as a WebRTC peer connection.&lt;/cite&gt; &lt;cite index="1-8"&gt;To create an ephemeral token to use on the client-side, you will need to build a small server-side application to make an OpenAI REST API request for an ephemeral key.&lt;/cite&gt; This validates the user's proposed Mode A architecture where the backend issues tokens and the browser connects directly.</p>
+<p>For transcription-only sessions, &lt;cite index="41-5,41-6"&gt;you can use the Realtime API for transcription-only use cases, either with input from a microphone or from a file — for example, to generate subtitles or transcripts in real-time.&lt;/cite&gt; &lt;cite index="41-9"&gt;To use the Realtime API for transcription, you need to create a transcription session, connecting via WebSockets or WebRTC.&lt;/cite&gt; The transcription session supports models including <code>gpt-4o-transcribe</code> and <code>whisper-1</code>, with built-in server-side VAD (Voice Activity Detection).</p>
+<p><strong>WebRTC Performance Characteristics:</strong></p>
+<p>&lt;cite index="3-16"&gt;This setup can reach sub-200 ms latency — fast enough for natural-feeling dialogue.&lt;/cite&gt; &lt;cite index="4-10,4-11"&gt;WebRTC is the open standard for real-time audio, video, and data in the browser. It gives us low-latency media transport, NAT traversal, adaptive bitrate, and built-in echo cancellation.&lt;/cite&gt; This confirms that WebRTC is the optimal transport for the meeting copilot's real-time transcription requirements. &lt;cite index="6-19,6-20"&gt;Keep audio chunks small, about 20 ms, and use token-based authentication for every session. Test different sample rates to balance speed and fidelity (OpenAI recommends 24 kHz).&lt;/cite&gt;</p>
+<p><strong>FastAPI for Backend Orchestration:</strong></p>
+<p>&lt;cite index="53-3,53-4,53-5"&gt;FastAPI is a modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints. Very high performance, on par with NodeJS and Go. One of the fastest Python frameworks available.&lt;/cite&gt; The latest stable version is 0.128.7 (February 2026). &lt;cite index="13-3"&gt;You can use WebSockets with FastAPI.&lt;/cite&gt; FastAPI's native async/await support and Starlette-based WebSocket handling make it ideal for the real-time orchestrator role.</p>
+<p><strong>React + Vite for Frontend:</strong></p>
+<p>&lt;cite index="21-2,21-3,21-4"&gt;To build a real-time transcription application, you need two main components: the frontend (UI) and the backend. A user interface that captures microphone input and lets users interact with the app. A transcription backend that processes the audio and returns results in real time while the user speaks.&lt;/cite&gt; The React + Vite combination provides hot-module replacement for development and optimized builds for production, with native support for WebRTC and WebSocket APIs.</p>
+<p><strong>Telegram Bot Long-Polling:</strong></p>
+<p>&lt;cite index="39-1"&gt;Long polling is perfect for local development: your bot repeatedly asks Telegram for new updates via getUpdates.&lt;/cite&gt; &lt;cite index="36-37,36-38,36-39"&gt;The main advantage of long polling over webhooks is that it is simpler. You don't need a domain or a public URL. You don't need to fiddle around with setting up SSL certificates.&lt;/cite&gt; The <code>python-telegram-bot</code> library (v22.x) provides a mature, async-first framework with <code>run_polling()</code> for MVP deployment without incoming port requirements.</p>
+<h3 id="0.2.2 architecture pattern research">0.2.2 Architecture Pattern Research</h3>
+<p><strong>Recommended Architecture: Event-Driven Local Orchestrator with Direct WebRTC STT</strong></p>
+<p>The chosen architecture follows a three-tier pattern optimized for real-time audio processing:</p>
+<ul>
+<li><strong>Tier 1 — Browser (React SPA):</strong> Captures microphone audio, establishes WebRTC peer connection to OpenAI Realtime API for transcription, renders live UI, communicates with backend via WebSocket</li>
+<li><strong>Tier 2 — Local Backend (FastAPI):</strong> Issues ephemeral tokens, manages meeting state, runs incremental LLM processing for insight extraction, serves REST API, bridges to Telegram</li>
+<li><strong>Tier 3 — AI Providers (External):</strong> OpenAI Realtime API for transcription (WebRTC), OpenAI/Anthropic for structuring and Q&amp;A (REST API)</li>
+</ul>
+<p><strong>Design Patterns Identified:</strong></p>
+<ul>
+<li><strong>Event Sourcing for Meeting State:</strong> Transcript segments are immutable events; derived state (summary, decisions, actions) is computed from the event log</li>
+<li><strong>Delta Processing Pipeline:</strong> Every N seconds, the backend computes deltas from new transcript segments and updates the aggregate state, avoiding full reprocessing</li>
+<li><strong>Provider Abstraction (Strategy Pattern):</strong> AI provider interfaces allow swapping between OpenAI and Anthropic without changing business logic</li>
+<li><strong>Observer Pattern for WebSocket Broadcasting:</strong> Meeting state changes are pushed to all connected WebSocket clients (browser UI) as delta or snapshot events</li>
+</ul>
+<p><strong>Common Pitfalls Identified:</strong></p>
+<ul>
+<li><strong>Audio pipeline latency accumulation:</strong> Buffering audio on the server side before forwarding to STT creates compounding delays — Mode A (direct WebRTC) avoids this</li>
+<li><strong>Deduplication drift:</strong> Without stable IDs based on normalized text hashing, incremental LLM updates produce duplicate actions/decisions</li>
+<li><strong>WebSocket reconnection gaps:</strong> Browser tab suspension or network blips require reconnection with state resync, not just reconnect</li>
+<li><strong>Ephemeral token expiration:</strong> OpenAI ephemeral tokens are short-lived; the frontend must proactively refresh before expiry</li>
+</ul>
+<h3 id="0.2.3 dependency and tool research">0.2.3 Dependency And Tool Research</h3>
+<p><strong>Latest Stable Versions of Proposed Technologies:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Technology</th><th>Version</th><th>Purpose</th></tr></thead><tbody><tr><td>Python</td><td>3.12.x</td><td>Primary runtime</td></tr><tr><td>FastAPI</td><td>0.128.x</td><td>Backend web framework</td></tr><tr><td>Uvicorn</td><td>0.30.x</td><td>ASGI server</td></tr><tr><td>Pydantic</td><td>2.10.x</td><td>Data validation / schemas</td></tr><tr><td>React</td><td>18.x</td><td>Frontend UI framework</td></tr><tr><td>Vite</td><td>6.x</td><td>Frontend build tool</td></tr><tr><td>TypeScript</td><td>5.x</td><td>Frontend type safety</td></tr><tr><td>Tailwind CSS</td><td>3.x</td><td>Utility-first CSS framework</td></tr><tr><td>SQLite</td><td>3.x (built-in)</td><td>Local database</td></tr><tr><td>python-telegram-bot</td><td>22.x</td><td>Telegram Bot API client</td></tr><tr><td>openai (Python SDK)</td><td>1.x</td><td>OpenAI API client for backend LLM calls</td></tr><tr><td>aiosqlite</td><td>0.20.x</td><td>Async SQLite access</td></tr><tr><td>websockets</td><td>13.x</td><td>WebSocket support for FastAPI</td></tr></tbody></table></div><p><strong>Development &amp; Testing Tools:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody><tr><td>pytest + pytest-asyncio</td><td>Backend unit and integration testing</td></tr><tr><td>Vitest + React Testing Library</td><td>Frontend component and hook testing</td></tr><tr><td>Ruff</td><td>Python linting and formatting</td></tr><tr><td>ESLint + Prettier</td><td>TypeScript/React linting and formatting</td></tr><tr><td>Docker + docker-compose</td><td>Containerized local development</td></tr><tr><td>pre-commit</td><td>Git hook management for code quality</td></tr></tbody></table></div><p><strong>Compatibility Notes:</strong></p>
+<ul>
+<li>FastAPI 0.128.x requires Python ≥ 3.9; we target 3.12 for optimal performance and typing features</li>
+<li><code>python-telegram-bot</code> 22.x is fully async and compatible with FastAPI's event loop</li>
+<li>OpenAI Realtime API WebRTC is supported natively in Chrome, Edge, Firefox, and Safari — all target browsers for the localhost deployment</li>
+<li>SQLite is embedded in Python's standard library; <code>aiosqlite</code> provides async wrappers for non-blocking database access</li>
+</ul>
+<h2 id="0.3 technical architecture design">0.3 Technical Architecture Design</h2>
+<h2 id="0.3 technical architecture design">0.3 Technical Architecture Design</h2>
+<h3 id="0.3.1 technology stack selection">0.3.1 Technology Stack Selection</h3>
+<div class="table-wrapper"><table><thead><tr><th>Layer</th><th>Technology</th><th>Version</th><th>Rationale</th></tr></thead><tbody><tr><td>**Backend Language**</td><td>Python</td><td>3.12.x</td><td>Native async/await, rich AI SDK ecosystem (openai, anthropic), strong typing with Pydantic, user's preferred option</td></tr><tr><td>**Backend Framework**</td><td>FastAPI</td><td>0.128.x</td><td>Native WebSocket support, automatic OpenAPI docs, async-first design, Pydantic integration for data validation, high performance on par with Node.js</td></tr><tr><td>**ASGI Server**</td><td>Uvicorn</td><td>0.30.x</td><td>Production-grade ASGI server, WebSocket support, auto-reload for development</td></tr><tr><td>**Frontend Framework**</td><td>React</td><td>18.x</td><td>Component-based UI, hooks for state management, excellent WebRTC/WebSocket ecosystem, user-specified choice</td></tr><tr><td>**Frontend Bundler**</td><td>Vite</td><td>6.x</td><td>Fast HMR, optimized production builds, native TypeScript support, user-specified choice</td></tr><tr><td>**Frontend Language**</td><td>TypeScript</td><td>5.x</td><td>Type safety for complex real-time state management, better IDE support</td></tr><tr><td>**CSS Framework**</td><td>Tailwind CSS</td><td>3.x</td><td>Utility-first approach for rapid UI development, responsive design support</td></tr><tr><td>**Database**</td><td>SQLite</td><td>3.x</td><td>Zero-configuration, embedded, local-first persistence; upgrade path to PostgreSQL for VPS deployment</td></tr><tr><td>**Async DB Access**</td><td>aiosqlite</td><td>0.20.x</td><td>Non-blocking SQLite operations compatible with FastAPI's async event loop</td></tr><tr><td>**Telegram Client**</td><td>python-telegram-bot</td><td>22.x</td><td>Async-native, full Bot API support, long-polling built-in, mature and well-documented</td></tr><tr><td>**OpenAI SDK**</td><td>openai (Python)</td><td>1.x</td><td>Backend LLM calls for structuring, summarization, and Q&amp;A; ephemeral token generation for WebRTC</td></tr><tr><td>**Data Validation**</td><td>Pydantic</td><td>2.10.x</td><td>Schema definitions, serialization, and validation for meeting state, API contracts, and WebSocket messages</td></tr></tbody></table></div><h3 id="0.3.2 architecture pattern">0.3.2 Architecture Pattern</h3>
+<p><strong>Overall Pattern: Event-Driven Local Orchestrator with Direct-to-Provider WebRTC</strong></p>
+<p>The system employs a hybrid architecture where the browser handles real-time audio capture and direct AI communication (WebRTC transcription), while the backend orchestrates state management, LLM-based structuring, integrations, and persistence.</p>
+<div style="overflow: auto; max-width: 100%;" class="mermaid-container"><pre id="mermaid-1770882202201-1" class="mermaid" data-processed="true"><div id="dmermaid-1770882203491" style="font-family: Inter, system-ui, sans-serif"><svg id="mermaid-1770882203491" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2412 512" style="max-width: 512px;" role="graphics-document document" aria-roledescription="error"><style>#mermaid-1770882203491{font-family:Inter,system-ui,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-1770882203491 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-1770882203491 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-1770882203491 .error-icon{fill:#552222;}#mermaid-1770882203491 .error-text{fill:#552222;stroke:#552222;}#mermaid-1770882203491 .edge-thickness-normal{stroke-width:1px;}#mermaid-1770882203491 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1770882203491 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1770882203491 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-1770882203491 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1770882203491 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1770882203491 .marker{fill:#333333;stroke:#333333;}#mermaid-1770882203491 .marker.cross{stroke:#333333;}#mermaid-1770882203491 svg{font-family:Inter,system-ui,sans-serif;font-size:16px;}#mermaid-1770882203491 p{margin:0;}#mermaid-1770882203491 :root{--mermaid-font-family:Inter,system-ui,sans-serif;}</style><g></g><g><path class="error-icon" d="m411.313,123.313c6.25-6.25 6.25-16.375 0-22.625s-16.375-6.25-22.625,0l-32,32-9.375,9.375-20.688-20.688c-12.484-12.5-32.766-12.5-45.25,0l-16,16c-1.261,1.261-2.304,2.648-3.31,4.051-21.739-8.561-45.324-13.426-70.065-13.426-105.867,0-192,86.133-192,192s86.133,192 192,192 192-86.133 192-192c0-24.741-4.864-48.327-13.426-70.065 1.402-1.007 2.79-2.049 4.051-3.31l16-16c12.5-12.492 12.5-32.758 0-45.25l-20.688-20.688 9.375-9.375 32.001-31.999zm-219.313,100.687c-52.938,0-96,43.063-96,96 0,8.836-7.164,16-16,16s-16-7.164-16-16c0-70.578 57.422-128 128-128 8.836,0 16,7.164 16,16s-7.164,16-16,16z"></path><path class="error-icon" d="m459.02,148.98c-6.25-6.25-16.375-6.25-22.625,0s-6.25,16.375 0,22.625l16,16c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688 6.25-6.25 6.25-16.375 0-22.625l-16.001-16z"></path><path class="error-icon" d="m340.395,75.605c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688 6.25-6.25 6.25-16.375 0-22.625l-16-16c-6.25-6.25-16.375-6.25-22.625,0s-6.25,16.375 0,22.625l15.999,16z"></path><path class="error-icon" d="m400,64c8.844,0 16-7.164 16-16v-32c0-8.836-7.156-16-16-16-8.844,0-16,7.164-16,16v32c0,8.836 7.156,16 16,16z"></path><path class="error-icon" d="m496,96.586h-32c-8.844,0-16,7.164-16,16 0,8.836 7.156,16 16,16h32c8.844,0 16-7.164 16-16 0-8.836-7.156-16-16-16z"></path><path class="error-icon" d="m436.98,75.605c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688l32-32c6.25-6.25 6.25-16.375 0-22.625s-16.375-6.25-22.625,0l-32,32c-6.251,6.25-6.251,16.375-0.001,22.625z"></path><text class="error-text" x="1440" y="250" font-size="150px" style="text-anchor: middle;">Syntax error in text</text><text class="error-text" x="1250" y="400" font-size="100px" style="text-anchor: middle;">mermaid version 11.12.2</text></g></svg></div></pre></div><p><strong>Component Interaction Model:</strong></p>
+<ul>
+<li><strong>Audio Flow:</strong> Browser microphone → WebRTC → OpenAI Realtime API → transcript events → browser UI → WebSocket → backend state manager</li>
+<li><strong>Insight Flow:</strong> Backend state manager receives transcript deltas → LLM service processes deltas → produces summary/actions/decisions/risks/questions → state persisted → delta broadcast to UI via WebSocket</li>
+<li><strong>Command Flow:</strong> User types question in chat → WebSocket <code>user.question</code> event → backend LLM service generates answer from meeting context → <code>bot.answer</code> event → UI displays response</li>
+<li><strong>Telegram Flow:</strong> Telegram command received via long polling → processed by Telegram bot bridge → queries meeting state → sends formatted response back to Telegram chat</li>
+</ul>
+<p><strong>Data Flow Architecture:</strong></p>
+<ul>
+<li>Transcript segments are the immutable source of truth, appended incrementally</li>
+<li>Derived state (summaries, insights) is computed via periodic delta processing</li>
+<li>WebSocket events carry either full state snapshots (<code>meeting.state</code>) or incremental updates (<code>meeting.delta</code>)</li>
+<li>All state changes are persisted to SQLite with configurable auto-save intervals (10–30 seconds)</li>
+</ul>
+<p><strong>Security Architecture:</strong></p>
+<ul>
+<li>OpenAI API keys are stored exclusively on the backend in <code>.env</code> files, never exposed to the browser</li>
+<li>The backend generates ephemeral tokens via <code>POST /v1/realtime/client_secrets</code> for the browser's WebRTC session</li>
+<li>Telegram bot token is server-side only; bot commands are gated by a user/chat whitelist</li>
+<li>Local deployment assumes trusted localhost network; no additional auth layer for MVP</li>
+<li>CORS configured to allow only <code>localhost</code> origins</li>
+</ul>
+<h3 id="0.3.3 integration points">0.3.3 Integration Points</h3>
+<p><strong>OpenAI Realtime API (Transcription via WebRTC):</strong></p>
+<ul>
+<li>Protocol: WebRTC peer connection from browser to OpenAI</li>
+<li>Authentication: Ephemeral key generated by backend via <code>POST https://api.openai.com/v1/realtime/client_secrets</code></li>
+<li>Session type: <code>"transcription"</code> with model <code>gpt-4o-transcribe</code></li>
+<li>Events consumed: <code>conversation.item.input_audio_transcription.delta</code>, <code>conversation.item.input_audio_transcription.completed</code></li>
+<li>Configuration: Server VAD enabled, noise reduction <code>near_field</code>, 24kHz PCM input</li>
+</ul>
+<p><strong>OpenAI / Anthropic Chat Completions (Structuring &amp; Q&amp;A):</strong></p>
+<ul>
+<li>Protocol: HTTPS REST API from backend</li>
+<li>Authentication: API key stored in backend <code>.env</code></li>
+<li>Operations: Incremental structuring of transcript deltas, answering user questions, generating final reports</li>
+<li>Data format: JSON request/response with structured prompts and meeting context</li>
+<li>Provider switching: Configurable via environment variable <code>AI_PROVIDER=openai|anthropic</code></li>
+</ul>
+<p><strong>Telegram Bot API:</strong></p>
+<ul>
+<li>Protocol: HTTPS long-polling via <code>python-telegram-bot</code> library</li>
+<li>Authentication: <code>BOT_TOKEN</code> from <code>.env</code></li>
+<li>Operations: Command handling (<code>/start_meeting</code>, <code>/stop_meeting</code>, <code>/summary</code>, <code>/actions</code>, <code>/decisions</code>, <code>/ask</code>), auto-posting meeting results</li>
+<li>Target: Configurable <code>TELEGRAM_DEFAULT_CHAT_ID</code> for auto-post destination</li>
+<li>Security: Whitelist-based command authorization</li>
+</ul>
+<p><strong>WebSocket (UI ↔ Backend):</strong></p>
+<ul>
+<li>Protocol: <code>ws://localhost:PORT/ws/meetings/{meeting_id}</code></li>
+<li>Events (Client → Server): <code>user.question</code>, <code>meeting.command</code></li>
+<li>Events (Server → Client): <code>meeting.state</code>, <code>meeting.delta</code>, <code>bot.answer</code>, <code>bot.flag</code></li>
+<li>Reconnection: Client implements exponential backoff with state resync on reconnect</li>
+</ul>
+<h2 id="0.4 repository structure planning">0.4 Repository Structure Planning</h2>
+<h2 id="0.4 repository structure planning">0.4 Repository Structure Planning</h2>
+<h3 id="0.4.1 proposed repository structure">0.4.1 Proposed Repository Structure</h3>
+<pre><code class="hljs"><span class="hljs-symbol">/</span>
+├── backend<span class="hljs-symbol">/</span>                              <span class="hljs-comment"># Python FastAPI backend</span>
+│   ├── src<span class="hljs-symbol">/</span>
+│   │   ├── __init__.py
+│   │   ├── main.py                      <span class="hljs-comment"># Application entry point, FastAPI app creation</span>
+│   │   ├── config<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── settings.py              <span class="hljs-comment"># Pydantic Settings for env vars and app config</span>
+│   │   │   └── constants.py             <span class="hljs-comment"># Application-wide constants</span>
+│   │   ├── api<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── router.py                <span class="hljs-comment"># Central API router aggregation</span>
+│   │   │   ├── meetings.py              <span class="hljs-comment"># REST endpoints: CRUD, stop, export meetings</span>
+│   │   │   ├── websocket.py             <span class="hljs-comment"># WebSocket endpoint for real-time state sync</span>
+│   │   │   └── token.py                 <span class="hljs-comment"># Ephemeral token endpoint for OpenAI WebRTC</span>
+│   │   ├── models<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── meeting.py               <span class="hljs-comment"># Meeting, TranscriptSegment, Snapshot Pydantic models</span>
+│   │   │   ├── insights.py              <span class="hljs-comment"># Decision, Action, Risk, OpenQuestion models</span>
+│   │   │   └── websocket_events.py      <span class="hljs-comment"># WebSocket event schema definitions</span>
+│   │   ├── services<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── meeting_service.py       <span class="hljs-comment"># Meeting lifecycle management (create, stop, get)</span>
+│   │   │   ├── state_manager.py         <span class="hljs-comment"># Incremental state processing and delta updates</span>
+│   │   │   ├── deduplication.py         <span class="hljs-comment"># Text normalization, hashing, similarity matching</span>
+│   │   │   ├── export_service.py        <span class="hljs-comment"># Markdown/HTML report generation</span>
+│   │   │   └── ai<span class="hljs-symbol">/</span>
+│   │   │       ├── __init__.py
+│   │   │       ├── provider_base.py     <span class="hljs-comment"># Abstract AI provider interface</span>
+│   │   │       ├── openai_provider.py   <span class="hljs-comment"># OpenAI implementation (transcription tokens + LLM)</span>
+│   │   │       ├── anthropic_provider.py <span class="hljs-comment"># Anthropic Claude implementation</span>
+│   │   │       └── prompts.py           <span class="hljs-comment"># Prompt templates for structuring, Q&amp;A, reports</span>
+│   │   ├── integrations<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   └── telegram<span class="hljs-symbol">/</span>
+│   │   │       ├── __init__.py
+│   │   │       ├── bot.py               <span class="hljs-comment"># Telegram bot setup, command handlers</span>
+│   │   │       ├── commands.py          <span class="hljs-comment"># Command logic (/summary, /actions, /ask, etc.)</span>
+│   │   │       ├── formatters.py        <span class="hljs-comment"># Message formatting for Telegram output</span>
+│   │   │       └── security.py          <span class="hljs-comment"># Whitelist and authorization checks</span>
+│   │   ├── db<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── database.py             <span class="hljs-comment"># SQLite/aiosqlite connection management</span>
+│   │   │   ├── repositories.py         <span class="hljs-comment"># Data access layer for meetings and insights</span>
+│   │   │   └── migrations.py           <span class="hljs-comment"># Schema initialization and migration helpers</span>
+│   │   └── common<span class="hljs-symbol">/</span>
+│   │       ├── __init__.py
+│   │       ├── exceptions.py            <span class="hljs-comment"># Custom exception definitions</span>
+│   │       ├── logging.py              <span class="hljs-comment"># Structured logging configuration</span>
+│   │       └── utils.py                <span class="hljs-comment"># Shared utility functions</span>
+│   ├── tests<span class="hljs-symbol">/</span>
+│   │   ├── __init__.py
+│   │   ├── conftest.py                  <span class="hljs-comment"># Shared fixtures and test configuration</span>
+│   │   ├── unit<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── test_meeting_service.py  <span class="hljs-comment"># Meeting lifecycle unit tests</span>
+│   │   │   ├── test_state_manager.py    <span class="hljs-comment"># Delta processing and state update tests</span>
+│   │   │   ├── test_deduplication.py    <span class="hljs-comment"># Deduplication logic tests</span>
+│   │   │   ├── test_export_service.py   <span class="hljs-comment"># Report generation tests</span>
+│   │   │   └── test_ai_providers.py     <span class="hljs-comment"># AI provider interface tests</span>
+│   │   ├── integration<span class="hljs-symbol">/</span>
+│   │   │   ├── __init__.py
+│   │   │   ├── test_api_meetings.py     <span class="hljs-comment"># REST API endpoint integration tests</span>
+│   │   │   ├── test_websocket.py        <span class="hljs-comment"># WebSocket communication tests</span>
+│   │   │   └── test_telegram_bot.py     <span class="hljs-comment"># Telegram bot command tests</span>
+│   │   └── fixtures<span class="hljs-symbol">/</span>
+│   │       ├── sample_transcript.json   <span class="hljs-comment"># Sample transcript data for testing</span>
+│   │       └── sample_meeting_state.json <span class="hljs-comment"># Sample meeting state snapshot</span>
+│   ├── requirements.txt                 <span class="hljs-comment"># Python dependencies (pinned versions)</span>
+│   ├── requirements-dev.txt             <span class="hljs-comment"># Development dependencies (testing, linting)</span>
+│   ├── pyproject.toml                   <span class="hljs-comment"># Project metadata and tool configuration</span>
+│   └── Dockerfile                       <span class="hljs-comment"># Backend container definition</span>
+│
+├── frontend<span class="hljs-symbol">/</span>                             <span class="hljs-comment"># React + Vite + TypeScript frontend</span>
+│   ├── src<span class="hljs-symbol">/</span>
+│   │   ├── main.tsx                     <span class="hljs-comment"># Application entry point</span>
+│   │   ├── App.tsx                      <span class="hljs-comment"># Root application component with routing</span>
+│   │   ├── components<span class="hljs-symbol">/</span>
+│   │   │   ├── layout<span class="hljs-symbol">/</span>
+│   │   │   │   ├── Header.tsx           <span class="hljs-comment"># Meeting header: title, timer, status, controls</span>
+│   │   │   │   ├── Footer.tsx           <span class="hljs-comment"># Quick action buttons panel</span>
+│   │   │   │   └── Sidebar.tsx          <span class="hljs-comment"># Navigation / meeting list sidebar</span>
+│   │   │   ├── meeting<span class="hljs-symbol">/</span>
+│   │   │   │   ├── LiveMeeting.tsx      <span class="hljs-comment"># Main live meeting view container</span>
+│   │   │   │   ├── TranscriptPanel.tsx  <span class="hljs-comment"># Real-time transcript display with timecodes</span>
+│   │   │   │   ├── SummaryPanel.tsx     <span class="hljs-comment"># Live summary display with history</span>
+│   │   │   │   ├── InsightsPanel.tsx    <span class="hljs-comment"># Decisions, Actions, Risks, Questions tabs</span>
+│   │   │   │   ├── CopilotChat.tsx      <span class="hljs-comment"># Ask Copilot chat input and response display</span>
+│   │   │   │   └── MeetingControls.tsx  <span class="hljs-comment"># Start/Stop/Export controls</span>
+│   │   │   ├── report<span class="hljs-symbol">/</span>
+│   │   │   │   ├── PostMeetingReport.tsx <span class="hljs-comment"># Post-meeting structured report view</span>
+│   │   │   │   └── ExportButtons.tsx    <span class="hljs-comment"># Export Markdown / Send to Telegram buttons</span>
+│   │   │   └── common<span class="hljs-symbol">/</span>
+│   │   │       ├── StatusBadge.tsx      <span class="hljs-comment"># Recording status indicator (REC)</span>
+│   │   │       ├── Timer.tsx            <span class="hljs-comment"># Meeting duration timer</span>
+│   │   │       └── LoadingSpinner.tsx   <span class="hljs-comment"># Loading state indicator</span>
+│   │   ├── hooks<span class="hljs-symbol">/</span>
+│   │   │   ├── useAudioCapture.ts       <span class="hljs-comment"># Microphone access and audio stream management</span>
+│   │   │   ├── useWebRTC.ts            <span class="hljs-comment"># WebRTC connection to OpenAI Realtime API</span>
+│   │   │   ├── useWebSocket.ts          <span class="hljs-comment"># WebSocket connection to backend</span>
+│   │   │   ├── useMeetingState.ts       <span class="hljs-comment"># Meeting state management (transcript, insights)</span>
+│   │   │   └── useCopilot.ts           <span class="hljs-comment"># Copilot Q&amp;A interaction logic</span>
+│   │   ├── services<span class="hljs-symbol">/</span>
+│   │   │   ├── api.ts                   <span class="hljs-comment"># REST API client for backend communication</span>
+│   │   │   ├── webrtc.ts               <span class="hljs-comment"># WebRTC session management and event handling</span>
+│   │   │   └── websocket.ts            <span class="hljs-comment"># WebSocket connection and reconnection logic</span>
+│   │   ├── types<span class="hljs-symbol">/</span>
+│   │   │   ├── meeting.ts              <span class="hljs-comment"># Meeting, TranscriptSegment type definitions</span>
+│   │   │   ├── insights.ts             <span class="hljs-comment"># Decision, Action, Risk, Question types</span>
+│   │   │   └── events.ts              <span class="hljs-comment"># WebSocket and WebRTC event type definitions</span>
+│   │   ├── utils<span class="hljs-symbol">/</span>
+│   │   │   ├── formatters.ts           <span class="hljs-comment"># Time formatting, markdown rendering helpers</span>
+│   │   │   └── audio.ts               <span class="hljs-comment"># Audio utility functions (level metering)</span>
+│   │   └── styles<span class="hljs-symbol">/</span>
+│   │       └── globals.css             <span class="hljs-comment"># Global styles and Tailwind directives</span>
+│   ├── public<span class="hljs-symbol">/</span>
+│   │   └── favicon.ico                 <span class="hljs-comment"># Application favicon</span>
+│   ├── index.html                       <span class="hljs-comment"># HTML entry point</span>
+│   ├── package.json                     <span class="hljs-comment"># Node.js dependencies</span>
+│   ├── tsconfig.json                    <span class="hljs-comment"># TypeScript configuration</span>
+│   ├── vite.config.ts                   <span class="hljs-comment"># Vite build configuration with proxy setup</span>
+│   ├── tailwind.config.js              <span class="hljs-comment"># Tailwind CSS configuration</span>
+│   ├── postcss.config.js              <span class="hljs-comment"># PostCSS configuration</span>
+│   ├── .eslintrc.cjs                   <span class="hljs-comment"># ESLint configuration</span>
+│   └── Dockerfile                       <span class="hljs-comment"># Frontend container definition (nginx serve)</span>
+│
+├── docs<span class="hljs-symbol">/</span>                                <span class="hljs-comment"># Project documentation</span>
+│   ├── architecture<span class="hljs-symbol">/</span>
+│   │   ├── system-overview.md          <span class="hljs-comment"># High-level architecture documentation</span>
+│   │   └── data-flow.md               <span class="hljs-comment"># Detailed data flow diagrams</span>
+│   ├── api<span class="hljs-symbol">/</span>
+│   │   ├── rest-api.md                 <span class="hljs-comment"># REST API documentation</span>
+│   │   └── websocket-events.md         <span class="hljs-comment"># WebSocket event reference</span>
+│   └── guides<span class="hljs-symbol">/</span>
+│       ├── setup-windows-wsl.md        <span class="hljs-comment"># Windows WSL2 setup guide</span>
+│       ├── setup-macos.md              <span class="hljs-comment"># macOS setup guide</span>
+│       └── telegram-bot-setup.md       <span class="hljs-comment"># Telegram bot configuration guide</span>
+│
+├── scripts<span class="hljs-symbol">/</span>
+│   ├── setup.sh                        <span class="hljs-comment"># Full development environment setup script</span>
+│   ├── start-dev.sh                    <span class="hljs-comment"># Start backend + frontend in development mode</span>
+│   └── init-db.sh                      <span class="hljs-comment"># Database initialization script</span>
+│
+├── config<span class="hljs-symbol">/</span>
+│   ├── development<span class="hljs-symbol">/</span>
+│   │   └── .env.development            <span class="hljs-comment"># Development environment variables</span>
+│   ├── production<span class="hljs-symbol">/</span>
+│   │   └── .env.production             <span class="hljs-comment"># Production environment variables</span>
+│   └── prompts<span class="hljs-symbol">/</span>
+│       ├── structuring.md              <span class="hljs-comment"># LLM prompt for insight extraction</span>
+│       ├── summarization.md            <span class="hljs-comment"># LLM prompt for live summary generation</span>
+│       ├── qa.md                       <span class="hljs-comment"># LLM prompt for Q&amp;A copilot</span>
+│       └── report.md                   <span class="hljs-comment"># LLM prompt for final report generation</span>
+│
+├── .github<span class="hljs-symbol">/</span>
+│   └── workflows<span class="hljs-symbol">/</span>
+│       ├── ci.yml                      <span class="hljs-comment"># CI pipeline: lint, test, build</span>
+│       └── release.yml                 <span class="hljs-comment"># Release workflow</span>
+│
+├── docker-compose.yml                   <span class="hljs-comment"># Local development orchestration</span>
+├── .gitignore                          <span class="hljs-comment"># Git ignore rules</span>
+├── .env.example                        <span class="hljs-comment"># Environment variables template</span>
+├── Makefile                            <span class="hljs-comment"># Common development commands</span>
+└── README.md                           <span class="hljs-comment"># Project overview and quickstart guide</span></code></pre><h3 id="0.4.2 file path specifications">0.4.2 File Path Specifications</h3>
+<p><strong>Core Backend Files:</strong></p>
+<ul>
+<li><code>backend/src/main.py</code> — FastAPI application factory, middleware setup, lifespan events for startup/shutdown (DB init, Telegram bot start)</li>
+<li><code>backend/src/api/meetings.py</code> — REST endpoints: <code>POST /api/meetings</code>, <code>POST /api/meetings/{id}/stop</code>, <code>GET /api/meetings/{id}</code>, <code>GET /api/meetings/{id}/export</code></li>
+<li><code>backend/src/api/websocket.py</code> — WebSocket endpoint at <code>/ws/meetings/{meeting_id}</code> handling <code>meeting.state</code>, <code>meeting.delta</code>, <code>user.question</code>, <code>bot.answer</code> events</li>
+<li><code>backend/src/api/token.py</code> — <code>POST /api/token/ephemeral</code> endpoint that proxies ephemeral key generation from OpenAI for WebRTC sessions</li>
+<li><code>backend/src/services/state_manager.py</code> — Core delta processing engine: receives transcript segments, triggers LLM structuring at configurable intervals, maintains and deduplicates insights</li>
+<li><code>backend/src/services/ai/provider_base.py</code> — Abstract interface defining <code>transcribe_stream()</code>, <code>update_state()</code>, <code>answer()</code>, <code>final_report()</code></li>
+<li><code>backend/src/integrations/telegram/bot.py</code> — Telegram bot initialization, long-polling setup, command registration</li>
+</ul>
+<p><strong>Core Frontend Files:</strong></p>
+<ul>
+<li><code>frontend/src/App.tsx</code> — Root component with React Router setup (Live Meeting view, Post-Meeting Report view)</li>
+<li><code>frontend/src/hooks/useWebRTC.ts</code> — Manages WebRTC peer connection lifecycle with OpenAI Realtime API, handles transcript events</li>
+<li><code>frontend/src/hooks/useWebSocket.ts</code> — Manages persistent WebSocket connection to backend with auto-reconnect and state resync</li>
+<li><code>frontend/src/components/meeting/LiveMeeting.tsx</code> — Main meeting view composing Transcript, Summary, Insights, and Copilot panels</li>
+<li><code>frontend/src/services/webrtc.ts</code> — WebRTC session initialization, SDP negotiation, data channel event handling</li>
+</ul>
+<p><strong>Configuration Files:</strong></p>
+<ul>
+<li><code>.env.example</code> — Template documenting all required environment variables (API keys, ports, Telegram config)</li>
+<li><code>config/prompts/*.md</code> — Externalized LLM prompt templates enabling iteration without code changes</li>
+<li><code>docker-compose.yml</code> — Defines <code>backend</code> and <code>frontend</code> services for single-command local development startup</li>
+</ul>
+<h2 id="0.5 implementation specifications">0.5 Implementation Specifications</h2>
+<h2 id="0.5 implementation specifications">0.5 Implementation Specifications</h2>
+<h3 id="0.5.1 core components to implement">0.5.1 Core Components To Implement</h3>
+<p><strong>Component A: Meeting State Manager</strong></p>
+<ul>
+<li>Purpose: Central orchestration engine that maintains the complete meeting state, processes transcript deltas at configurable intervals (30–60 seconds), triggers LLM-based insight extraction, deduplicates results, and broadcasts updates via WebSocket</li>
+<li>Location: <code>backend/src/services/state_manager.py</code></li>
+<li>Key interfaces: <code>process_transcript_delta(meeting_id, segments)</code>, <code>get_current_state(meeting_id)</code>, <code>trigger_incremental_update(meeting_id)</code>, <code>finalize_meeting(meeting_id)</code></li>
+<li>Dependencies: AI Provider Service, Deduplication Service, Persistence Layer, WebSocket broadcaster</li>
+</ul>
+<p><strong>Component B: AI Provider Service (Abstract + Implementations)</strong></p>
+<ul>
+<li>Purpose: Provides a provider-agnostic interface for all AI operations — ephemeral token generation, transcript structuring, Q&amp;A answering, and final report generation — enabling seamless switching between OpenAI and Anthropic</li>
+<li>Location: <code>backend/src/services/ai/provider_base.py</code>, <code>backend/src/services/ai/openai_provider.py</code>, <code>backend/src/services/ai/anthropic_provider.py</code></li>
+<li>Key interfaces: <code>generate_ephemeral_token(session_config)</code>, <code>update_state(transcript_delta, current_state) -&gt; state_delta</code>, <code>answer(question, meeting_state) -&gt; str</code>, <code>final_report(full_transcript, state) -&gt; str</code></li>
+<li>Dependencies: OpenAI Python SDK, Anthropic Python SDK, Prompt Templates</li>
+</ul>
+<p><strong>Component C: WebRTC Audio Pipeline (Frontend)</strong></p>
+<ul>
+<li>Purpose: Manages browser microphone capture via <code>getUserMedia()</code>, establishes and maintains WebRTC peer connection with OpenAI Realtime API, handles transcript events and feeds them to the meeting state pipeline</li>
+<li>Location: <code>frontend/src/hooks/useWebRTC.ts</code>, <code>frontend/src/services/webrtc.ts</code></li>
+<li>Key interfaces: <code>initializeSession(ephemeralToken)</code>, <code>startCapture()</code>, <code>stopCapture()</code>, <code>onTranscriptDelta(callback)</code>, <code>onTranscriptCompleted(callback)</code></li>
+<li>Dependencies: Browser WebRTC APIs, Backend token endpoint</li>
+</ul>
+<p><strong>Component D: WebSocket Communication Layer</strong></p>
+<ul>
+<li>Purpose: Bi-directional real-time communication between frontend and backend for state synchronization, user commands, and copilot Q&amp;A</li>
+<li>Location: <code>backend/src/api/websocket.py</code> (server), <code>frontend/src/hooks/useWebSocket.ts</code> (client)</li>
+<li>Key interfaces (Server): <code>handle_connection(meeting_id)</code>, <code>broadcast_delta(meeting_id, delta)</code>, <code>broadcast_state(meeting_id, state)</code></li>
+<li>Key interfaces (Client): <code>connect(meetingId)</code>, <code>sendQuestion(question)</code>, <code>onDelta(callback)</code>, <code>onAnswer(callback)</code></li>
+<li>Dependencies: FastAPI WebSocket, Starlette WebSocket utilities</li>
+</ul>
+<p><strong>Component E: Telegram Bot Bridge</strong></p>
+<ul>
+<li>Purpose: Provides Telegram integration for remote meeting control and result distribution via long-polling command handling and automated message posting</li>
+<li>Location: <code>backend/src/integrations/telegram/bot.py</code>, <code>backend/src/integrations/telegram/commands.py</code></li>
+<li>Key interfaces: <code>start_bot()</code>, <code>stop_bot()</code>, <code>post_meeting_results(chat_id, meeting_state)</code>, command handlers for <code>/start_meeting</code>, <code>/stop_meeting</code>, <code>/summary</code>, <code>/actions</code>, <code>/decisions</code>, <code>/ask</code></li>
+<li>Dependencies: python-telegram-bot library, Meeting Service, AI Provider Service</li>
+</ul>
+<p><strong>Component F: Deduplication Engine</strong></p>
+<ul>
+<li>Purpose: Prevents duplicate entries in actions, decisions, risks, and open questions across incremental LLM updates using text normalization, hash-based identity, and similarity matching</li>
+<li>Location: <code>backend/src/services/deduplication.py</code></li>
+<li>Key interfaces: <code>normalize_text(text) -&gt; str</code>, <code>compute_stable_id(normalized_text) -&gt; str</code>, <code>is_duplicate(new_item, existing_items, threshold) -&gt; bool</code>, <code>merge_items(existing, new) -&gt; list</code></li>
+<li>Dependencies: hashlib (stdlib), optional <code>rapidfuzz</code> for fuzzy matching</li>
+</ul>
+<p><strong>Component G: Export Service</strong></p>
+<ul>
+<li>Purpose: Generates structured meeting reports in Markdown and HTML formats from the finalized meeting state</li>
+<li>Location: <code>backend/src/services/export_service.py</code></li>
+<li>Key interfaces: <code>generate_markdown(meeting_state) -&gt; str</code>, <code>generate_html(meeting_state) -&gt; str</code></li>
+<li>Dependencies: Jinja2 templates, Meeting State models</li>
+</ul>
+<h3 id="0.5.2 data models and schemas">0.5.2 Data Models And Schemas</h3>
+<p><strong>Core Entity Definitions:</strong></p>
+<pre><code class="hljs"><span class="hljs-attribute">Meeting</span><span class="hljs-punctuation">:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">meeting_id: str (UUID)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">title: str</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">started_at: datetime</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">ended_at: datetime | None</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">status: enum (active, stopped)</span></code></pre><pre><code class="hljs">TranscriptSegment:
+  - segment_id: <span class="hljs-built_in">str</span> (UUID)
+  - meeting_id: <span class="hljs-built_in">str</span> (FK)
+  - ts_start: <span class="hljs-built_in">float</span> (seconds <span class="hljs-keyword">from</span> meeting start)
+  - ts_end: <span class="hljs-built_in">float</span>
+  - speaker: <span class="hljs-built_in">str</span> | <span class="hljs-literal">None</span>
+  - text: <span class="hljs-built_in">str</span>
+  - confidence: <span class="hljs-built_in">float</span> | <span class="hljs-literal">None</span></code></pre><pre><code class="hljs"><span class="hljs-attribute">LiveSummarySnapshot</span><span class="hljs-punctuation">:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">snapshot_id: str (UUID)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">meeting_id: str (FK)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">timestamp: datetime</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">summary_md: str</span></code></pre><pre><code class="hljs">Decision:
+  - <span class="hljs-built_in">id</span>: <span class="hljs-built_in">str</span> (<span class="hljs-built_in">hash</span>-based stable ID)
+  - meeting_id: <span class="hljs-built_in">str</span> (FK)
+  - text: <span class="hljs-built_in">str</span>
+  - timestamp: datetime
+  - confidence: <span class="hljs-built_in">float</span> | <span class="hljs-literal">None</span>
+  - related_segment_ids: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>]</code></pre><pre><code class="hljs">ActionItem:
+  - <span class="hljs-built_in">id</span>: <span class="hljs-built_in">str</span> (<span class="hljs-built_in">hash</span>-based stable ID)
+  - meeting_id: <span class="hljs-built_in">str</span> (FK)
+  - text: <span class="hljs-built_in">str</span>
+  - owner: <span class="hljs-built_in">str</span> | <span class="hljs-literal">None</span>
+  - due_date: <span class="hljs-built_in">str</span> | <span class="hljs-literal">None</span>
+  - status: <span class="hljs-built_in">str</span> (default: <span class="hljs-string">"draft"</span>)</code></pre><pre><code class="hljs">Risk:
+  - <span class="hljs-built_in">id</span>: <span class="hljs-built_in">str</span> (<span class="hljs-built_in">hash</span>-based stable ID)
+  - meeting_id: <span class="hljs-built_in">str</span> (FK)
+  - text: <span class="hljs-built_in">str</span>
+  - severity: <span class="hljs-built_in">str</span> | <span class="hljs-literal">None</span> (low/medium/high)
+  - timestamp: datetime</code></pre><pre><code class="hljs"><span class="hljs-attribute">OpenQuestion</span><span class="hljs-punctuation">:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">id: str (hash-based stable ID)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">meeting_id: str (FK)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">text: str</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">timestamp: datetime</span></code></pre><p><strong>Relationship Map:</strong></p>
+<ul>
+<li>Meeting (1) → TranscriptSegment (many): Ordered by <code>ts_start</code></li>
+<li>Meeting (1) → LiveSummarySnapshot (many): Ordered by <code>timestamp</code></li>
+<li>Meeting (1) → Decision/ActionItem/Risk/OpenQuestion (many each): Linked by <code>meeting_id</code></li>
+<li>Decision → TranscriptSegment (many-to-many): Via <code>related_segment_ids</code></li>
+</ul>
+<p><strong>Deduplication Rules:</strong></p>
+<ul>
+<li>Stable ID = SHA-256 hash of normalized text (lowercase, stripped punctuation, collapsed whitespace)</li>
+<li>Similarity threshold: 0.85 (configurable) for fuzzy matching via Levenshtein distance</li>
+<li>On conflict: Existing entry is preserved; new metadata (timestamp, confidence) merged</li>
+</ul>
+<h3 id="0.5.3 api specifications">0.5.3 Api Specifications</h3>
+<p><strong>REST API Endpoints:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Auth</th></tr></thead><tbody><tr><td>`POST`</td><td>`/api/meetings`</td><td>Create a new meeting session</td><td>None (localhost)</td></tr><tr><td>`GET`</td><td>`/api/meetings/{id}`</td><td>Retrieve current meeting state</td><td>None</td></tr><tr><td>`POST`</td><td>`/api/meetings/{id}/stop`</td><td>Stop an active meeting, trigger final report</td><td>None</td></tr><tr><td>`GET`</td><td>`/api/meetings/{id}/export?format=md`</td><td>Export meeting report (md/html)</td><td>None</td></tr><tr><td>`POST`</td><td>`/api/token/ephemeral`</td><td>Generate OpenAI ephemeral key for WebRTC</td><td>None</td></tr></tbody></table></div><p><strong>Request/Response Schemas (Key Examples):</strong></p>
+<p><code>POST /api/meetings</code> — Request:</p>
+<pre><code class="hljs"><span class="hljs-punctuation">{</span> <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Marketing Weekly Review"</span> <span class="hljs-punctuation">}</span></code></pre><p><code>POST /api/meetings</code> — Response:</p>
+<pre><code class="hljs"><span class="hljs-punctuation">{</span> <span class="hljs-attr">"meeting_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"uuid"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"..."</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"active"</span> <span class="hljs-punctuation">}</span></code></pre><p><strong>WebSocket Events (<code>/ws/meetings/{meeting_id}</code>):</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Direction</th><th>Event Type</th><th>Payload</th><th>Purpose</th></tr></thead><tbody><tr><td>Server → Client</td><td>`meeting.state`</td><td>Full MeetingState JSON</td><td>Initial state on connect / resync</td></tr><tr><td>Server → Client</td><td>`meeting.delta`</td><td>Partial state update</td><td>Incremental updates (new segments, insights)</td></tr><tr><td>Client → Server</td><td>`user.question`</td><td>`{ "text": "..." }`</td><td>User asks copilot a question</td></tr><tr><td>Server → Client</td><td>`bot.answer`</td><td>`{ "text": "...", "question_id": "..." }`</td><td>Copilot answer to user question</td></tr><tr><td>Server → Client</td><td>`bot.flag`</td><td>`{ "text": "...", "type": "warning" }`</td><td>Proactive alerts (e.g., undefined attribution period)</td></tr><tr><td>Client → Server</td><td>`transcript.segments`</td><td>`[TranscriptSegment]`</td><td>Browser forwards transcribed segments to backend</td></tr></tbody></table></div><h3 id="0.5.4 user interface design">0.5.4 User Interface Design</h3>
+<p>No Figma screens were provided for this project. The UI design is derived from the user's detailed UX specifications in Section 7 of the requirements document.</p>
+<p><strong>Live Meeting Screen Layout:</strong></p>
+<ul>
+<li><strong>Header Bar:</strong> Meeting title (editable), elapsed timer, recording status badge (REC indicator), Start/Stop toggle buttons</li>
+<li><strong>Left Column (60% width):</strong> Live transcript panel with auto-scroll, timecodes per segment, optional speaker labels, alternating background for readability</li>
+<li><strong>Right Column (40% width):</strong> Tabbed panel containing:<ul>
+<li>Live Summary tab (latest snapshot with toggle to view history)</li>
+<li>Decisions tab (bulleted list with timestamps)</li>
+<li>Action Items tab (table: task, owner, due date, status)</li>
+<li>Risks tab (list with optional severity badges)</li>
+<li>Open Questions tab (list with timestamps)</li>
+</ul>
+</li>
+<li><strong>Bottom Panel:</strong> "Ask Copilot" text input with send button; quick-action buttons: "Суммируй 5 минут", "Список задач", "Риски", "Что решили?"</li>
+</ul>
+<p><strong>Post-Meeting Report Screen:</strong></p>
+<ul>
+<li>Structured minutes display in rendered Markdown</li>
+<li>Action buttons row: "Export Markdown", "Send to Telegram", "Create Tasks" (disabled/placeholder for Notion/Bitrix/Jira)</li>
+<li>Meeting metadata header (title, date, duration, participant count if available)</li>
+</ul>
+<h2 id="0.6 scope definition">0.6 Scope Definition</h2>
+<h2 id="0.6 scope definition">0.6 Scope Definition</h2>
+<h3 id="0.6.1 explicitly in scope">0.6.1 Explicitly In Scope</h3>
+<p><strong>Core Functionality (MVP):</strong></p>
+<ul>
+<li>Complete meeting lifecycle management: create, start recording, stop, and retrieve meeting state via REST API</li>
+<li>Real-time audio capture from browser microphone using <code>getUserMedia()</code> and WebRTC AudioWorklet</li>
+<li>Direct WebRTC transcription via OpenAI Realtime API (Mode A: browser → OpenAI) with ephemeral token authentication</li>
+<li>Live transcript display with timecodes, auto-scroll, and optional speaker attribution</li>
+<li>Incremental live summary generation updated every 30–60 seconds via LLM delta processing</li>
+<li>Automated extraction and deduplication of four insight categories: Decisions, Action Items, Risks, Open Questions</li>
+<li>In-meeting conversational Q&amp;A ("Ask Copilot") with contextual answers from the meeting state</li>
+<li>Post-meeting final report generation in structured Markdown format</li>
+<li>Markdown export / download functionality for meeting reports</li>
+<li>Telegram bot integration with long-polling: <code>/start_meeting</code>, <code>/stop_meeting</code>, <code>/summary</code>, <code>/actions</code>, <code>/decisions</code>, <code>/ask</code> commands</li>
+<li>Telegram auto-posting of meeting results (summary + tasks + risks) to a configured chat/channel</li>
+<li>Telegram bot security: user/chat whitelist for command authorization</li>
+</ul>
+<p><strong>Infrastructure &amp; Configuration:</strong></p>
+<ul>
+<li>FastAPI backend with WebSocket server for real-time UI state synchronization</li>
+<li>React + Vite + TypeScript frontend SPA served from localhost</li>
+<li>SQLite local database for meeting persistence with auto-save (10–30 second intervals)</li>
+<li>Environment variable management via <code>.env</code> files for API keys, bot tokens, configuration</li>
+<li>Docker Compose setup for single-command local development startup</li>
+<li>CORS configuration for localhost origins</li>
+</ul>
+<p><strong>Cross-Platform Support:</strong></p>
+<ul>
+<li>Windows WSL2 (Ubuntu) deployment with automatic port forwarding to host browser</li>
+<li>macOS native deployment via Python virtual environment</li>
+</ul>
+<p><strong>AI Provider Architecture:</strong></p>
+<ul>
+<li>Abstract AI provider interface supporting OpenAI and Anthropic backends</li>
+<li>Externalized LLM prompt templates for structuring, summarization, Q&amp;A, and report generation</li>
+<li>OpenAI ephemeral token generation endpoint for secure browser WebRTC sessions</li>
+<li>Configurable provider selection via environment variable (<code>AI_PROVIDER</code>)</li>
+</ul>
+<p><strong>Quality &amp; Developer Experience:</strong></p>
+<ul>
+<li>Unit tests for core business logic (state manager, deduplication, export service)</li>
+<li>Integration tests for REST API endpoints and WebSocket communication</li>
+<li>Structured logging for debugging real-time pipelines</li>
+<li>Development scripts (<code>setup.sh</code>, <code>start-dev.sh</code>, <code>init-db.sh</code>)</li>
+<li>README with quickstart guide for both Windows WSL and macOS</li>
+</ul>
+<p><strong>Specific Features (Exhaustive List):</strong></p>
+<ul>
+<li>Meeting timer with elapsed time display</li>
+<li>Recording status indicator (REC badge)</li>
+<li>Quick-action buttons for common copilot queries ("Суммируй 5 минут", "Список задач", "Риски", "Что решили?")</li>
+<li>Graceful meeting stop with final report generation on connection loss</li>
+<li>"Delete meeting locally" capability for privacy compliance</li>
+<li>"Do not store audio" mode — only transcript and reports are persisted</li>
+<li>Meeting state auto-save with configurable interval</li>
+<li>WebSocket reconnection with exponential backoff and state resync</li>
+</ul>
+<h3 id="0.6.2 explicitly out of scope">0.6.2 Explicitly Out Of Scope</h3>
+<p><strong>Deferred to Future Phases:</strong></p>
+<ul>
+<li>System audio capture (WASAPI loopback on Windows, BlackHole/Loopback on macOS) — flagged by user as Phase 2</li>
+<li>Bot-participant integration for Zoom/Teams/Meet — flagged by user as optional future phase</li>
+<li>Notion, Bitrix, Jira integrations for task creation — flagged by user as "позже" (later)</li>
+<li>VPS deployment with public URL and Telegram webhooks — explicitly marked as optional</li>
+<li>Multi-meeting concurrent sessions — MVP targets single active meeting</li>
+<li>Multi-user authentication and access control — MVP assumes trusted localhost</li>
+<li>Speaker diarization with named identification — optional enhancement; MVP supports optional speaker labels from STT</li>
+<li>Meeting templates (e.g., "Marketing Weekly Review") with pre-configured glossaries — user's Sprint 4 scope</li>
+<li>Meeting history browsing and search UI</li>
+<li>Custom domain/vocabulary dictionary for marketing-specific terms</li>
+</ul>
+<p><strong>Not Included (Production Features):</strong></p>
+<ul>
+<li>HTTPS/TLS certificates for localhost (not needed for local deployment)</li>
+<li>Production deployment automation (CI/CD to cloud)</li>
+<li>Comprehensive observability stack (metrics, tracing, alerting dashboards)</li>
+<li>Performance optimization beyond basic needs (connection pooling, caching layers)</li>
+<li>Internationalization (i18n) beyond Russian/English content in prompts</li>
+<li>Rate limiting and API quota management for the local API</li>
+<li>Automated backup and disaster recovery for meeting data</li>
+<li>Mobile-responsive frontend design (desktop-first for meeting context)</li>
+<li>Audio recording and playback functionality</li>
+<li>Real-time noise cancellation beyond WebRTC built-in constraints</li>
+<li>End-to-end encryption for data at rest</li>
+</ul>
+<h2 id="0.7 deliverable mapping">0.7 Deliverable Mapping</h2>
+<h2 id="0.7 deliverable mapping">0.7 Deliverable Mapping</h2>
+<h3 id="0.7.1 file creation plan">0.7.1 File Creation Plan</h3>
+<p><strong>Backend — Core Application:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`backend/src/main.py`</td><td>FastAPI app factory, middleware, lifespan events</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/config/settings.py`</td><td>Pydantic Settings: env var management, app configuration</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/config/constants.py`</td><td>Application-wide constants (intervals, thresholds)</td><td>Source</td><td>Medium</td></tr><tr><td>`backend/src/api/router.py`</td><td>Central API router aggregating all endpoints</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/api/meetings.py`</td><td>REST endpoints for meeting CRUD, stop, export</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/api/websocket.py`</td><td>WebSocket endpoint for real-time state sync</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/api/token.py`</td><td>Ephemeral token generation for OpenAI WebRTC</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/models/meeting.py`</td><td>Meeting, TranscriptSegment, Snapshot Pydantic models</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/models/insights.py`</td><td>Decision, Action, Risk, OpenQuestion Pydantic models</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/models/websocket_events.py`</td><td>WebSocket event schema definitions</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/services/meeting_service.py`</td><td>Meeting lifecycle management business logic</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/services/state_manager.py`</td><td>Incremental state processing and delta engine</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/services/deduplication.py`</td><td>Text normalization, hashing, similarity matching</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/services/export_service.py`</td><td>Markdown/HTML report generation</td><td>Source</td><td>Medium</td></tr><tr><td>`backend/src/services/ai/provider_base.py`</td><td>Abstract AI provider interface</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/services/ai/openai_provider.py`</td><td>OpenAI implementation (tokens + LLM)</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/services/ai/anthropic_provider.py`</td><td>Anthropic Claude implementation</td><td>Source</td><td>Medium</td></tr><tr><td>`backend/src/services/ai/prompts.py`</td><td>Prompt template loader and manager</td><td>Source</td><td>High</td></tr></tbody></table></div><p><strong>Backend — Integrations:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`backend/src/integrations/telegram/bot.py`</td><td>Bot initialization, long-polling, command registration</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/integrations/telegram/commands.py`</td><td>Command handler implementations</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/integrations/telegram/formatters.py`</td><td>Telegram message formatting utilities</td><td>Source</td><td>Medium</td></tr><tr><td>`backend/src/integrations/telegram/security.py`</td><td>Whitelist and authorization checks</td><td>Source</td><td>Medium</td></tr></tbody></table></div><p><strong>Backend — Database:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`backend/src/db/database.py`</td><td>SQLite/aiosqlite connection management</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/db/repositories.py`</td><td>Data access layer for meetings and insights</td><td>Source</td><td>High</td></tr><tr><td>`backend/src/db/migrations.py`</td><td>Schema initialization and migration helpers</td><td>Source</td><td>High</td></tr></tbody></table></div><p><strong>Backend — Common:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`backend/src/common/exceptions.py`</td><td>Custom exception definitions</td><td>Source</td><td>Medium</td></tr><tr><td>`backend/src/common/logging.py`</td><td>Structured logging configuration</td><td>Source</td><td>Medium</td></tr><tr><td>`backend/src/common/utils.py`</td><td>Shared utility functions</td><td>Source</td><td>Low</td></tr></tbody></table></div><p><strong>Frontend — Core Components:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`frontend/src/main.tsx`</td><td>Application entry point and root render</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/App.tsx`</td><td>Root component with React Router</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/layout/Header.tsx`</td><td>Meeting header: title, timer, status, controls</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/meeting/LiveMeeting.tsx`</td><td>Main live meeting view container</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/meeting/TranscriptPanel.tsx`</td><td>Real-time transcript display</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/meeting/SummaryPanel.tsx`</td><td>Live summary with history</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/meeting/InsightsPanel.tsx`</td><td>Decisions, Actions, Risks, Questions tabs</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/meeting/CopilotChat.tsx`</td><td>Ask Copilot chat input and response</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/meeting/MeetingControls.tsx`</td><td>Start/Stop/Export buttons</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/components/report/PostMeetingReport.tsx`</td><td>Post-meeting structured report view</td><td>Source</td><td>Medium</td></tr><tr><td>`frontend/src/components/report/ExportButtons.tsx`</td><td>Export and send actions</td><td>Source</td><td>Medium</td></tr></tbody></table></div><p><strong>Frontend — Hooks and Services:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`frontend/src/hooks/useAudioCapture.ts`</td><td>Microphone access and stream management</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/hooks/useWebRTC.ts`</td><td>WebRTC connection to OpenAI Realtime API</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/hooks/useWebSocket.ts`</td><td>WebSocket connection to backend</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/hooks/useMeetingState.ts`</td><td>Meeting state aggregation and management</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/hooks/useCopilot.ts`</td><td>Copilot Q&amp;A interaction logic</td><td>Source</td><td>Medium</td></tr><tr><td>`frontend/src/services/api.ts`</td><td>REST API client</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/services/webrtc.ts`</td><td>WebRTC session management</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/services/websocket.ts`</td><td>WebSocket connection logic</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/types/meeting.ts`</td><td>TypeScript type definitions for meetings</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/types/insights.ts`</td><td>TypeScript type definitions for insights</td><td>Source</td><td>High</td></tr><tr><td>`frontend/src/types/events.ts`</td><td>WebSocket/WebRTC event types</td><td>Source</td><td>High</td></tr></tbody></table></div><p><strong>Tests:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`backend/tests/conftest.py`</td><td>Shared fixtures and test configuration</td><td>Test</td><td>High</td></tr><tr><td>`backend/tests/unit/test_meeting_service.py`</td><td>Meeting lifecycle unit tests</td><td>Test</td><td>High</td></tr><tr><td>`backend/tests/unit/test_state_manager.py`</td><td>Delta processing and state update tests</td><td>Test</td><td>High</td></tr><tr><td>`backend/tests/unit/test_deduplication.py`</td><td>Deduplication logic tests</td><td>Test</td><td>High</td></tr><tr><td>`backend/tests/unit/test_export_service.py`</td><td>Report generation tests</td><td>Test</td><td>Medium</td></tr><tr><td>`backend/tests/unit/test_ai_providers.py`</td><td>AI provider interface tests</td><td>Test</td><td>Medium</td></tr><tr><td>`backend/tests/integration/test_api_meetings.py`</td><td>REST API endpoint integration tests</td><td>Test</td><td>High</td></tr><tr><td>`backend/tests/integration/test_websocket.py`</td><td>WebSocket communication tests</td><td>Test</td><td>Medium</td></tr><tr><td>`backend/tests/integration/test_telegram_bot.py`</td><td>Telegram bot command tests</td><td>Test</td><td>Medium</td></tr></tbody></table></div><p><strong>Configuration and Infrastructure:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`.env.example`</td><td>Environment variables template</td><td>Config</td><td>High</td></tr><tr><td>`docker-compose.yml`</td><td>Local development orchestration</td><td>Config</td><td>High</td></tr><tr><td>`backend/requirements.txt`</td><td>Python dependencies (pinned)</td><td>Config</td><td>High</td></tr><tr><td>`backend/requirements-dev.txt`</td><td>Development dependencies</td><td>Config</td><td>High</td></tr><tr><td>`backend/pyproject.toml`</td><td>Project metadata and tool config</td><td>Config</td><td>Medium</td></tr><tr><td>`backend/Dockerfile`</td><td>Backend container definition</td><td>Config</td><td>Medium</td></tr><tr><td>`frontend/package.json`</td><td>Node.js dependencies</td><td>Config</td><td>High</td></tr><tr><td>`frontend/vite.config.ts`</td><td>Vite build config with proxy</td><td>Config</td><td>High</td></tr><tr><td>`frontend/tsconfig.json`</td><td>TypeScript configuration</td><td>Config</td><td>High</td></tr><tr><td>`frontend/tailwind.config.js`</td><td>Tailwind CSS configuration</td><td>Config</td><td>High</td></tr><tr><td>`frontend/Dockerfile`</td><td>Frontend container definition</td><td>Config</td><td>Low</td></tr><tr><td>`config/prompts/structuring.md`</td><td>LLM prompt for insight extraction</td><td>Config</td><td>High</td></tr><tr><td>`config/prompts/summarization.md`</td><td>LLM prompt for live summary</td><td>Config</td><td>High</td></tr><tr><td>`config/prompts/qa.md`</td><td>LLM prompt for Q&amp;A copilot</td><td>Config</td><td>High</td></tr><tr><td>`config/prompts/report.md`</td><td>LLM prompt for final report</td><td>Config</td><td>Medium</td></tr><tr><td>`Makefile`</td><td>Common development commands</td><td>Config</td><td>Medium</td></tr></tbody></table></div><p><strong>Documentation:</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>File Path</th><th>Purpose</th><th>Content Type</th><th>Priority</th></tr></thead><tbody><tr><td>`README.md`</td><td>Project overview and quickstart</td><td>Documentation</td><td>High</td></tr><tr><td>`docs/guides/setup-windows-wsl.md`</td><td>Windows WSL2 setup guide</td><td>Documentation</td><td>High</td></tr><tr><td>`docs/guides/setup-macos.md`</td><td>macOS setup guide</td><td>Documentation</td><td>High</td></tr><tr><td>`docs/guides/telegram-bot-setup.md`</td><td>Telegram bot configuration</td><td>Documentation</td><td>Medium</td></tr><tr><td>`docs/architecture/system-overview.md`</td><td>Architecture documentation</td><td>Documentation</td><td>Medium</td></tr><tr><td>`docs/api/rest-api.md`</td><td>REST API reference</td><td>Documentation</td><td>Medium</td></tr><tr><td>`docs/api/websocket-events.md`</td><td>WebSocket event reference</td><td>Documentation</td><td>Medium</td></tr></tbody></table></div><h3 id="0.7.2 implementation phases">0.7.2 Implementation Phases</h3>
+<p><strong>Phase 1 — Foundation (Core Structure and Configuration):</strong></p>
+<ul>
+<li>Project scaffolding: repository structure, configuration files, dependency management</li>
+<li>FastAPI application factory with CORS, lifespan events, and basic routing</li>
+<li>React + Vite project initialization with TypeScript and Tailwind CSS</li>
+<li>SQLite database initialization and schema creation</li>
+<li>Environment variable management and <code>.env.example</code> template</li>
+<li>Docker Compose configuration for local development</li>
+<li>Pydantic model definitions for all entities</li>
+</ul>
+<p><strong>Phase 2 — Core Audio Pipeline (Browser UI + Transcription):</strong></p>
+<ul>
+<li>Browser microphone capture via <code>getUserMedia()</code> and AudioWorklet</li>
+<li>Ephemeral token generation endpoint on the backend</li>
+<li>WebRTC connection to OpenAI Realtime API for real-time transcription</li>
+<li>Live transcript display panel with timecodes and auto-scroll</li>
+<li>WebSocket connection between frontend and backend for transcript relay</li>
+<li>Meeting CRUD REST API endpoints</li>
+<li>Start/Stop meeting controls in the UI</li>
+</ul>
+<p><strong>Phase 3 — Intelligence Layer (Summary + Insights Extraction):</strong></p>
+<ul>
+<li>Meeting state manager with delta processing engine</li>
+<li>LLM integration for incremental summary generation (30–60 second intervals)</li>
+<li>LLM-based extraction of Decisions, Action Items, Risks, Open Questions</li>
+<li>Deduplication engine with text normalization and hash-based stable IDs</li>
+<li>Live Summary panel, Insights panel (tabbed: Decisions/Actions/Risks/Questions)</li>
+<li>WebSocket delta broadcasting for real-time UI updates</li>
+</ul>
+<p><strong>Phase 4 — Copilot and Telegram Integration:</strong></p>
+<ul>
+<li>In-meeting Q&amp;A "Ask Copilot" chat with contextual LLM answers</li>
+<li>Quick-action buttons for common queries</li>
+<li>Telegram bot setup with long-polling and command handlers</li>
+<li>Telegram commands: <code>/start_meeting</code>, <code>/stop_meeting</code>, <code>/summary</code>, <code>/actions</code>, <code>/decisions</code>, <code>/ask</code></li>
+<li>Auto-post meeting results to configured Telegram chat/channel</li>
+<li>Telegram security: whitelist-based command authorization</li>
+</ul>
+<p><strong>Phase 5 — Reports, Export, and Testing:</strong></p>
+<ul>
+<li>Post-meeting final report generation via LLM</li>
+<li>Markdown export and download functionality</li>
+<li>Post-Meeting Report screen in the frontend</li>
+<li>Unit tests for state manager, deduplication, export service, AI providers</li>
+<li>Integration tests for REST API, WebSocket, and Telegram bot</li>
+<li>Developer documentation (README, setup guides, API reference)</li>
+</ul>
+<h2 id="0.8 references">0.8 References</h2>
+<h2 id="0.8 references">0.8 References</h2>
+<h3 id="0.8.1 attachments">0.8.1 Attachments</h3>
+<p>No file attachments were provided for this project. No Figma screens or design assets were included.</p>
+<h3 id="0.8.2 user-specified reference urls">0.8.2 User-specified Reference Urls</h3>
+<p>The user provided the following reference documentation links within the requirements:</p>
+<div class="table-wrapper"><table><thead><tr><th>Resource</th><th>URL</th><th>Description</th></tr></thead><tbody><tr><td>OpenAI Realtime API Overview</td><td>`https://platform.openai.com/docs/guides/realtime`</td><td>Main documentation for the OpenAI Realtime API, covering WebRTC and WebSocket connection modes, session types, and model capabilities</td></tr><tr><td>OpenAI Realtime Transcription</td><td>`https://platform.openai.com/docs/guides/realtime-transcription`</td><td>Guide for transcription-only sessions using the Realtime API, including session configuration and event handling</td></tr><tr><td>OpenAI Realtime WebRTC Guide</td><td>`https://developers.openai.com/api/docs/guides/realtime-webrtc`</td><td>Detailed guide for establishing WebRTC peer connections with the OpenAI Realtime API from browser clients</td></tr><tr><td>OpenAI Audio / Speech-to-Text</td><td>`https://platform.openai.com/docs/guides/audio`</td><td>General audio and speech-to-text guide covering non-realtime transcription endpoints</td></tr></tbody></table></div><h3 id="0.8.3 research sources consulted">0.8.3 Research Sources Consulted</h3>
+<div class="table-wrapper"><table><thead><tr><th>Source</th><th>URL</th><th>Topic</th></tr></thead><tbody><tr><td>OpenAI Realtime API WebRTC Docs</td><td>`https://platform.openai.com/docs/guides/realtime-webrtc`</td><td>Ephemeral token flow, SDP negotiation, data channel events for WebRTC</td></tr><tr><td>OpenAI Realtime Transcription Docs</td><td>`https://platform.openai.com/docs/guides/realtime-transcription`</td><td>Transcription session configuration, VAD settings, event types</td></tr><tr><td>OpenAI Realtime GA Announcement</td><td>`https://openai.com/index/introducing-gpt-realtime/`</td><td>GA release details, gpt-realtime model improvements, pricing</td></tr><tr><td>OpenAI Realtime API Reference</td><td>`https://platform.openai.com/docs/api-reference/realtime-sessions`</td><td>Client secrets API, session objects, configuration schema</td></tr><tr><td>FastAPI Official Documentation</td><td>`https://fastapi.tiangolo.com/`</td><td>WebSocket support, middleware, async patterns</td></tr><tr><td>FastAPI PyPI</td><td>`https://pypi.org/project/fastapi/`</td><td>Latest version information (0.128.7)</td></tr><tr><td>python-telegram-bot</td><td>`https://python-telegram-bot.org/`</td><td>Library documentation and long-polling patterns</td></tr><tr><td>Fora Soft WebRTC Integration Guide</td><td>`https://forasoft.medium.com/`</td><td>WebRTC + OpenAI integration patterns, latency benchmarks</td></tr><tr><td>Skywork AI WebRTC vs Realtime API</td><td>`https://skywork.ai/blog/`</td><td>Architecture trade-offs between WebRTC and WebSocket approaches</td></tr><tr><td>Deepgram React Transcription</td><td>`https://deepgram.com/learn/`</td><td>React + real-time transcription app architecture patterns</td></tr></tbody></table></div><h3 id="0.8.4 technology documentation links">0.8.4 Technology Documentation Links</h3>
+<div class="table-wrapper"><table><thead><tr><th>Technology</th><th>Documentation URL</th></tr></thead><tbody><tr><td>FastAPI</td><td>`https://fastapi.tiangolo.com/`</td></tr><tr><td>React</td><td>`https://react.dev/`</td></tr><tr><td>Vite</td><td>`https://vitejs.dev/`</td></tr><tr><td>Tailwind CSS</td><td>`https://tailwindcss.com/docs`</td></tr><tr><td>python-telegram-bot</td><td>`https://docs.python-telegram-bot.org/`</td></tr><tr><td>OpenAI Python SDK</td><td>`https://github.com/openai/openai-python`</td></tr><tr><td>Pydantic v2</td><td>`https://docs.pydantic.dev/latest/`</td></tr><tr><td>SQLite</td><td>`https://www.sqlite.org/docs.html`</td></tr><tr><td>WebRTC (MDN)</td><td>`https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API`</td></tr><tr><td>MediaDevices API (MDN)</td><td>`https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices`</td></tr></tbody></table></div><h2 id="0.9 execution patterns">0.9 Execution Patterns</h2>
+<h2 id="0.9 execution patterns">0.9 Execution Patterns</h2>
+<h3 id="0.9.1 implementation guidelines">0.9.1 Implementation Guidelines</h3>
+<p><strong>Python Backend Standards:</strong></p>
+<ul>
+<li>Follow PEP 8 and PEP 257 conventions enforced via <code>ruff</code> linter and formatter</li>
+<li>Use <code>async/await</code> consistently for all I/O-bound operations (database, HTTP, WebSocket)</li>
+<li>Leverage Pydantic v2 models for all data validation, serialization, and API request/response schemas</li>
+<li>Implement dependency injection via FastAPI's <code>Depends()</code> for service layer access</li>
+<li>Use structured logging via Python's <code>logging</code> module with JSON formatter for production debugging</li>
+<li>All configuration managed through Pydantic <code>BaseSettings</code> with <code>.env</code> file support</li>
+<li>Handle errors with custom exception classes and FastAPI exception handlers for consistent API error responses</li>
+<li>WebSocket handlers must implement graceful disconnection with proper cleanup of meeting state subscriptions</li>
+</ul>
+<p><strong>TypeScript/React Frontend Standards:</strong></p>
+<ul>
+<li>Use functional components with React hooks exclusively — no class components</li>
+<li>Implement custom hooks for all side-effect logic (WebRTC, WebSocket, API calls, audio capture)</li>
+<li>Define strict TypeScript interfaces for all data structures matching backend Pydantic models</li>
+<li>Use React Context for global state (active meeting) and local state for component-specific UI</li>
+<li>WebSocket and WebRTC connection lifecycle managed in hooks with proper cleanup in <code>useEffect</code> return</li>
+<li>Apply Tailwind CSS utility classes directly; extract reusable patterns into component-level abstractions</li>
+<li>All user-facing text supports both Russian and English content from AI outputs without hardcoded language</li>
+</ul>
+<p><strong>Real-Time Audio Pipeline Best Practices:</strong></p>
+<ul>
+<li>Use <code>AudioWorklet</code> (not deprecated <code>ScriptProcessorNode</code>) for microphone audio processing in the browser</li>
+<li>Configure WebRTC constraints with echo cancellation, noise suppression, and auto gain control enabled</li>
+<li>Implement heartbeat/keepalive for WebSocket connections to detect and recover from silent disconnections</li>
+<li>Buffer transcript segments on the frontend before forwarding to the backend to reduce WebSocket message frequency</li>
+<li>Backend delta processing should be debounced at configurable intervals (default: 30 seconds) to avoid excessive LLM calls</li>
+</ul>
+<p><strong>AI Provider Integration Patterns:</strong></p>
+<ul>
+<li>All LLM prompts externalized to <code>config/prompts/*.md</code> files — never hardcoded in source</li>
+<li>Prompt templates use variable substitution for meeting context injection (e.g., <code>{transcript_delta}</code>, <code>{current_state}</code>)</li>
+<li>AI provider responses must be parsed with error handling for malformed JSON or incomplete outputs</li>
+<li>Implement exponential backoff with jitter for transient AI API failures</li>
+<li>Log all AI API calls with request/response metadata for debugging and cost monitoring</li>
+</ul>
+<p><strong>Telegram Bot Patterns:</strong></p>
+<ul>
+<li>Bot runs as an async background task within the FastAPI application lifecycle (started on app startup, stopped on shutdown)</li>
+<li>Command handlers access meeting state through the shared service layer — no direct database access from bot code</li>
+<li>Message formatting uses Telegram-compatible Markdown (MarkdownV2) with proper escaping</li>
+<li>Bot commands are idempotent where possible (repeated <code>/summary</code> calls return latest state without side effects)</li>
+</ul>
+<h3 id="0.9.2 quality standards">0.9.2 Quality Standards</h3>
+<p><strong>Code Quality:</strong></p>
+<ul>
+<li>Python code must pass <code>ruff</code> linting with zero errors (line length: 120, target Python 3.12)</li>
+<li>TypeScript code must pass <code>eslint</code> with strict configuration and <code>prettier</code> formatting</li>
+<li>All public functions, classes, and modules must have docstrings (Python) or JSDoc comments (TypeScript)</li>
+<li>No <code># type: ignore</code> or <code>@ts-ignore</code> annotations without accompanying justification comments</li>
+<li>Git commits follow Conventional Commits format (<code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>test:</code>, <code>chore:</code>)</li>
+</ul>
+<p><strong>Test Coverage Targets:</strong></p>
+<ul>
+<li>Core business logic (state manager, deduplication, meeting service): ≥ 85% line coverage</li>
+<li>REST API endpoints: ≥ 80% coverage via integration tests</li>
+<li>WebSocket communication: ≥ 70% coverage for event handling paths</li>
+<li>AI provider implementations: ≥ 75% coverage with mocked API responses</li>
+<li>Frontend hooks: ≥ 70% coverage via React Testing Library</li>
+<li>Overall project minimum: ≥ 75% combined coverage</li>
+</ul>
+<p><strong>Security Standards:</strong></p>
+<ul>
+<li>No API keys or secrets committed to version control; all secrets via <code>.env</code> files listed in <code>.gitignore</code></li>
+<li>OpenAI ephemeral tokens must have short TTL (default: 60 seconds) and be single-use</li>
+<li>Telegram bot must validate incoming command sources against the configured whitelist before execution</li>
+<li>SQLite database file stored with restrictive file permissions (owner read/write only)</li>
+<li>Input sanitization applied to all user-provided text before LLM prompt injection (meeting titles, copilot questions)</li>
+<li>WebSocket connections must validate <code>meeting_id</code> existence before accepting the upgrade</li>
+</ul>
+<p><strong>Performance Standards:</strong></p>
+<ul>
+<li>Transcript display latency: ≤ 2 seconds from speech to text on screen (WebRTC path)</li>
+<li>Live summary update cycle: 30–60 seconds configurable via environment variable</li>
+<li>WebSocket message size: ≤ 64KB per frame (full state snapshots chunked if larger)</li>
+<li>SQLite auto-save: configurable interval 10–30 seconds with write-ahead logging (WAL) mode enabled</li>
+<li>Backend startup time: ≤ 5 seconds including database initialization</li>
+<li>Telegram command response time: ≤ 3 seconds for state queries, ≤ 10 seconds for LLM-powered responses</li>
+</ul>
+</div><button class="absolute top-6 right-8 bg-transparent border-none hover:border-none hover:cursor-pointer md:hidden pr-0"><svg width="16" height="16" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.99867 21.5C4.07838 21.5097 4.15896 21.5097 4.23867 21.5L8.23867 20.5C8.41612 20.4578 8.57865 20.3679 8.70867 20.24L20.9987 7.91003C21.3712 7.5353 21.5803 7.0284 21.5803 6.50003C21.5803 5.97165 21.3712 5.46475 20.9987 5.09003L19.4187 3.50003C19.2329 3.31407 19.0123 3.16655 18.7696 3.06591C18.5268 2.96526 18.2665 2.91345 18.0037 2.91345C17.7408 2.91345 17.4806 2.96526 17.2378 3.06591C16.995 3.16655 16.7744 3.31407 16.5887 3.50003L4.29867 15.79C4.16946 15.9206 4.07642 16.0826 4.02867 16.26L3.02867 20.26C2.99273 20.3894 2.98322 20.5247 3.0007 20.6579C3.01818 20.791 3.0623 20.9193 3.13043 21.035C3.19856 21.1507 3.2893 21.2515 3.39724 21.3314C3.50517 21.4113 3.62809 21.4687 3.75867 21.5C3.83838 21.5097 3.91896 21.5097 3.99867 21.5ZM17.9987 4.91003L19.5887 6.50003L17.9987 8.09003L16.4187 6.50003L17.9987 4.91003ZM5.90867 17.01L14.9987 7.91003L16.5887 9.50003L7.48867 18.6L5.37867 19.12L5.90867 17.01Z" fill="#666666"></path></svg></button><button class="absolute top-6 right-8 bg-transparent border-none hover:border-none hover:cursor-pointer hidden md:group-hover:block"><svg width="16" height="16" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.99867 21.5C4.07838 21.5097 4.15896 21.5097 4.23867 21.5L8.23867 20.5C8.41612 20.4578 8.57865 20.3679 8.70867 20.24L20.9987 7.91003C21.3712 7.5353 21.5803 7.0284 21.5803 6.50003C21.5803 5.97165 21.3712 5.46475 20.9987 5.09003L19.4187 3.50003C19.2329 3.31407 19.0123 3.16655 18.7696 3.06591C18.5268 2.96526 18.2665 2.91345 18.0037 2.91345C17.7408 2.91345 17.4806 2.96526 17.2378 3.06591C16.995 3.16655 16.7744 3.31407 16.5887 3.50003L4.29867 15.79C4.16946 15.9206 4.07642 16.0826 4.02867 16.26L3.02867 20.26C2.99273 20.3894 2.98322 20.5247 3.0007 20.6579C3.01818 20.791 3.0623 20.9193 3.13043 21.035C3.19856 21.1507 3.2893 21.2515 3.39724 21.3314C3.50517 21.4113 3.62809 21.4687 3.75867 21.5C3.83838 21.5097 3.91896 21.5097 3.99867 21.5ZM17.9987 4.91003L19.5887 6.50003L17.9987 8.09003L16.4187 6.50003L17.9987 4.91003ZM5.90867 17.01L14.9987 7.91003L16.5887 9.50003L7.48867 18.6L5.37867 19.12L5.90867 17.01Z" fill="#666666"></path></svg></button></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;"><ol tabindex="-1" class="fixed top-4 left-1/2 z-[100] flex max-h-screen w-full -translate-x-1/2 justify-center p-4 md:max-w-[420px]"></ol></div></div>
+    <!-- Cloudflare Pages Analytics --><script defer="" src="./Blitzy Platform_files/beacon.min.js.Без названия" data-cf-beacon="{&quot;token&quot;: &quot;1b76919066df4fff8be84a3126372468&quot;}" type="text/javascript"></script><!-- Cloudflare Pages Analytics --><script defer="" src="./Blitzy Platform_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;80622029a634442f9c7260986201810f&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" id="" charset="">!function(){var a=window.reb2b=window.reb2b||[];if(!a.invoked){a.invoked=!0;a.methods=["identify","collect"];a.factory=function(c){return function(){var b=Array.prototype.slice.call(arguments);b.unshift(c);a.push(b);return a}};for(var d=0;d<a.methods.length;d++){var e=a.methods[d];a[e]=a.factory(e)}a.load=function(c){var b=document.createElement("script");b.type="text/javascript";b.async=!0;b.src="https://s3-us-west-2.amazonaws.com/b2bjsstore/b/"+c+"/reb2b.js.gz";c=document.getElementsByTagName("script")[0];
+c.parentNode.insertBefore(b,c)};a.SNIPPET_VERSION="1.0.1";a.load("M5NRP9HRW5O1")}}();</script><script type="text/javascript" id="" charset="">window.addEventListener("message",function(a){a.data.meetingBookSucceeded&&window.dataLayer.push({event:"meeting_booked",email:a.data.meetingsPayload.bookingResponse.postResponse.contact.email})});</script><script type="text/javascript" id="" charset="">!function(e,f){try{if(e.vector)return void console.log("Vector snippet included more than once.");var a={};a.q=a.q||[];for(var g=["load","identify","on"],m=function(c){return function(){var l=Array.prototype.slice.call(arguments);a.q.push([c,l])}},d=0;d<g.length;d++){var h=g[d];a[h]=m(h)}if(e.vector=a,!a.loaded){var b=f.createElement("script");b.type="text/javascript";b.async=!0;b.src="https://cdn.vector.co/pixel.js";var k=f.getElementsByTagName("script")[0];k.parentNode.insertBefore(b,k);a.loaded=
+!0}}catch(c){console.error("Error loading Vector:",c)}}(window,document);vector.load("b138a2bc-acb0-4b48-bb04-1ac9cad548fe");</script>
+<script id="hs-script-loader" text="" charset="" type="text/javascript" src="./Blitzy Platform_files/44505231(1).js.Без названия"></script><script type="text/javascript" id="" charset="">(function(){function k(){try{return JSON.parse(sessionStorage.getItem("persistedParams")||"{}")}catch(d){return{}}}function l(d,a){if(!a||Object.keys(a).length===0)return d;var b=d.split("?");d=b[0];var c=b[1]||"";b={};if(c){c=c.split("\x26");for(var e=0;e<c.length;e++){var g=c[e].split("\x3d");g[0]&&(b[decodeURIComponent(g[0])]=decodeURIComponent(g[1]||""))}}for(var f in a)a.hasOwnProperty(f)&&!b[f]&&(b[f]=a[f]);a=[];for(var h in b)b.hasOwnProperty(h)&&a.push(encodeURIComponent(h)+"\x3d"+encodeURIComponent(b[h]));
+return d+"?"+a.join("\x26")}function m(){for(var d=document.querySelectorAll('a[href^\x3d"https://platform.blitzy.com"]'),a=k(),b=0;b<d.length;b++){var c=d[b];c.href=l(c.href,a)}}function n(d){for(var a=d.target;a&&a.tagName!=="A";)a=a.parentNode;if(a&&a.href){var b=a.getAttribute("href");if(b){var c=b.indexOf("/customsoftwarebooking")>-1;c&&(c=k(),b=l(b,c),d.preventDefault(),a.getAttribute("target")==="_blank"?window.open(b,"_blank"):window.location.href=b)}}}var p="utm_source utm_medium utm_campaign utm_term utm_content gclid".split(" ");
+(function(){var d={},a=window.location.search.substring(1);a=a.split("\x26");for(var b=0;b<a.length;b++){var c=a[b].split("\x3d");if(c.length===2){var e=decodeURIComponent(c[0]);c=decodeURIComponent(c[1]);p.indexOf(e)>-1&&(d[e]=c)}}Object.keys(d).length>0&&sessionStorage.setItem("persistedParams",JSON.stringify(d))})();document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){m();document.body.addEventListener("click",n)}):(m(),document.body.addEventListener("click",
+n))})();</script><iframe height="0" width="0" style="display: none; visibility: hidden;" src="./Blitzy Platform_files/saved_resource.html"></iframe>
+
+<iframe id="_hjSafeContext_75599823" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="./Blitzy Platform_files/saved_resource(1).html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe><iframe owner="archetype" title="archetype" style="display: none; visibility: hidden;" src="./Blitzy Platform_files/saved_resource(2).html"></iframe><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1770881479926" name="I0_1770881479926" src="./Blitzy Platform_files/iframe.html" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe></body></html>

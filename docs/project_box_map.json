@@ -1,0 +1,802 @@
+{
+  "meta": {
+    "project": "MeetingCopilot",
+    "generated_on": "2026-02-12",
+    "last_updated_for_stage": "Этап 4 — Ask Copilot + Telegram",
+    "purpose": "Единая карта проекта: структура, модули, взаимосвязи и точки входа",
+    "maintenance_rule": "Обновлять при каждом изменении структуры/модулей и фиксировать это в STATUS.md + BUILD_LOG.md"
+  },
+  "box_view": {
+    "root": "/",
+    "boxes": [
+      {
+        "name": "backend",
+        "path": "backend",
+        "role": "FastAPI API + бизнес-логика + доступ к БД",
+        "children": [
+          {
+            "name": "src",
+            "path": "backend/src",
+            "modules": [
+              {
+                "module": "main",
+                "file": "backend/src/main.py",
+                "responsibility": "Инициализация FastAPI, миграции, DI через app.state"
+              },
+              {
+                "module": "config.settings",
+                "file": "backend/src/config/settings.py",
+                "responsibility": "ENV-конфигурация приложения"
+              },
+              {
+                "module": "api.router",
+                "file": "backend/src/api/router.py",
+                "responsibility": "Сборка API-роутов"
+              },
+              {
+                "module": "api.meetings",
+                "file": "backend/src/api/meetings.py",
+                "responsibility": "REST CRUD для meetings"
+              },
+              {
+                "module": "api.token",
+                "file": "backend/src/api/token.py",
+                "responsibility": "Выдача ephemeral token для realtime провайдеров"
+              },
+              {
+                "module": "api.websocket",
+                "file": "backend/src/api/websocket.py",
+                "responsibility": "Базовый WS endpoint встречи"
+              },
+              {
+                "module": "services.meeting_service",
+                "file": "backend/src/services/meeting_service.py",
+                "responsibility": "Сервисный слой для операций meeting"
+              },
+              {
+                "module": "services.ai.provider_base",
+                "file": "backend/src/services/ai/provider_base.py",
+                "responsibility": "Базовый контракт realtime-провайдеров"
+              },
+              {
+                "module": "services.ai.openai_provider",
+                "file": "backend/src/services/ai/openai_provider.py",
+                "responsibility": "OpenAI Realtime ephemeral token"
+              },
+              {
+                "module": "services.ai.elevenlabs_provider",
+                "file": "backend/src/services/ai/elevenlabs_provider.py",
+                "responsibility": "ElevenLabs token provider (placeholder flow)"
+              },
+              {
+                "module": "services.ai.prompts",
+                "file": "backend/src/services/ai/prompts.py",
+                "responsibility": "Загрузка prompt-шаблонов из config/prompts"
+              },
+              {
+                "module": "db.database",
+                "file": "backend/src/db/database.py",
+                "responsibility": "aiosqlite connection manager"
+              },
+              {
+                "module": "db.migrations",
+                "file": "backend/src/db/migrations.py",
+                "responsibility": "DDL и индексы SQLite"
+              },
+              {
+                "module": "db.repositories",
+                "file": "backend/src/db/repositories.py",
+                "responsibility": "MeetingRepository CRUD"
+              },
+              {
+                "module": "models.meeting",
+                "file": "backend/src/models/meeting.py",
+                "responsibility": "Pydantic модели Meeting/Transcript/Snapshot"
+              },
+              {
+                "module": "models.insights",
+                "file": "backend/src/models/insights.py",
+                "responsibility": "Pydantic модели insights"
+              },
+              {
+                "module": "models.websocket_events",
+                "file": "backend/src/models/websocket_events.py",
+                "responsibility": "Схемы событий WebSocket"
+              },
+              {
+                "module": "services.state_manager",
+                "file": "backend/src/services/state_manager.py",
+                "responsibility": "Delta processing: summary + insights"
+              },
+              {
+                "module": "services.deduplication",
+                "file": "backend/src/services/deduplication.py",
+                "responsibility": "Хэш + similarity дедупликация инсайтов"
+              },
+              {
+                "module": "services.websocket_manager",
+                "file": "backend/src/services/websocket_manager.py",
+                "responsibility": "Connection manager и WS broadcast по meeting_id"
+              },
+              {
+                "module": "integrations.telegram.bot",
+                "file": "backend/src/integrations/telegram/bot.py",
+                "responsibility": "Telegram bot integration and message sending"
+              },
+              {
+                "module": "integrations.telegram.commands",
+                "file": "backend/src/integrations/telegram/commands.py",
+                "responsibility": "Handlers for /start_meeting, /stop_meeting, /summary, /actions, /decisions, /ask"
+              },
+              {
+                "module": "integrations.telegram.formatters",
+                "file": "backend/src/integrations/telegram/formatters.py",
+                "responsibility": "MarkdownV2 formatting helpers"
+              },
+              {
+                "module": "integrations.telegram.security",
+                "file": "backend/src/integrations/telegram/security.py",
+                "responsibility": "Whitelist parsing and access checks"
+              }
+            ]
+          },
+          {
+            "name": "tests",
+            "path": "backend/tests",
+            "test_files": [
+              "backend/tests/unit/test_smoke.py",
+              "backend/tests/unit/test_meeting_service.py",
+              "backend/tests/unit/test_ai_providers.py",
+              "backend/tests/integration/test_api_meetings.py",
+              "backend/tests/integration/test_token_endpoint.py",
+              "backend/tests/conftest.py",
+              "backend/tests/unit/test_deduplication.py",
+              "backend/tests/unit/test_state_manager.py",
+              "backend/tests/integration/test_copilot_qa.py",
+              "backend/tests/unit/test_telegram_bot.py"
+            ]
+          },
+          {
+            "name": "configs",
+            "files": [
+              "backend/pyproject.toml",
+              "backend/requirements.txt",
+              "backend/requirements-dev.txt"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "frontend",
+        "path": "frontend",
+        "role": "React/Vite UI для live meeting + отчётов",
+        "children": [
+          {
+            "name": "src",
+            "path": "frontend/src",
+            "modules": [
+              {
+                "module": "App",
+                "file": "frontend/src/App.tsx",
+                "responsibility": "Роутинг / и /reports/:meetingId"
+              },
+              {
+                "module": "main",
+                "file": "frontend/src/main.tsx",
+                "responsibility": "Точка входа React"
+              },
+              {
+                "module": "hooks.useMeetingState",
+                "file": "frontend/src/hooks/useMeetingState.ts",
+                "responsibility": "Состояние meeting + вызовы API"
+              },
+              {
+                "module": "hooks.useAudioCapture",
+                "file": "frontend/src/hooks/useAudioCapture.ts",
+                "responsibility": "Захват микрофона и локальный audio pipeline"
+              },
+              {
+                "module": "hooks.useWebRTC",
+                "file": "frontend/src/hooks/useWebRTC.ts",
+                "responsibility": "Управление WebRTC realtime-сессией"
+              },
+              {
+                "module": "hooks.useWebSocket",
+                "file": "frontend/src/hooks/useWebSocket.ts",
+                "responsibility": "Подключение к backend WS и обработка событий"
+              },
+              {
+                "module": "services.api",
+                "file": "frontend/src/services/api.ts",
+                "responsibility": "HTTP клиент к backend API"
+              },
+              {
+                "module": "services.webrtc",
+                "file": "frontend/src/services/webrtc.ts",
+                "responsibility": "Session management для WebRTC"
+              },
+              {
+                "module": "services.websocket",
+                "file": "frontend/src/services/websocket.ts",
+                "responsibility": "Reconnecting WebSocket client"
+              },
+              {
+                "module": "types.meeting",
+                "file": "frontend/src/types/meeting.ts",
+                "responsibility": "Типы meeting payload/DTO"
+              },
+              {
+                "module": "types.events",
+                "file": "frontend/src/types/events.ts",
+                "responsibility": "Типы событий WebSocket"
+              },
+              {
+                "module": "types.insights",
+                "file": "frontend/src/types/insights.ts",
+                "responsibility": "Типы insight-объектов"
+              },
+              {
+                "module": "components.layout.Header",
+                "file": "frontend/src/components/layout/Header.tsx",
+                "responsibility": "Заголовок + индикатор статуса"
+              },
+              {
+                "module": "components.meeting.LiveMeeting",
+                "file": "frontend/src/components/meeting/LiveMeeting.tsx",
+                "responsibility": "Главный экран live-meeting"
+              },
+              {
+                "module": "components.meeting.MeetingControls",
+                "file": "frontend/src/components/meeting/MeetingControls.tsx",
+                "responsibility": "Кнопки start/stop"
+              },
+              {
+                "module": "components.meeting.TranscriptPanel",
+                "file": "frontend/src/components/meeting/TranscriptPanel.tsx",
+                "responsibility": "Live отображение транскрипта"
+              },
+              {
+                "module": "components.common.Timer",
+                "file": "frontend/src/components/common/Timer.tsx",
+                "responsibility": "Отображение таймера встречи"
+              },
+              {
+                "module": "components.common.StatusBadge",
+                "file": "frontend/src/components/common/StatusBadge.tsx",
+                "responsibility": "REC/IDLE статус"
+              },
+              {
+                "module": "components.report.PostMeetingReport",
+                "file": "frontend/src/components/report/PostMeetingReport.tsx",
+                "responsibility": "Каркас экрана отчёта"
+              },
+              {
+                "module": "components.meeting.SummaryPanel",
+                "file": "frontend/src/components/meeting/SummaryPanel.tsx",
+                "responsibility": "Live summary панель"
+              },
+              {
+                "module": "components.meeting.InsightsPanel",
+                "file": "frontend/src/components/meeting/InsightsPanel.tsx",
+                "responsibility": "Tabs для Decisions/Actions/Risks/Questions"
+              },
+              {
+                "module": "hooks.useCopilot",
+                "file": "frontend/src/hooks/useCopilot.ts",
+                "responsibility": "Q&A state and quick prompts"
+              },
+              {
+                "module": "components.meeting.CopilotChat",
+                "file": "frontend/src/components/meeting/CopilotChat.tsx",
+                "responsibility": "Ask Copilot panel with quick buttons"
+              }
+            ]
+          },
+          {
+            "name": "configs",
+            "files": [
+              "frontend/package.json",
+              "frontend/vite.config.ts",
+              "frontend/eslint.config.js",
+              "frontend/.prettierrc",
+              "frontend/.prettierignore"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "config",
+        "path": "config",
+        "role": "Глобальные конфиги и prompt-шаблоны",
+        "children": [
+          {
+            "name": "prompts",
+            "path": "config/prompts",
+            "status": "prompt-файлы добавлены: structuring, summarization, qa, report",
+            "files": [
+              "config/prompts/structuring.md",
+              "config/prompts/summarization.md",
+              "config/prompts/qa.md",
+              "config/prompts/report.md"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "docs",
+        "path": "docs",
+        "role": "Продуктовая/техническая документация и сохранённые внешние материалы",
+        "key_files": [
+          "docs/meeting_copilot_browser_first_telegram_расширенное_техописание.md",
+          "docs/Blitzy Platform.html"
+        ]
+      },
+      {
+        "name": "root_operational_files",
+        "files": [
+          ".env",
+          ".env.example",
+          ".gitignore",
+          "README.md",
+          "IMPLEMENTATION_PLAN.md",
+          "STATUS.md",
+          "BUILD_LOG.md",
+          "Makefile",
+          "docker-compose.yml"
+        ]
+      }
+    ]
+  },
+  "module_relationships": [
+    {
+      "from": "backend/src/main.py",
+      "to": "backend/src/db/migrations.py",
+      "type": "calls",
+      "details": "lifespan -> apply_migrations"
+    },
+    {
+      "from": "backend/src/main.py",
+      "to": "backend/src/db/repositories.py",
+      "type": "creates",
+      "details": "MeetingRepository(database)"
+    },
+    {
+      "from": "backend/src/main.py",
+      "to": "backend/src/services/meeting_service.py",
+      "type": "creates",
+      "details": "MeetingService(repository)"
+    },
+    {
+      "from": "backend/src/api/meetings.py",
+      "to": "backend/src/services/meeting_service.py",
+      "type": "depends_on",
+      "details": "Depends(get_meeting_service)"
+    },
+    {
+      "from": "backend/src/api/token.py",
+      "to": "backend/src/services/ai/openai_provider.py",
+      "type": "depends_on",
+      "details": "через app.state.realtime_providers"
+    },
+    {
+      "from": "backend/src/api/token.py",
+      "to": "backend/src/services/ai/elevenlabs_provider.py",
+      "type": "depends_on",
+      "details": "через app.state.realtime_providers"
+    },
+    {
+      "from": "backend/src/services/meeting_service.py",
+      "to": "backend/src/db/repositories.py",
+      "type": "delegates_to"
+    },
+    {
+      "from": "backend/src/db/repositories.py",
+      "to": "database.tables.meetings",
+      "type": "crud_target"
+    },
+    {
+      "from": "frontend/src/hooks/useMeetingState.ts",
+      "to": "frontend/src/services/api.ts",
+      "type": "calls"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/hooks/useMeetingState.ts",
+      "type": "uses_hook"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/hooks/useAudioCapture.ts",
+      "type": "uses_hook"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/hooks/useWebRTC.ts",
+      "type": "uses_hook"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/hooks/useWebSocket.ts",
+      "type": "uses_hook"
+    },
+    {
+      "from": "frontend/src/services/api.ts",
+      "to": "backend/src/api/meetings.py",
+      "type": "http_contract",
+      "details": "GET/POST /api/meetings, GET /api/meetings/{id}, POST /api/meetings/{id}/stop, DELETE /api/meetings/{id}"
+    },
+    {
+      "from": "frontend/src/services/api.ts",
+      "to": "backend/src/api/token.py",
+      "type": "http_contract",
+      "details": "POST /api/token/ephemeral"
+    },
+    {
+      "from": "backend/src/api/token.py",
+      "to": "backend/src/services/ai/openai_provider.py",
+      "type": "depends_on",
+      "details": "uses app.state.realtime_providers['openai']"
+    },
+    {
+      "from": "backend/src/api/websocket.py",
+      "to": "backend/src/services/state_manager.py",
+      "type": "calls",
+      "details": "process_transcript_segment -> meeting.delta payload"
+    },
+    {
+      "from": "backend/src/api/websocket.py",
+      "to": "backend/src/services/websocket_manager.py",
+      "type": "broadcasts",
+      "details": "meeting.delta"
+    },
+    {
+      "from": "backend/src/services/state_manager.py",
+      "to": "backend/src/services/deduplication.py",
+      "type": "uses",
+      "details": "insight dedup by hash + similarity"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/components/meeting/SummaryPanel.tsx",
+      "type": "renders"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/components/meeting/InsightsPanel.tsx",
+      "type": "renders"
+    },
+    {
+      "from": "frontend/src/hooks/useWebSocket.ts",
+      "to": "backend/src/api/websocket.py",
+      "type": "ws_contract",
+      "details": "receives meeting.delta and transcript.segment"
+    },
+    {
+      "from": "backend/src/api/websocket.py",
+      "to": "backend/src/services/state_manager.py",
+      "type": "calls",
+      "details": "answer_question for user.question events"
+    },
+    {
+      "from": "backend/src/api/meetings.py",
+      "to": "backend/src/integrations/telegram/bot.py",
+      "type": "calls",
+      "details": "autopost_summary on meeting stop (x-telegram-chat-id)"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/hooks/useCopilot.ts",
+      "type": "uses_hook"
+    },
+    {
+      "from": "frontend/src/components/meeting/LiveMeeting.tsx",
+      "to": "frontend/src/components/meeting/CopilotChat.tsx",
+      "type": "renders"
+    }
+  ],
+  "runtime_flows": [
+    {
+      "name": "Create meeting",
+      "steps": [
+        "UI: MeetingControls -> useMeetingState.startMeeting",
+        "Frontend API: POST /api/meetings",
+        "Backend API: api/meetings.create_meeting",
+        "Service: MeetingService.create",
+        "Repository: MeetingRepository.create",
+        "DB: insert into meetings"
+      ]
+    },
+    {
+      "name": "Stop meeting",
+      "steps": [
+        "UI: MeetingControls.stop",
+        "Frontend API: POST /api/meetings/{id}/stop",
+        "Backend API -> Service.stop -> Repository.stop",
+        "DB: update meetings set status='stopped', ended_at"
+      ]
+    },
+    {
+      "name": "Create ephemeral token",
+      "steps": [
+        "Frontend: POST /api/token/ephemeral",
+        "Backend API: api/token.create_ephemeral_token",
+        "Provider: OpenAIRealtimeProvider or ElevenLabsRealtimeProvider",
+        "Response: provider + client_secret + expires_at"
+      ]
+    },
+    {
+      "name": "Realtime delta update",
+      "steps": [
+        "Client WS sends transcript.segment",
+        "Backend WS -> StateManager.process_transcript_segment",
+        "StateManager обновляет summary/insights + dedup",
+        "WebSocketConnectionManager broadcast meeting.delta",
+        "Frontend LiveMeeting рендерит SummaryPanel и InsightsPanel"
+      ]
+    },
+    {
+      "name": "Copilot Q&A",
+      "steps": [
+        "UI: CopilotChat sends user.question over WS",
+        "Backend WS: state_manager.answer_question",
+        "Backend WS: broadcast bot.answer",
+        "UI: LiveMeeting renders bot answer in chat"
+      ]
+    }
+  ],
+  "filesystem_snapshot": {
+    "scope": "full workspace snapshot (excluding .git internals, backend/.venv internals, frontend/node_modules internals)",
+    "notable_generated_paths": [
+      "backend/.pytest_cache",
+      "frontend/dist"
+    ],
+    "all_paths": [
+      ".",
+      "./.env",
+      "./.env.example",
+      "./.git",
+      "./.gitignore",
+      "./BUILD_LOG.md",
+      "./IMPLEMENTATION_PLAN.md",
+      "./Makefile",
+      "./README.md",
+      "./STATUS.md",
+      "./backend",
+      "./backend/.pytest_cache",
+      "./backend/.pytest_cache/.gitignore",
+      "./backend/.pytest_cache/CACHEDIR.TAG",
+      "./backend/.pytest_cache/README.md",
+      "./backend/.pytest_cache/v",
+      "./backend/.pytest_cache/v/cache",
+      "./backend/.pytest_cache/v/cache/lastfailed",
+      "./backend/.pytest_cache/v/cache/nodeids",
+      "./backend/.venv",
+      "./backend/meeting_copilot.db",
+      "./backend/pyproject.toml",
+      "./backend/requirements-dev.txt",
+      "./backend/requirements.txt",
+      "./backend/src",
+      "./backend/src/__init__.py",
+      "./backend/src/__pycache__",
+      "./backend/src/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/__pycache__/main.cpython-312.pyc",
+      "./backend/src/api",
+      "./backend/src/api/__init__.py",
+      "./backend/src/api/__pycache__",
+      "./backend/src/api/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/api/__pycache__/meetings.cpython-312.pyc",
+      "./backend/src/api/__pycache__/router.cpython-312.pyc",
+      "./backend/src/api/__pycache__/token.cpython-312.pyc",
+      "./backend/src/api/__pycache__/websocket.cpython-312.pyc",
+      "./backend/src/api/meetings.py",
+      "./backend/src/api/router.py",
+      "./backend/src/api/token.py",
+      "./backend/src/api/websocket.py",
+      "./backend/src/common",
+      "./backend/src/config",
+      "./backend/src/config/__init__.py",
+      "./backend/src/config/__pycache__",
+      "./backend/src/config/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/config/__pycache__/settings.cpython-312.pyc",
+      "./backend/src/config/settings.py",
+      "./backend/src/db",
+      "./backend/src/db/__init__.py",
+      "./backend/src/db/__pycache__",
+      "./backend/src/db/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/db/__pycache__/database.cpython-312.pyc",
+      "./backend/src/db/__pycache__/migrations.cpython-312.pyc",
+      "./backend/src/db/__pycache__/repositories.cpython-312.pyc",
+      "./backend/src/db/database.py",
+      "./backend/src/db/migrations.py",
+      "./backend/src/db/repositories.py",
+      "./backend/src/integrations",
+      "./backend/src/integrations/__init__.py",
+      "./backend/src/integrations/__pycache__",
+      "./backend/src/integrations/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/integrations/telegram",
+      "./backend/src/integrations/telegram/__init__.py",
+      "./backend/src/integrations/telegram/__pycache__",
+      "./backend/src/integrations/telegram/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/integrations/telegram/__pycache__/bot.cpython-312.pyc",
+      "./backend/src/integrations/telegram/__pycache__/commands.cpython-312.pyc",
+      "./backend/src/integrations/telegram/__pycache__/formatters.cpython-312.pyc",
+      "./backend/src/integrations/telegram/__pycache__/security.cpython-312.pyc",
+      "./backend/src/integrations/telegram/bot.py",
+      "./backend/src/integrations/telegram/commands.py",
+      "./backend/src/integrations/telegram/formatters.py",
+      "./backend/src/integrations/telegram/security.py",
+      "./backend/src/main.py",
+      "./backend/src/models",
+      "./backend/src/models/__init__.py",
+      "./backend/src/models/__pycache__",
+      "./backend/src/models/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/models/__pycache__/insights.cpython-312.pyc",
+      "./backend/src/models/__pycache__/meeting.cpython-312.pyc",
+      "./backend/src/models/__pycache__/websocket_events.cpython-312.pyc",
+      "./backend/src/models/insights.py",
+      "./backend/src/models/meeting.py",
+      "./backend/src/models/websocket_events.py",
+      "./backend/src/services",
+      "./backend/src/services/__init__.py",
+      "./backend/src/services/__pycache__",
+      "./backend/src/services/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/services/__pycache__/deduplication.cpython-312.pyc",
+      "./backend/src/services/__pycache__/meeting_service.cpython-312.pyc",
+      "./backend/src/services/__pycache__/state_manager.cpython-312.pyc",
+      "./backend/src/services/__pycache__/websocket_manager.cpython-312.pyc",
+      "./backend/src/services/ai",
+      "./backend/src/services/ai/__init__.py",
+      "./backend/src/services/ai/__pycache__",
+      "./backend/src/services/ai/__pycache__/__init__.cpython-312.pyc",
+      "./backend/src/services/ai/__pycache__/elevenlabs_provider.cpython-312.pyc",
+      "./backend/src/services/ai/__pycache__/openai_provider.cpython-312.pyc",
+      "./backend/src/services/ai/__pycache__/prompts.cpython-312.pyc",
+      "./backend/src/services/ai/__pycache__/provider_base.cpython-312.pyc",
+      "./backend/src/services/ai/elevenlabs_provider.py",
+      "./backend/src/services/ai/openai_provider.py",
+      "./backend/src/services/ai/prompts.py",
+      "./backend/src/services/ai/provider_base.py",
+      "./backend/src/services/deduplication.py",
+      "./backend/src/services/meeting_service.py",
+      "./backend/src/services/state_manager.py",
+      "./backend/src/services/websocket_manager.py",
+      "./backend/tests",
+      "./backend/tests/__pycache__",
+      "./backend/tests/__pycache__/conftest.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/conftest.py",
+      "./backend/tests/fixtures",
+      "./backend/tests/integration",
+      "./backend/tests/integration/__pycache__",
+      "./backend/tests/integration/__pycache__/test_api_meetings.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/integration/__pycache__/test_copilot_qa.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/integration/__pycache__/test_token_endpoint.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/integration/test_api_meetings.py",
+      "./backend/tests/integration/test_copilot_qa.py",
+      "./backend/tests/integration/test_token_endpoint.py",
+      "./backend/tests/unit",
+      "./backend/tests/unit/__pycache__",
+      "./backend/tests/unit/__pycache__/test_ai_providers.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/__pycache__/test_deduplication.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/__pycache__/test_meeting_service.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/__pycache__/test_smoke.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/__pycache__/test_state_manager.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/__pycache__/test_telegram_bot.cpython-312-pytest-8.4.2.pyc",
+      "./backend/tests/unit/test_ai_providers.py",
+      "./backend/tests/unit/test_deduplication.py",
+      "./backend/tests/unit/test_meeting_service.py",
+      "./backend/tests/unit/test_smoke.py",
+      "./backend/tests/unit/test_state_manager.py",
+      "./backend/tests/unit/test_telegram_bot.py",
+      "./config",
+      "./config/prompts",
+      "./config/prompts/qa.md",
+      "./config/prompts/report.md",
+      "./config/prompts/structuring.md",
+      "./config/prompts/summarization.md",
+      "./docker-compose.yml",
+      "./docs",
+      "./docs/Blitzy Platform.html",
+      "./docs/Blitzy Platform_files",
+      "./docs/Blitzy Platform_files/44505231(1).js.Без названия",
+      "./docs/Blitzy Platform_files/44505231.js.Без названия",
+      "./docs/Blitzy Platform_files/api.js.Без названия",
+      "./docs/Blitzy Platform_files/banner.js.Без названия",
+      "./docs/Blitzy Platform_files/beacon.min.js.Без названия",
+      "./docs/Blitzy Platform_files/blitzy-icon-text.svg",
+      "./docs/Blitzy Platform_files/bu6",
+      "./docs/Blitzy Platform_files/bu6(1)",
+      "./docs/Blitzy Platform_files/cb=gapi.loaded_0",
+      "./docs/Blitzy Platform_files/cdgpjtzcqdst.js.Без названия",
+      "./docs/Blitzy Platform_files/collectedforms.js.Без названия",
+      "./docs/Blitzy Platform_files/f(1).txt",
+      "./docs/Blitzy Platform_files/f(2).txt",
+      "./docs/Blitzy Platform_files/f(3).txt",
+      "./docs/Blitzy Platform_files/f(4).txt",
+      "./docs/Blitzy Platform_files/f(5).txt",
+      "./docs/Blitzy Platform_files/f(6).txt",
+      "./docs/Blitzy Platform_files/f(7).txt",
+      "./docs/Blitzy Platform_files/f(8).txt",
+      "./docs/Blitzy Platform_files/f.txt",
+      "./docs/Blitzy Platform_files/fb.js.Без названия",
+      "./docs/Blitzy Platform_files/fbevents.js.Без названия",
+      "./docs/Blitzy Platform_files/hotjar-5080302.js.Без названия",
+      "./docs/Blitzy Platform_files/iframe.html",
+      "./docs/Blitzy Platform_files/iframe.js.Без названия",
+      "./docs/Blitzy Platform_files/index-BtZhFUZL.css",
+      "./docs/Blitzy Platform_files/index-DwCo6EUb.js.Без названия",
+      "./docs/Blitzy Platform_files/insight.min.js.Без названия",
+      "./docs/Blitzy Platform_files/js",
+      "./docs/Blitzy Platform_files/logo-blitzy-purple.svg",
+      "./docs/Blitzy Platform_files/modules.ddd41caee2adfc4aedb8.js.Без названия",
+      "./docs/Blitzy Platform_files/pixel.js.Без названия",
+      "./docs/Blitzy Platform_files/saved_resource(1).html",
+      "./docs/Blitzy Platform_files/saved_resource(2).html",
+      "./docs/Blitzy Platform_files/saved_resource.html",
+      "./docs/Blitzy Platform_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015",
+      "./docs/database_schema_map.json",
+      "./docs/meeting_copilot_browser_first_telegram_расширенное_техописание.md",
+      "./docs/project_box_map.json",
+      "./frontend",
+      "./frontend/.gitignore",
+      "./frontend/.prettierignore",
+      "./frontend/.prettierrc",
+      "./frontend/README.md",
+      "./frontend/dist",
+      "./frontend/dist/assets",
+      "./frontend/dist/assets/index-BbyepQRY.js",
+      "./frontend/dist/assets/index-DKjn7gwi.css",
+      "./frontend/dist/index.html",
+      "./frontend/dist/vite.svg",
+      "./frontend/eslint.config.js",
+      "./frontend/index.html",
+      "./frontend/node_modules",
+      "./frontend/package-lock.json",
+      "./frontend/package.json",
+      "./frontend/public",
+      "./frontend/public/vite.svg",
+      "./frontend/src",
+      "./frontend/src/App.css",
+      "./frontend/src/App.tsx",
+      "./frontend/src/assets",
+      "./frontend/src/assets/react.svg",
+      "./frontend/src/components",
+      "./frontend/src/components/common",
+      "./frontend/src/components/common/StatusBadge.tsx",
+      "./frontend/src/components/common/Timer.tsx",
+      "./frontend/src/components/layout",
+      "./frontend/src/components/layout/Header.tsx",
+      "./frontend/src/components/meeting",
+      "./frontend/src/components/meeting/CopilotChat.tsx",
+      "./frontend/src/components/meeting/InsightsPanel.tsx",
+      "./frontend/src/components/meeting/LiveMeeting.tsx",
+      "./frontend/src/components/meeting/MeetingControls.tsx",
+      "./frontend/src/components/meeting/SummaryPanel.tsx",
+      "./frontend/src/components/meeting/TranscriptPanel.tsx",
+      "./frontend/src/components/report",
+      "./frontend/src/components/report/PostMeetingReport.tsx",
+      "./frontend/src/hooks",
+      "./frontend/src/hooks/useAudioCapture.ts",
+      "./frontend/src/hooks/useCopilot.ts",
+      "./frontend/src/hooks/useMeetingState.ts",
+      "./frontend/src/hooks/useWebRTC.ts",
+      "./frontend/src/hooks/useWebSocket.ts",
+      "./frontend/src/index.css",
+      "./frontend/src/main.tsx",
+      "./frontend/src/services",
+      "./frontend/src/services/api.ts",
+      "./frontend/src/services/webrtc.ts",
+      "./frontend/src/services/websocket.ts",
+      "./frontend/src/styles",
+      "./frontend/src/types",
+      "./frontend/src/types/events.ts",
+      "./frontend/src/types/insights.ts",
+      "./frontend/src/types/meeting.ts",
+      "./frontend/src/utils",
+      "./frontend/src/vite-env.d.ts",
+      "./frontend/tsconfig.app.json",
+      "./frontend/tsconfig.json",
+      "./frontend/tsconfig.node.json",
+      "./frontend/vite.config.ts"
+    ]
+  }
+}

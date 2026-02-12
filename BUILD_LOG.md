@@ -1,0 +1,81 @@
+# BUILD LOG
+
+## 2026-02-12
+- Инициализированы файлы трекинга: `STATUS.md`, `BUILD_LOG.md`.
+- Подготовка к этапу 0 (scaffolding).
+- Создана базовая структура директорий (`backend/src`, `backend/tests`, `frontend/src`, `config/prompts`).
+- Добавлены backend-конфиги: `backend/pyproject.toml`, `backend/requirements.txt`, `backend/requirements-dev.txt`.
+- Создан базовый backend app factory: `backend/src/main.py` (+ `GET /health`).
+- Добавлен env-конфиг: `backend/src/config/settings.py`.
+- Инициализирован frontend через Vite (`React + TS + ESLint`).
+- Подключены Tailwind и Prettier во frontend.
+- Добавлены `Makefile`, `docker-compose.yml`, `.env.example`, `.gitignore`.
+- Добавлен backend smoke test: `backend/tests/unit/test_smoke.py` (+ `backend/tests/conftest.py`).
+- Тесты:
+	- `cd frontend && npm run build` → success
+	- `cd frontend && npm run lint` → success
+	- `cd backend && . .venv/bin/activate && pytest -q` → `1 passed`
+- Проблемы:
+	- Системный `pip` заблокирован (PEP 668); решено через локальный `backend/.venv`.
+- Реализован backend Этапа 1:
+	- `src/db/database.py`, `src/db/migrations.py`, `src/db/repositories.py`
+	- `src/models/meeting.py`, `src/models/insights.py`, `src/models/websocket_events.py`
+	- `src/services/meeting_service.py`
+	- `src/api/router.py`, `src/api/meetings.py`, `src/api/websocket.py`
+	- `src/main.py` обновлён: миграции + DI сервисов через `app.state`
+- Реализован frontend Этапа 1:
+	- Роутинг: `src/App.tsx` (`/` и `/reports/:meetingId`)
+	- Компоненты: `Header`, `LiveMeeting`, `MeetingControls`, `Timer`, `StatusBadge`
+	- Клиент/хук: `src/services/api.ts`, `src/hooks/useMeetingState.ts`
+- Добавлены тесты Этапа 1:
+	- `backend/tests/unit/test_meeting_service.py`
+	- `backend/tests/integration/test_api_meetings.py`
+- Повторная верификация:
+	- `cd backend && . .venv/bin/activate && pytest -q` → `3 passed`
+	- `cd frontend && npm run lint` → success
+	- `cd frontend && npm run build` → success
+- Добавлены навигационные JSON-реестры:
+	- `docs/project_box_map.json` — полная карта проекта (коробочная структура, модули, связи, runtime-flows)
+	- `docs/database_schema_map.json` — схема БД (таблицы, поля, FK, индексы, data-access map)
+- Процесс поддержки зафиксирован: при любых изменениях структуры/DDL оба JSON обновляются и отмечаются в `STATUS.md` + `BUILD_LOG.md`.
+- Реализован Этап 2 (Realtime):
+	- Backend AI: `src/services/ai/provider_base.py`, `openai_provider.py`, `elevenlabs_provider.py`, `prompts.py`
+	- Token API: `src/api/token.py` + регистрация в `src/api/router.py`
+	- App wiring: `src/main.py` (prompt_loader + realtime_providers в `app.state`)
+	- Prompt templates: `config/prompts/structuring.md`, `summarization.md`, `qa.md`, `report.md`
+	- Frontend realtime scaffold: `useAudioCapture.ts`, `useWebRTC.ts`, `useWebSocket.ts`, `services/webrtc.ts`, `services/websocket.ts`, `TranscriptPanel.tsx`
+	- Frontend type updates: `types/meeting.ts`, `types/insights.ts`, `types/events.ts`
+- Добавлены тесты Этапа 2:
+	- `backend/tests/unit/test_ai_providers.py`
+	- `backend/tests/integration/test_token_endpoint.py`
+- Верификация Этапа 2:
+	- `cd backend && . .venv/bin/activate && pytest -q` → `8 passed`
+	- `cd frontend && npm run lint` → success
+	- `cd frontend && npm run build` → success
+- Реализован Этап 3 (Intelligence Layer):
+	- Backend: `src/services/deduplication.py`, `src/services/state_manager.py`, `src/services/websocket_manager.py`
+	- WS integration: `src/api/websocket.py` обрабатывает `transcript.segment` и рассылает `meeting.delta`
+	- App wiring: `src/main.py` регистрирует `state_manager` и `websocket_manager` в `app.state`
+	- Frontend UI: `SummaryPanel.tsx`, `InsightsPanel.tsx`, обновлён `LiveMeeting.tsx`
+	- Event schema: `src/models/websocket_events.py` расширен для stage 3 событий
+- Добавлены тесты Этапа 3:
+	- `backend/tests/unit/test_deduplication.py`
+	- `backend/tests/unit/test_state_manager.py`
+- Верификация Этапа 3:
+	- `cd backend && . .venv/bin/activate && pytest -q` → `13 passed`
+	- `cd frontend && npm run lint` → success
+	- `cd frontend && npm run build` → success
+- Реализован Этап 4 (Ask Copilot + Telegram):
+	- WS Q&A: `src/api/websocket.py` обрабатывает `user.question` и рассылает `bot.answer`
+	- Q&A логика: `src/services/state_manager.py::answer_question`
+	- Frontend chat: `src/components/meeting/CopilotChat.tsx`, `src/hooks/useCopilot.ts`, интеграция в `LiveMeeting.tsx`
+	- Telegram integration: `src/integrations/telegram/bot.py`, `commands.py`, `formatters.py`, `security.py`
+	- Autopost при stop meeting: `src/api/meetings.py` (header `x-telegram-chat-id`)
+- Добавлены тесты Этапа 4:
+	- `backend/tests/integration/test_copilot_qa.py`
+	- `backend/tests/unit/test_telegram_bot.py`
+- Верификация Этапа 4:
+	- `cd backend && . .venv/bin/activate && pytest -q` → `17 passed`
+	- `cd frontend && npm run lint` → success
+	- `cd frontend && npm run build` → success
+- Добавлено рабочее правило: после каждого завершённого этапа делается отдельный git commit c обновлением `STATUS.md`, `BUILD_LOG.md`, `project_box_map.json`, `database_schema_map.json`.

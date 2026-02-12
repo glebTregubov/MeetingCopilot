@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "database_engine": "SQLite (aiosqlite)",
+    "source": "backend/src/db/migrations.py",
+    "generated_on": "2026-02-12",
+    "last_updated_for_stage": "Этап 4 — Ask Copilot + Telegram",
+    "maintenance_rule": "Обновлять при любых изменениях DDL/индексов/репозиториев и фиксировать в STATUS.md + BUILD_LOG.md"
+  },
+  "connection": {
+    "settings_key": "DATABASE_URL",
+    "default": "sqlite+aiosqlite:///./meeting_copilot.db",
+    "runtime_component": "backend/src/db/database.py"
+  },
+  "tables": [
+    {
+      "name": "meetings",
+      "purpose": "Корневая сущность встречи",
+      "columns": [
+        {"name": "id", "type": "TEXT", "nullable": false, "pk": true},
+        {"name": "title", "type": "TEXT", "nullable": false},
+        {"name": "status", "type": "TEXT", "nullable": false},
+        {"name": "started_at", "type": "TEXT", "nullable": false},
+        {"name": "ended_at", "type": "TEXT", "nullable": true},
+        {"name": "created_at", "type": "TEXT", "nullable": false},
+        {"name": "updated_at", "type": "TEXT", "nullable": false}
+      ],
+      "indexes": []
+    },
+    {
+      "name": "transcript_segments",
+      "purpose": "Сегменты транскрипта по встрече",
+      "columns": [
+        {"name": "id", "type": "TEXT", "nullable": false, "pk": true},
+        {"name": "meeting_id", "type": "TEXT", "nullable": false, "fk": "meetings.id"},
+        {"name": "speaker", "type": "TEXT", "nullable": true},
+        {"name": "text", "type": "TEXT", "nullable": false},
+        {"name": "started_at", "type": "TEXT", "nullable": true},
+        {"name": "ended_at", "type": "TEXT", "nullable": true},
+        {"name": "created_at", "type": "TEXT", "nullable": false}
+      ],
+      "indexes": [
+        "idx_transcript_segments_meeting_id"
+      ]
+    },
+    {
+      "name": "snapshots",
+      "purpose": "Live summary snapshots",
+      "columns": [
+        {"name": "id", "type": "TEXT", "nullable": false, "pk": true},
+        {"name": "meeting_id", "type": "TEXT", "nullable": false, "fk": "meetings.id"},
+        {"name": "summary", "type": "TEXT", "nullable": false},
+        {"name": "created_at", "type": "TEXT", "nullable": false}
+      ],
+      "indexes": [
+        "idx_snapshots_meeting_id"
+      ]
+    },
+    {
+      "name": "insights",
+      "purpose": "Decisions/actions/risks/questions",
+      "columns": [
+        {"name": "id", "type": "TEXT", "nullable": false, "pk": true},
+        {"name": "meeting_id", "type": "TEXT", "nullable": false, "fk": "meetings.id"},
+        {"name": "kind", "type": "TEXT", "nullable": false},
+        {"name": "content", "type": "TEXT", "nullable": false},
+        {"name": "owner", "type": "TEXT", "nullable": true},
+        {"name": "due_date", "type": "TEXT", "nullable": true},
+        {"name": "created_at", "type": "TEXT", "nullable": false}
+      ],
+      "indexes": [
+        "idx_insights_meeting_id"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "one_to_many",
+      "from_table": "meetings",
+      "to_table": "transcript_segments",
+      "join": "transcript_segments.meeting_id -> meetings.id",
+      "on_delete": "CASCADE"
+    },
+    {
+      "type": "one_to_many",
+      "from_table": "meetings",
+      "to_table": "snapshots",
+      "join": "snapshots.meeting_id -> meetings.id",
+      "on_delete": "CASCADE"
+    },
+    {
+      "type": "one_to_many",
+      "from_table": "meetings",
+      "to_table": "insights",
+      "join": "insights.meeting_id -> meetings.id",
+      "on_delete": "CASCADE"
+    }
+  ],
+  "data_access_map": [
+    {
+      "component": "backend/src/db/repositories.py::MeetingRepository",
+      "tables_used": ["meetings"],
+      "operations": ["create", "get", "list", "stop", "delete"]
+    },
+    {
+      "component": "backend/src/services/meeting_service.py::MeetingService",
+      "tables_used": ["meetings"],
+      "operations": ["create", "get", "list", "stop", "delete"],
+      "delegates_to": "MeetingRepository"
+    },
+    {
+      "component": "backend/src/api/meetings.py",
+      "tables_used": ["meetings"],
+      "operations": ["GET list", "POST create", "GET by id", "POST stop", "DELETE"]
+    },
+    {
+      "component": "backend/src/api/token.py",
+      "tables_used": [],
+      "operations": ["POST /api/token/ephemeral"],
+      "notes": "Работает через app.state.realtime_providers, без прямого доступа к БД"
+    },
+    {
+      "component": "backend/src/services/state_manager.py",
+      "tables_used": [],
+      "operations": ["process_transcript_segment", "build summary", "extract insights", "deduplicate insights"],
+      "notes": "На текущем этапе state хранится в памяти; persistence в snapshots/insights планируется следующими итерациями"
+    },
+    {
+      "component": "backend/src/api/websocket.py",
+      "tables_used": [],
+      "operations": ["WS transcript.segment", "WS user.question", "WS bot.answer", "WS meeting.delta"],
+      "notes": "Использует in-memory state, прямых SQL-операций нет"
+    },
+    {
+      "component": "backend/src/integrations/telegram/*.py",
+      "tables_used": [],
+      "operations": ["autopost summary on stop", "command formatting/security"],
+      "notes": "Работает через Telegram HTTP API, без прямого доступа к БД"
+    }
+  ],
+  "integrity_and_constraints": {
+    "foreign_keys_enabled": true,
+    "status_values": {
+      "stored_in": "meetings.status",
+      "current_app_values": ["active", "stopped"],
+      "constraint_in_db": "not yet enforced with CHECK"
+    }
+  },
+  "planned_usage_next_stages": {
+    "transcript_segments": "Таблица готова; сохранить запись сегментов из realtime потока в следующих итерациях",
+    "snapshots": "StateManager уже формирует summary в памяти; persistence в snapshots — следующий шаг",
+    "insights": "StateManager уже формирует insights в памяти; persistence в insights — следующий шаг"
+  }
+}

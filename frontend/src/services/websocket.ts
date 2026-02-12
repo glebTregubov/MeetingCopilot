@@ -12,6 +12,8 @@ export class ReconnectingWebSocketClient {
   private readonly reconnectDelayMs: number
   private readonly url: string
   private readonly onMessage: (event: WsEvent) => void
+  private onOpenCallback: (() => void) | null = null
+  private onCloseCallback: (() => void) | null = null
 
   constructor(url: string, onMessage: (event: WsEvent) => void, options: WebSocketClientOptions = {}) {
     this.url = url
@@ -20,11 +22,21 @@ export class ReconnectingWebSocketClient {
     this.reconnectDelayMs = options.reconnectDelayMs ?? 1000
   }
 
+  onOpen(callback: () => void): void {
+    this.onOpenCallback = callback
+  }
+
+  onClose(callback: () => void): void {
+    this.onCloseCallback = callback
+  }
+
   connect(): void {
     this.socket = new WebSocket(this.url)
 
     this.socket.onopen = () => {
+      console.log('[MeetingCopilot] WebSocket connected to:', this.url)
       this.reconnectCount = 0
+      this.onOpenCallback?.()
     }
 
     this.socket.onmessage = (event) => {
@@ -37,6 +49,8 @@ export class ReconnectingWebSocketClient {
     }
 
     this.socket.onclose = () => {
+      console.log('[MeetingCopilot] WebSocket closed')
+      this.onCloseCallback?.()
       if (this.reconnectCount >= this.maxReconnectAttempts) {
         return
       }

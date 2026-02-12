@@ -13,6 +13,7 @@ export function useAudioCapture(): UseAudioCaptureResult {
   const [isCapturing, setIsCapturing] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
+  const streamRef = useRef<MediaStream | null>(null)
 
   const start = useCallback(async () => {
     try {
@@ -31,21 +32,26 @@ export function useAudioCapture(): UseAudioCaptureResult {
       const gain = context.createGain()
       source.connect(gain)
 
+      streamRef.current = mediaStream
       setStream(mediaStream)
       setIsCapturing(true)
+      console.log('[MeetingCopilot] Audio stream acquired:', mediaStream.getAudioTracks().length, 'tracks')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to capture audio')
+      const msg = err instanceof Error ? err.message : 'Unable to capture audio'
+      console.warn('[MeetingCopilot] Audio capture failed:', msg)
+      setError(msg)
       setIsCapturing(false)
     }
   }, [])
 
   const stop = useCallback(() => {
-    stream?.getTracks().forEach((track) => track.stop())
+    streamRef.current?.getTracks().forEach((track) => track.stop())
     audioContextRef.current?.close()
     audioContextRef.current = null
+    streamRef.current = null
     setStream(null)
     setIsCapturing(false)
-  }, [stream])
+  }, [])
 
   useEffect(() => {
     return () => {

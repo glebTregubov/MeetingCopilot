@@ -1,18 +1,48 @@
-interface TranscriptPanelProps {
-  lines: string[]
+interface TranscriptEntry {
+  id: string
+  speaker: string
+  text: string
+  timestamp?: string
 }
 
-export function TranscriptPanel({ lines }: TranscriptPanelProps) {
+interface TranscriptPanelProps {
+  entries: TranscriptEntry[]
+}
+
+function formatTime(value?: string): string {
+  if (!value) {
+    return ''
+  }
+
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) {
+    return ''
+  }
+
+  return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+}
+
+export function TranscriptPanel({ entries }: TranscriptPanelProps) {
   return (
-    <section className="mt-6 rounded-lg border border-slate-200 p-4">
-      <h2 className="mb-3 text-sm font-semibold text-slate-900">Live Transcript</h2>
-      {lines.length === 0 ? (
-        <p className="text-sm text-slate-500">Transcript will appear when realtime stream is connected.</p>
+    <section className="mt-4 flex h-[calc(100vh-220px)] flex-col rounded-xl border border-slate-200 bg-white shadow-sm">
+      <div className="border-b border-slate-200 px-4 py-3">
+        <h2 className="text-sm font-semibold text-slate-900">Live Transcript</h2>
+        <p className="text-xs text-slate-500">Realtime speech segments from active meeting</p>
+      </div>
+
+      {entries.length === 0 ? (
+        <div className="flex flex-1 items-center justify-center p-4 text-sm text-slate-500">
+          Transcript will appear when realtime stream is connected.
+        </div>
       ) : (
-        <ul className="space-y-2">
-          {lines.map((line, index) => (
-            <li key={`${index}-${line}`} className="rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-700">
-              {line}
+        <ul className="flex-1 space-y-3 overflow-y-auto p-4">
+          {entries.map((entry) => (
+            <li key={entry.id} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+              <div className="mb-1 flex items-center gap-2">
+                <span className="text-xs font-semibold text-slate-700">{entry.speaker}</span>
+                {entry.timestamp && <span className="text-[11px] text-slate-400">{formatTime(entry.timestamp)}</span>}
+              </div>
+              <p className="text-sm leading-relaxed text-slate-800">{entry.text}</p>
             </li>
           ))}
         </ul>

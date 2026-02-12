@@ -1,0 +1,7 @@
+{
+  "name": "Marketing Meeting Copilot",
+  "description": "Real-time meeting assistant for marketing analytics, featuring live transcription, automated summaries, and action item extraction.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

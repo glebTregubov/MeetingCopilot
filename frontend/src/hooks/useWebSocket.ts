@@ -24,14 +24,18 @@ export function useWebSocket(): UseWebSocketResult {
 
   const connect = useCallback((meetingId: string) => {
     disconnect()
+    // Clear stale events from previous sessions
+    setEvents([])
 
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
     const wsUrl = `${protocol}://${window.location.hostname}:8000/ws/meetings/${meetingId}`
 
     const client = new ReconnectingWebSocketClient(wsUrl, (event) => {
       setEvents((prev) => [...prev, event])
-      setConnected(true)
     })
+
+    client.onOpen(() => setConnected(true))
+    client.onClose(() => setConnected(false))
 
     client.connect()
     clientRef.current = client

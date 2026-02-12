@@ -4,10 +4,13 @@ interface SummaryPanelProps {
 
 export function SummaryPanel({ summary }: SummaryPanelProps) {
   return (
-    <section className="mt-6 rounded-lg border border-slate-200 p-4">
-      <h2 className="mb-3 text-sm font-semibold text-slate-900">Live Summary</h2>
+    <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <h2 className="mb-1 text-sm font-semibold text-slate-900">Live Summary</h2>
+      <p className="mb-3 text-xs text-slate-500">Rolling synthesis from transcript deltas</p>
       {summary ? (
-        <pre className="whitespace-pre-wrap text-sm text-slate-700">{summary}</pre>
+        <pre className="max-h-52 overflow-y-auto whitespace-pre-wrap rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
+          {summary}
+        </pre>
       ) : (
         <p className="text-sm text-slate-500">Summary will appear after transcript updates.</p>
       )}

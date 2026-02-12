@@ -20,7 +20,7 @@ class MeetingState:
 class StateManager:
     def __init__(
         self,
-        min_update_interval_seconds: int = 30,
+        min_update_interval_seconds: int = 5,
     ):
         self._min_update_interval = timedelta(seconds=min_update_interval_seconds)
         self._states: dict[str, MeetingState] = {}
@@ -42,6 +42,7 @@ class StateManager:
         lowered = normalized.lower()
         now = datetime.now(timezone.utc)
 
+        # Explicit prefix-based extraction
         if lowered.startswith("decision:"):
             return "decisions", Decision(
                 id=str(uuid4()),
@@ -49,7 +50,7 @@ class StateManager:
                 content=normalized.split(":", 1)[1].strip(),
                 created_at=now,
             )
-        if lowered.startswith("action:"):
+        if lowered.startswith("action:") or lowered.startswith("action item:"):
             return "actions", ActionItem(
                 id=str(uuid4()),
                 meeting_id=meeting_id,
@@ -73,13 +74,49 @@ class StateManager:
                 created_at=now,
             )
 
+        # Natural language heuristic extraction
+        action_keywords = ["need to", "should", "must", "will do", "to prepare", "to send", "to review", "to follow up", "let's", "please"]
+        if any(kw in lowered for kw in action_keywords):
+            return "actions", ActionItem(
+                id=str(uuid4()),
+                meeting_id=meeting_id,
+                content=normalized,
+                owner=None,
+                due_date=None,
+                created_at=now,
+            )
+
+        decision_keywords = ["decided", "agreed", "confirmed", "approved", "final decision", "we will", "we'll go with"]
+        if any(kw in lowered for kw in decision_keywords):
+            return "decisions", Decision(
+                id=str(uuid4()),
+                meeting_id=meeting_id,
+                content=normalized,
+                created_at=now,
+            )
+
+        risk_keywords = ["risk", "danger", "concern", "worried", "problem", "issue", "blocker"]
+        if any(kw in lowered for kw in risk_keywords):
+            return "risks", Risk(
+                id=str(uuid4()),
+                meeting_id=meeting_id,
+                content=normalized,
+                created_at=now,
+            )
+
         return None
 
     def _build_summary(self, lines: list[str]) -> str:
         if not lines:
             return ""
-        latest = lines[-5:]
-        return "\n".join(f"- {line}" for line in latest)
+        total = len(lines)
+        # Show count + latest transcript lines
+        header = f"Meeting transcript ({total} segments):\n"
+        latest = lines[-8:]
+        body = "\n".join(f"• {line}" for line in latest)
+        if total > 8:
+            body = f"[...{total - 8} earlier segments...]\n" + body
+        return header + body
 
     def get_state(self, meeting_id: str) -> MeetingState:
         return self._state_for(meeting_id)
@@ -97,20 +134,27 @@ class StateManager:
         if "decision" in question_text:
             if not state.decisions:
                 return "No decisions captured yet."
-            return "Decisions:\n" + "\n".join(f"- {item.content}" for item in state.decisions[-5:])
+            return "Decisions:\n" + "\n".join(f"• {item.content}" for item in state.decisions[-5:])
 
         if "action" in question_text:
             if not state.actions:
                 return "No action items captured yet."
-            return "Action items:\n" + "\n".join(f"- {item.content}" for item in state.actions[-5:])
+            return "Action items:\n" + "\n".join(f"• {item.content}" for item in state.actions[-5:])
 
-        latest_context = state.transcript_lines[-3:]
-        return (
-            "Based on recent context:\n"
-            + "\n".join(f"- {line}" for line in latest_context)
-            + "\nQuestion: "
-            + question.strip()
-        )
+        if "risk" in question_text:
+            if not state.risks:
+                return "No risks identified yet."
+            return "Risks:\n" + "\n".join(f"• {item.content}" for item in state.risks[-5:])
+
+        # General answer: provide full context
+        context = state.transcript_lines[-5:]
+        answer = "Here's the recent meeting context:\n"
+        answer += "\n".join(f"• {line}" for line in context)
+        if state.actions:
+            answer += "\n\nAction items:\n" + "\n".join(f"• {item.content}" for item in state.actions[-3:])
+        if state.decisions:
+            answer += "\n\nDecisions:\n" + "\n".join(f"• {item.content}" for item in state.decisions[-3:])
+        return answer
 
     def process_transcript_segment(self, meeting_id: str, text: str, speaker: str | None = None) -> dict | None:
         now = datetime.now(timezone.utc)

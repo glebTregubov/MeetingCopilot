@@ -34,8 +34,9 @@ export function InsightsPanel({ decisions, actions, risks, questions }: Insights
           : questions.map((item) => item.content)
 
   return (
-    <section className="mt-6 rounded-lg border border-slate-200 p-4">
-      <h2 className="mb-3 text-sm font-semibold text-slate-900">Insights</h2>
+    <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <h2 className="mb-1 text-sm font-semibold text-slate-900">Intelligence</h2>
+      <p className="mb-3 text-xs text-slate-500">Structured items extracted from conversation</p>
 
       <div className="mb-3 flex flex-wrap gap-2">
         {tabs.map((tab) => (
@@ -43,8 +44,8 @@ export function InsightsPanel({ decisions, actions, risks, questions }: Insights
             key={tab.key}
             type="button"
             onClick={() => setActiveTab(tab.key)}
-            className={`rounded-md px-3 py-1 text-xs font-medium ${
-              activeTab === tab.key ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700'
+            className={`rounded-full px-3 py-1 text-xs font-medium ${
+              activeTab === tab.key ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'
             }`}
           >
             {tab.label} ({tab.count})
@@ -55,9 +56,12 @@ export function InsightsPanel({ decisions, actions, risks, questions }: Insights
       {content.length === 0 ? (
         <p className="text-sm text-slate-500">No items yet.</p>
       ) : (
-        <ul className="space-y-2">
+        <ul className="max-h-60 space-y-2 overflow-y-auto">
           {content.map((text, index) => (
-            <li key={`${activeTab}-${index}-${text}`} className="rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-700">
+            <li
+              key={`${activeTab}-${index}-${text}`}
+              className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700"
+            >
               {text}
             </li>
           ))}

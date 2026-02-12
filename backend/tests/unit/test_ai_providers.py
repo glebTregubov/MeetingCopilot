@@ -12,7 +12,10 @@ from src.services.ai.prompts import PromptLoader
 async def test_openai_provider_requires_api_key(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     get_settings.cache_clear()
-    provider = OpenAIRealtimeProvider(get_settings())
+    # Build settings explicitly with no API key (bypass .env file)
+    from src.config.settings import Settings
+    settings = Settings(openai_api_key="", _env_file=None)  # type: ignore[call-arg]
+    provider = OpenAIRealtimeProvider(settings)
 
     with pytest.raises(ValueError):
         await provider.create_ephemeral_token()

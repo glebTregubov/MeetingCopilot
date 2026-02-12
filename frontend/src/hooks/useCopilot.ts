@@ -38,23 +38,28 @@ export function useCopilot({ meetingId, events, sendEvent }: UseCopilotOptions):
   }
 
   const messages = useMemo<CopilotMessage[]>(() => {
-    const eventMessages: CopilotMessage[] = []
+    // Interleave questions and answers in proper order
+    const result: CopilotMessage[] = []
+    const answers: string[] = []
 
     for (const event of events) {
       if (event.type === 'bot.answer') {
         const answer = String(event.payload?.answer ?? '')
-        if (answer) {
-          eventMessages.push({ role: 'bot', text: answer })
-        }
+        if (answer) answers.push(answer)
       }
     }
 
-    const questionMessages: CopilotMessage[] = localQuestions.map((question) => ({
-      role: 'user',
-      text: question,
-    }))
+    const maxLen = Math.max(localQuestions.length, answers.length)
+    for (let i = 0; i < maxLen; i++) {
+      if (i < localQuestions.length) {
+        result.push({ role: 'user', text: localQuestions[i] })
+      }
+      if (i < answers.length) {
+        result.push({ role: 'bot', text: answers[i] })
+      }
+    }
 
-    return [...questionMessages, ...eventMessages]
+    return result
   }, [events, localQuestions])
 
   return {

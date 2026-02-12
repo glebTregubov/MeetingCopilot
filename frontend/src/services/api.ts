@@ -43,3 +43,20 @@ export const meetingsApi = {
       body: JSON.stringify({ chat_id: chatId }),
     }),
 }
+
+export const providersApi = {
+  getStt: () => request<{ active: string; available: string[] }>('/api/providers/stt'),
+  setStt: (provider: 'openai' | 'elevenlabs') =>
+    request<{ active: string; available: string[] }>('/api/providers/stt', {
+      method: 'POST',
+      body: JSON.stringify({ provider }),
+    }),
+}
+
+export const sttApi = {
+  transcribeElevenlabsChunk: (audioBase64: string, mimeType: string) =>
+    request<{ text: string }>('/api/stt/elevenlabs/chunk', {
+      method: 'POST',
+      body: JSON.stringify({ audio_base64: audioBase64, mime_type: mimeType }),
+    }),
+}

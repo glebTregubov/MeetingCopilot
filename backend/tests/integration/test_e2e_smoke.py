@@ -23,6 +23,9 @@ def test_e2e_smoke_meeting_flow() -> None:
                     'payload': {'speaker': 'PM', 'text': 'Decision: release candidate approved'},
                 }
             )
+            segment = ws.receive_json()
+            assert segment['type'] == 'transcript.segment'
+
             delta = ws.receive_json()
             assert delta['type'] == 'meeting.delta'
 

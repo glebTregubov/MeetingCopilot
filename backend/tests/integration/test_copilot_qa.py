@@ -20,6 +20,9 @@ def test_websocket_user_question_returns_bot_answer():
                     'payload': {'text': 'Decision: freeze scope by Friday', 'speaker': 'Lead'},
                 }
             )
+            segment = websocket.receive_json()
+            assert segment['type'] == 'transcript.segment'
+
             delta = websocket.receive_json()
             assert delta['type'] == 'meeting.delta'
 

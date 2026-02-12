@@ -77,9 +77,12 @@
 
 ## На чём остановились
 - MVP COMPLETE.
+- Визуальный дизайн из `docs/marketing-meeting-copilot.zip` адаптирован и внедрён в текущий live-frontend.
+- Реализован Mode B (ElevenLabs chunk relay через backend) для browser-проверки live transcript/summary.
+- Для E2E проверки ElevenLabs требуется задать `ELEVENLABS_API_KEY` в `.env` (сейчас отсутствует).
 
 ## Тесты
-- Backend: `pytest -q` → `24 passed`.
+- Backend: `pytest -q` → `26 passed`.
 - Frontend: `npm run lint` → success.
 - Frontend: `npm run build` → success.
 

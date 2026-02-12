@@ -113,3 +113,33 @@
 - Верификация:
 	- `cd backend && source .venv/bin/activate && pytest -q` → `24 passed`
 	- `cd frontend && npm run lint && npm run build` → success
+
+- Импортирован внешний дизайн из `docs/marketing-meeting-copilot.zip` и адаптирован под текущую систему (без изменения backend-контрактов).
+- Обновлены UI-компоненты live-экрана:
+	- `frontend/src/components/layout/Header.tsx`
+	- `frontend/src/components/meeting/MeetingControls.tsx`
+	- `frontend/src/components/meeting/TranscriptPanel.tsx`
+	- `frontend/src/components/meeting/SummaryPanel.tsx`
+	- `frontend/src/components/meeting/InsightsPanel.tsx`
+	- `frontend/src/components/meeting/CopilotChat.tsx`
+	- `frontend/src/components/meeting/LiveMeeting.tsx`
+	- `frontend/src/index.css`
+- Результат: новый дизайн реализован поверх существующих `REST/WS` потоков, поведение meeting lifecycle сохранено.
+- Верификация UI-адаптации:
+	- `cd frontend && npm run lint && npm run build` → success
+
+- Реализован рабочий Mode B (ElevenLabs через backend relay):
+	- Backend endpoint `POST /api/stt/elevenlabs/chunk` добавлен (`backend/src/api/stt.py`).
+	- Провайдер ElevenLabs расширен методом транскрибации аудио-чанков (`backend/src/services/ai/elevenlabs_provider.py`).
+	- WebSocket теперь рассылает `transcript.segment` перед `meeting.delta` для live transcript UI.
+	- Frontend `LiveMeeting` отправляет чанки микрофона в backend при `active_stt_provider=elevenlabs` и публикует результат в WS (`transcript.segment`).
+- Добавлены/обновлены тесты:
+	- `backend/tests/integration/test_stt_api.py`
+	- `backend/tests/integration/test_copilot_qa.py`
+	- `backend/tests/integration/test_e2e_smoke.py`
+- Верификация:
+	- `cd backend && source .venv/bin/activate && pytest -q` → `26 passed`
+	- `cd frontend && npm run lint && npm run build` → success
+- Runtime-check:
+	- Провайдер переключается через `POST /api/providers/stt` → `active=elevenlabs`.
+	- Обнаружен блокер окружения: `ELEVENLABS_API_KEY` не задан (в проекте отсутствует `.env`).

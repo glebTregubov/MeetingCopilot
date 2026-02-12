@@ -57,6 +57,19 @@ async def meeting_ws(websocket: WebSocket, meeting_id: str) -> None:
                 if not text:
                     continue
 
+                await manager.broadcast(
+                    meeting_id,
+                    {
+                        "type": "transcript.segment",
+                        "meeting_id": meeting_id,
+                        "payload": {
+                            "text": text,
+                            "speaker": str(speaker) if speaker else "Attendee",
+                        },
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                    },
+                )
+
                 delta = state_manager.process_transcript_segment(
                     meeting_id=meeting_id,
                     text=text,

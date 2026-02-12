@@ -14,11 +14,13 @@ class Settings(BaseSettings):
     stt_provider: str = "openai"
     stt_fallback_provider: str = "none"
     ai_provider: str = "openai"
+    elevenlabs_stt_model: str = "scribe_v1"
     telegram_bot_token: str = ""
     telegram_whitelist: str = ""
     telegram_default_chat_id: str = ""
 
     database_url: str = "sqlite+aiosqlite:///./meeting_copilot.db"
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
